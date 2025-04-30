@@ -1,0 +1,1753 @@
+[
+    {
+        "url": "/wiki/Afghanistan",
+        "alpha3": "AFG",
+        "name": "Афганистан",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_the_Taliban.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/%C3%85land_Islands",
+        "alpha3": "ALA",
+        "name": "Аландские острова",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/5/52/Flag_of_%C3%85land.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Albania",
+        "alpha3": "ALB",
+        "name": "Албания",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/3/36/Flag_of_Albania.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Algeria",
+        "alpha3": "DZA",
+        "name": "Алжир",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/7/77/Flag_of_Algeria.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/American_Samoa",
+        "alpha3": "ASM",
+        "name": "Американское Самоа",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/8/87/Flag_of_American_Samoa.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Andorra",
+        "alpha3": "AND",
+        "name": "Андорра",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/1/19/Flag_of_Andorra.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Angola",
+        "alpha3": "AGO",
+        "name": "Ангола",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/9/9d/Flag_of_Angola.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Anguilla",
+        "alpha3": "AIA",
+        "name": "Ангилья",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Anguilla.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Antigua_and_Barbuda",
+        "alpha3": "ATG",
+        "name": "Антигуа и Барбуда",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/8/89/Flag_of_Antigua_and_Barbuda.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Argentina",
+        "alpha3": "ARG",
+        "name": "Аргентина",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Armenia",
+        "alpha3": "ARM",
+        "name": "Армения",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/2/2f/Flag_of_Armenia.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Aruba",
+        "alpha3": "ABW",
+        "name": "Аруба",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/f/f6/Flag_of_Aruba.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Australia",
+        "alpha3": "AUS",
+        "name": "Австралия",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/8/88/Flag_of_Australia_%28converted%29.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Austria",
+        "alpha3": "AUT",
+        "name": "Австрия",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/4/41/Flag_of_Austria.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Azerbaijan",
+        "alpha3": "AZE",
+        "name": "Азербайджан",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/d/dd/Flag_of_Azerbaijan.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Bahamas",
+        "alpha3": "BHS",
+        "name": "Багамы",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/9/93/Flag_of_the_Bahamas.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Bahrain",
+        "alpha3": "BHR",
+        "name": "Бахрейн",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/2/2c/Flag_of_Bahrain.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Bangladesh",
+        "alpha3": "BGD",
+        "name": "Бангладеш",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/f/f9/Flag_of_Bangladesh.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Barbados",
+        "alpha3": "BRB",
+        "name": "Барбадос",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/e/ef/Flag_of_Barbados.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Belarus",
+        "alpha3": "BLR",
+        "name": "Беларусь",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/8/85/Flag_of_Belarus.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Belgium",
+        "alpha3": "BEL",
+        "name": "Бельгия",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/6/65/Flag_of_Belgium.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Belize",
+        "alpha3": "BLZ",
+        "name": "Белиз",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/e/e7/Flag_of_Belize.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Benin",
+        "alpha3": "BEN",
+        "name": "Бенин",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/0/0a/Flag_of_Benin.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Bermuda",
+        "alpha3": "BMU",
+        "name": "Бермуды",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/b/bf/Flag_of_Bermuda.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Bhutan",
+        "alpha3": "BTN",
+        "name": "Бутан",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/9/91/Flag_of_Bhutan.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Bolivia",
+        "alpha3": "BOL",
+        "name": "Боливия (Многонациональное государство)",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/b/b3/Bandera_de_Bolivia_%28Estado%29.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Caribbean_Netherlands",
+        "alpha3": "BES",
+        "name": "Бонайре - Синт-Эстатиус и Сабо",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/2/20/Flag_of_the_Netherlands.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Bosnia_and_Herzegovina",
+        "alpha3": "BIH",
+        "name": "Босния и Герцеговина",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/b/bf/Flag_of_Bosnia_and_Herzegovina.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Botswana",
+        "alpha3": "BWA",
+        "name": "Ботсвана",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_Botswana.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Brazil",
+        "alpha3": "BRA",
+        "name": "Бразилия",
+        "file_url": "//upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/British_Indian_Ocean_Territory",
+        "alpha3": "IOT",
+        "name": "Британская территория в Индийском океане",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/6/65/Flag_of_the_Commissioner_of_the_British_Indian_Ocean_Territory.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Brunei_Darussalam",
+        "alpha3": "BRN",
+        "name": "Бруней Даруссалам",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/9/9c/Flag_of_Brunei.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Bulgaria",
+        "alpha3": "BGR",
+        "name": "Болгария",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Bulgaria.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Burkina_Faso",
+        "alpha3": "BFA",
+        "name": "Буркина-Фасо",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/3/31/Flag_of_Burkina_Faso.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Burundi",
+        "alpha3": "BDI",
+        "name": "Бурунди",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/5/50/Flag_of_Burundi.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Cabo_Verde",
+        "alpha3": "CPV",
+        "name": "Кабо-Верде",
+        "secondary_name": "Кейп-Верде",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/3/38/Flag_of_Cape_Verde.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Cambodia",
+        "alpha3": "KHM",
+        "name": "Камбоджа",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/8/83/Flag_of_Cambodia.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Cameroon",
+        "alpha3": "CMR",
+        "name": "Камерун",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/4/4f/Flag_of_Cameroon.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Canada",
+        "alpha3": "CAN",
+        "name": "Канада",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Canada_%28Pantone%29.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Cayman_Islands",
+        "alpha3": "CYM",
+        "name": "Каймановы Острова",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/0/0f/Flag_of_the_Cayman_Islands.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Central_African_Republic",
+        "alpha3": "CAF",
+        "name": "Центральноафриканская Республика",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/6/6f/Flag_of_the_Central_African_Republic.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Chad",
+        "alpha3": "TCD",
+        "name": "Чад",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/4/4b/Flag_of_Chad.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Chile",
+        "alpha3": "CHL",
+        "name": "Чили",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/7/78/Flag_of_Chile.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/China",
+        "alpha3": "CHN",
+        "name": "Китай",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Christmas_Island",
+        "alpha3": "CXR",
+        "name": "Остров Рождества",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/6/67/Flag_of_Christmas_Island.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Cocos_(Keeling)_Islands",
+        "alpha3": "CCK",
+        "name": "Кокосовые (Килинг) Острова",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/7/74/Flag_of_the_Cocos_%28Keeling%29_Islands.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Colombia",
+        "alpha3": "COL",
+        "name": "Колумбия",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Comoros",
+        "alpha3": "COM",
+        "name": "Коморы",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/9/94/Flag_of_the_Comoros.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Republic_of_the_Congo",
+        "alpha3": "COG",
+        "name": "Конго",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/9/92/Flag_of_the_Republic_of_the_Congo.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Democratic_Republic_of_the_Congo",
+        "alpha3": "COD",
+        "name": "Конго - Демократическая Республика",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Cook_Islands",
+        "alpha3": "COK",
+        "name": "Куковые острова",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/3/35/Flag_of_the_Cook_Islands.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Costa_Rica",
+        "alpha3": "CRI",
+        "name": "Коста-Рика",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/f/f2/Flag_of_Costa_Rica.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Ivory_Coast",
+        "alpha3": "CIV",
+        "name": "Кот-д'Ивуар",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/f/fe/Flag_of_C%C3%B4te_d%27Ivoire.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Croatia",
+        "alpha3": "HRV",
+        "name": "Хорватия",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/1/1b/Flag_of_Croatia.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Cuba",
+        "alpha3": "CUB",
+        "name": "Куба",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/b/bd/Flag_of_Cuba.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Cura%C3%A7ao",
+        "alpha3": "CUW",
+        "name": "Кюрасао",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/b/b1/Flag_of_Cura%C3%A7ao.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Cyprus",
+        "alpha3": "CYP",
+        "name": "Кипр",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Cyprus.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Czech_Republic",
+        "alpha3": "CZE",
+        "name": "Чешская Республика",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/c/cb/Flag_of_the_Czech_Republic.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Denmark",
+        "alpha3": "DNK",
+        "name": "Дания",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/9/9c/Flag_of_Denmark.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Djibouti",
+        "alpha3": "DJI",
+        "name": "Джибути",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/3/34/Flag_of_Djibouti.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Dominica",
+        "alpha3": "DMA",
+        "name": "Доминика",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/c/c4/Flag_of_Dominica.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Dominican_Republic",
+        "alpha3": "DOM",
+        "name": "Доминиканская Республика",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_the_Dominican_Republic.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Ecuador",
+        "alpha3": "ECU",
+        "name": "Эквадор",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/e/e8/Flag_of_Ecuador.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Egypt",
+        "alpha3": "EGY",
+        "name": "Египет",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/f/fe/Flag_of_Egypt.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/El_Salvador",
+        "alpha3": "SLV",
+        "name": "Сальвадор",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/3/34/Flag_of_El_Salvador.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Equatorial_Guinea",
+        "alpha3": "GNQ",
+        "name": "Экваториальная Гвинея",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/3/31/Flag_of_Equatorial_Guinea.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Eritrea",
+        "alpha3": "ERI",
+        "name": "Эритрея",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/2/29/Flag_of_Eritrea.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Estonia",
+        "alpha3": "EST",
+        "name": "Эстония",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/8/8f/Flag_of_Estonia.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Eswatini",
+        "alpha3": "SWZ",
+        "name": "Эсватини",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/f/fb/Flag_of_Eswatini.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Ethiopia",
+        "alpha3": "ETH",
+        "name": "Эфиопия",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/7/71/Flag_of_Ethiopia.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Falkland_Islands",
+        "alpha3": "FLK",
+        "name": "Фолклендские острова (Мальвины)",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/8/83/Flag_of_the_Falkland_Islands.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Faroe_Islands",
+        "alpha3": "FRO",
+        "name": "Фарерские острова",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/3/3c/Flag_of_the_Faroe_Islands.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Fiji",
+        "alpha3": "FJI",
+        "name": "Фиджи",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Fiji.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Finland",
+        "alpha3": "FIN",
+        "name": "Финляндия",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/b/bc/Flag_of_Finland.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/France",
+        "alpha3": "FRA",
+        "name": "Франция",
+        "file_url": "//upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/French_Polynesia",
+        "alpha3": "PYF",
+        "name": "Французская Полинезия",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/d/db/Flag_of_French_Polynesia.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/French_Southern_and_Antarctic_Lands",
+        "alpha3": "ATF",
+        "name": "Французские Южные и Антарктические Территории",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/a/a7/Flag_of_the_French_Southern_and_Antarctic_Lands.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Gabon",
+        "alpha3": "GAB",
+        "name": "Габон",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/0/04/Flag_of_Gabon.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Gambia",
+        "alpha3": "GMB",
+        "name": "Гамбия",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/7/77/Flag_of_The_Gambia.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Georgia_(country)",
+        "alpha3": "GEO",
+        "name": "Грузия",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/0/0f/Flag_of_Georgia.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Germany",
+        "alpha3": "DEU",
+        "name": "Германия",
+        "file_url": "//upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Ghana",
+        "alpha3": "GHA",
+        "name": "Гана",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/1/19/Flag_of_Ghana.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Gibraltar",
+        "alpha3": "GIB",
+        "name": "Гибралтар",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/0/02/Flag_of_Gibraltar.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Greece",
+        "alpha3": "GRC",
+        "name": "Греция",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Greece.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Greenland",
+        "alpha3": "GRL",
+        "name": "Гренландия",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/0/09/Flag_of_Greenland.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Grenada",
+        "alpha3": "GRD",
+        "name": "Гренада",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/b/bc/Flag_of_Grenada.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Guam",
+        "alpha3": "GUM",
+        "name": "Гуам",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/0/07/Flag_of_Guam.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Guatemala",
+        "alpha3": "GTM",
+        "name": "Гватемала",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/e/ec/Flag_of_Guatemala.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Bailiwick_of_Guernsey",
+        "alpha3": "GGY",
+        "name": "Гернси",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_Guernsey.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Guinea",
+        "alpha3": "GIN",
+        "name": "Гвинея (Конакри)",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/e/ed/Flag_of_Guinea.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Guinea-Bissau",
+        "alpha3": "GNB",
+        "name": "Гвинея-Бисау",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/0/01/Flag_of_Guinea-Bissau.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Guyana",
+        "alpha3": "GUY",
+        "name": "Гайана",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/9/99/Flag_of_Guyana.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Haiti",
+        "alpha3": "HTI",
+        "name": "Гаити",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/5/56/Flag_of_Haiti.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Heard_Island_and_McDonald_Islands",
+        "alpha3": "HMD",
+        "name": "Острова Херд и Макдональд",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/b/bb/Proposed_flag_of_Antarctica_%28Graham_Bartram%29.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Vatican_City",
+        "alpha3": "VAT",
+        "name": "Ватикан",
+        "file_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Flag_of_Vatican_City_%282001%E2%80%932023%29.svg/2048px-Flag_of_Vatican_City_%282001%E2%80%932023%29.svg.png",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Honduras",
+        "alpha3": "HND",
+        "name": "Гондурас",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/8/82/Flag_of_Honduras.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Hong_Kong",
+        "alpha3": "HKG",
+        "name": "Гонконг",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/5/5b/Flag_of_Hong_Kong.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Hungary",
+        "alpha3": "HUN",
+        "name": "Венгрия",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/c/c1/Flag_of_Hungary.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Iceland",
+        "alpha3": "ISL",
+        "name": "Исландия",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/c/ce/Flag_of_Iceland.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/India",
+        "alpha3": "IND",
+        "name": "Индия",
+        "file_url": "//upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Indonesia",
+        "alpha3": "IDN",
+        "name": "Индонезия",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Iran",
+        "alpha3": "IRN",
+        "name": "Иран (Исламская Республика)",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/c/ca/Flag_of_Iran.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Iraq",
+        "alpha3": "IRQ",
+        "name": "Ирак",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/f/f6/Flag_of_Iraq.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Republic_of_Ireland",
+        "alpha3": "IRL",
+        "name": "Ирландия",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/4/45/Flag_of_Ireland.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Isle_of_Man",
+        "alpha3": "IMN",
+        "name": "Остров Мэн",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/b/bc/Flag_of_the_Isle_of_Man.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Israel",
+        "alpha3": "ISR",
+        "name": "Израиль",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Israel.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Italy",
+        "alpha3": "ITA",
+        "name": "Италия",
+        "file_url": "//upload.wikimedia.org/wikipedia/en/0/03/Flag_of_Italy.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Jamaica",
+        "alpha3": "JAM",
+        "name": "Ямайка",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/0/0a/Flag_of_Jamaica.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Japan",
+        "alpha3": "JPN",
+        "name": "Япония",
+        "file_url": "//upload.wikimedia.org/wikipedia/en/9/9e/Flag_of_Japan.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Jersey",
+        "alpha3": "JEY",
+        "name": "Джерси",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/1/1c/Flag_of_Jersey.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Jordan",
+        "alpha3": "JOR",
+        "name": "Иордания",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/c/c0/Flag_of_Jordan.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Kazakhstan",
+        "alpha3": "KAZ",
+        "name": "Казахстан",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/d/d3/Flag_of_Kazakhstan.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Kenya",
+        "alpha3": "KEN",
+        "name": "Кения",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Kenya.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Kiribati",
+        "alpha3": "KIR",
+        "name": "Кирибати",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/d/d3/Flag_of_Kiribati.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/North_Korea",
+        "alpha3": "PRK",
+        "name": "Корея (Корейская Народно-Демократическая Республика)",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/5/51/Flag_of_North_Korea.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/South_Korea",
+        "alpha3": "KOR",
+        "name": "Корея - Республика",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/0/09/Flag_of_South_Korea.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Kuwait",
+        "alpha3": "KWT",
+        "name": "Кувейт",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/a/aa/Flag_of_Kuwait.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Kyrgyzstan",
+        "alpha3": "KGZ",
+        "name": "Кыргызстан",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/c/c7/Flag_of_Kyrgyzstan.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Laos",
+        "alpha3": "LAO",
+        "name": "Лаос",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/5/56/Flag_of_Laos.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Latvia",
+        "alpha3": "LVA",
+        "name": "Латвия",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/8/84/Flag_of_Latvia.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Lebanon",
+        "alpha3": "LBN",
+        "name": "Ливан",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/5/59/Flag_of_Lebanon.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Lesotho",
+        "alpha3": "LSO",
+        "name": "Лесото",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/4/4a/Flag_of_Lesotho.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Liberia",
+        "alpha3": "LBR",
+        "name": "Либерия",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/b/b8/Flag_of_Liberia.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Libya",
+        "alpha3": "LBY",
+        "name": "Ливия",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/0/05/Flag_of_Libya.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Liechtenstein",
+        "alpha3": "LIE",
+        "name": "Лихтенштейн",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/4/47/Flag_of_Liechtenstein.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Lithuania",
+        "alpha3": "LTU",
+        "name": "Литва",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/1/11/Flag_of_Lithuania.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Luxembourg",
+        "alpha3": "LUX",
+        "name": "Люксембург",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/d/da/Flag_of_Luxembourg.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Macau",
+        "alpha3": "MAC",
+        "name": "Макао",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/6/63/Flag_of_Macau.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Madagascar",
+        "alpha3": "MDG",
+        "name": "Мадагаскар",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/b/bc/Flag_of_Madagascar.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Malawi",
+        "alpha3": "MWI",
+        "name": "Малави",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/d/d1/Flag_of_Malawi.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Malaysia",
+        "alpha3": "MYS",
+        "name": "Малайзия",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/6/66/Flag_of_Malaysia.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Maldives",
+        "alpha3": "MDV",
+        "name": "Мальдивы",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/0/0f/Flag_of_Maldives.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Mali",
+        "alpha3": "MLI",
+        "name": "Мали",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/9/92/Flag_of_Mali.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Malta",
+        "alpha3": "MLT",
+        "name": "Мальта",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/7/73/Flag_of_Malta.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Marshall_Islands",
+        "alpha3": "MHL",
+        "name": "Маршалловы Острова",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/2/2e/Flag_of_the_Marshall_Islands.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Mauritania",
+        "alpha3": "MRT",
+        "name": "Мавритания",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/4/43/Flag_of_Mauritania.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Mauritius",
+        "alpha3": "MUS",
+        "name": "Маврикий",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/7/77/Flag_of_Mauritius.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Mexico",
+        "alpha3": "MEX",
+        "name": "Мексика",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/f/fc/Flag_of_Mexico.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Federated_States_of_Micronesia",
+        "alpha3": "FSM",
+        "name": "Федеративные Штаты Микронезии",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/e/e4/Flag_of_the_Federated_States_of_Micronesia.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Moldova",
+        "alpha3": "MDA",
+        "name": "Молдова",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/2/27/Flag_of_Moldova.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Monaco",
+        "alpha3": "MCO",
+        "name": "Монако",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/e/ea/Flag_of_Monaco.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Mongolia",
+        "alpha3": "MNG",
+        "name": "Монголия",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/4/4c/Flag_of_Mongolia.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Montenegro",
+        "alpha3": "MNE",
+        "name": "Черногория",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/6/64/Flag_of_Montenegro.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Montserrat",
+        "alpha3": "MSR",
+        "name": "Монтсеррат",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/d/d0/Flag_of_Montserrat.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Morocco",
+        "alpha3": "MAR",
+        "name": "Марокко",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/2/2c/Flag_of_Morocco.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Mozambique",
+        "alpha3": "MOZ",
+        "name": "Мозамбик",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/d/d0/Flag_of_Mozambique.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Myanmar",
+        "alpha3": "MMR",
+        "name": "Мьянма",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/8/8c/Flag_of_Myanmar.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Namibia",
+        "alpha3": "NAM",
+        "name": "Намибия",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/0/00/Flag_of_Namibia.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Nauru",
+        "alpha3": "NRU",
+        "name": "Науру",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/3/30/Flag_of_Nauru.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Nepal",
+        "alpha3": "NPL",
+        "name": "Непал",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/9/9b/Flag_of_Nepal.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Kingdom_of_the_Netherlands",
+        "alpha3": "NLD",
+        "name": "Нидерланды",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/2/20/Flag_of_the_Netherlands.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/New_Caledonia",
+        "alpha3": "NCL",
+        "name": "Новая Каледония",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/0/0c/Drapeau_de_Nouvelle-Cal%C3%A9donie.png",
+        "license": "Creative Commons Attribution-Share Alike 4.0 International"
+    },
+    {
+        "url": "/wiki/New_Zealand",
+        "alpha3": "NZL",
+        "name": "Новая Зеландия",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/3/3e/Flag_of_New_Zealand.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Nicaragua",
+        "alpha3": "NIC",
+        "name": "Никарагуа",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/1/19/Flag_of_Nicaragua.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Niger",
+        "alpha3": "NER",
+        "name": "Нигер",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/f/f4/Flag_of_Niger.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Nigeria",
+        "alpha3": "NGA",
+        "name": "Нигерия",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/7/79/Flag_of_Nigeria.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Niue",
+        "alpha3": "NIU",
+        "name": "Ниуэ",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/0/01/Flag_of_Niue.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Norfolk_Island",
+        "alpha3": "NFK",
+        "name": "Остров Норфолк",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/4/48/Flag_of_Norfolk_Island.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/North_Macedonia",
+        "alpha3": "MKD",
+        "name": "Северная Македония",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/7/79/Flag_of_North_Macedonia.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Northern_Mariana_Islands",
+        "alpha3": "MNP",
+        "name": "Северные Марианские острова",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/e/e0/Flag_of_the_Northern_Mariana_Islands.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Norway",
+        "alpha3": "NOR",
+        "name": "Норвегия",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Norway.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Oman",
+        "alpha3": "OMN",
+        "name": "Оман",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/d/dd/Flag_of_Oman.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Pakistan",
+        "alpha3": "PAK",
+        "name": "Пакистан",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/3/32/Flag_of_Pakistan.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Palau",
+        "alpha3": "PLW",
+        "name": "Палау",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/4/48/Flag_of_Palau.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/State_of_Palestine",
+        "alpha3": "PSE",
+        "name": "Палестина",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/0/00/Flag_of_Palestine.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Panama",
+        "alpha3": "PAN",
+        "name": "Панама",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/a/ab/Flag_of_Panama.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Papua_New_Guinea",
+        "alpha3": "PNG",
+        "name": "Папуа — Новая Гвинея",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/e/e3/Flag_of_Papua_New_Guinea.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Paraguay",
+        "alpha3": "PRY",
+        "name": "Парагвай",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/2/27/Flag_of_Paraguay.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Peru",
+        "alpha3": "PER",
+        "name": "Перу",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/c/cf/Flag_of_Peru.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Philippines",
+        "alpha3": "PHL",
+        "name": "Филиппины",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/9/99/Flag_of_the_Philippines.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Pitcairn_Islands",
+        "alpha3": "PCN",
+        "name": "Питкерн",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/8/88/Flag_of_the_Pitcairn_Islands.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Poland",
+        "alpha3": "POL",
+        "name": "Польша",
+        "file_url": "//upload.wikimedia.org/wikipedia/en/1/12/Flag_of_Poland.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Portugal",
+        "alpha3": "PRT",
+        "name": "Португалия",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Portugal.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Puerto_Rico",
+        "alpha3": "PRI",
+        "name": "Пуэрто-Рико",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/2/28/Flag_of_Puerto_Rico.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Qatar",
+        "alpha3": "QAT",
+        "name": "Катар",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/6/65/Flag_of_Qatar.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Romania",
+        "alpha3": "ROU",
+        "name": "Румыния",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/7/73/Flag_of_Romania.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Russia",
+        "alpha3": "RUS",
+        "name": "Россия",
+        "file_url": "//upload.wikimedia.org/wikipedia/en/f/f3/Flag_of_Russia.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Rwanda",
+        "alpha3": "RWA",
+        "name": "Руанда",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/1/17/Flag_of_Rwanda.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Saint_Barth%C3%A9lemy",
+        "alpha3": "BLM",
+        "name": "Сен-Бартелеми",
+        "file_url": "//upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Saint_Helena,_Ascension_and_Tristan_da_Cunha",
+        "alpha3": "SHN",
+        "name": "Святая Елена - Острова Вознесения и Тристан-да-Кунья",
+        "file_url": "//upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Saint_Kitts_and_Nevis",
+        "alpha3": "KNA",
+        "name": "Сент-Китс и Невис",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/f/fe/Flag_of_Saint_Kitts_and_Nevis.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Saint_Lucia",
+        "alpha3": "LCA",
+        "name": "Сент-Люсия",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Saint_Lucia.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Collectivity_of_Saint_Martin",
+        "alpha3": "MAF",
+        "name": "Сент-Мартен (французская часть)",
+        "file_url": "//upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Saint_Vincent_and_the_Grenadines",
+        "alpha3": "VCT",
+        "name": "Сент-Винсент и Гренадины",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/6/6d/Flag_of_Saint_Vincent_and_the_Grenadines.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Samoa",
+        "alpha3": "WSM",
+        "name": "Самоа",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/3/31/Flag_of_Samoa.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/San_Marino",
+        "alpha3": "SMR",
+        "name": "Сан-Марино",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/b/b1/Flag_of_San_Marino.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/S%C3%A3o_Tom%C3%A9_and_Pr%C3%ADncipe",
+        "alpha3": "STP",
+        "name": "Сан-Томе и Принсипи",
+        "file_url": "https://cdn.britannica.com/91/7191-050-DDF8DC1F/Flag-Sao-Tome-and-Principe.jpg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Senegal",
+        "alpha3": "SEN",
+        "name": "Сенегал",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/f/fd/Flag_of_Senegal.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Serbia",
+        "alpha3": "SRB",
+        "name": "Сербия",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/f/ff/Flag_of_Serbia.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Seychelles",
+        "alpha3": "SYC",
+        "name": "Сейшельские Острова",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/f/fc/Flag_of_Seychelles.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Sierra_Leone",
+        "alpha3": "SLE",
+        "name": "Сьерра-Леоне",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/1/17/Flag_of_Sierra_Leone.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Singapore",
+        "alpha3": "SGP",
+        "name": "Сингапур",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/4/48/Flag_of_Singapore.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Sint_Maarten",
+        "alpha3": "SXM",
+        "name": "Синт-Мартен (голландская часть)",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/d/d3/Flag_of_Sint_Maarten.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Slovakia",
+        "alpha3": "SVK",
+        "name": "Словакия",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/e/e6/Flag_of_Slovakia.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Slovenia",
+        "alpha3": "SVN",
+        "name": "Словения",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/f/f0/Flag_of_Slovenia.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Solomon_Islands",
+        "alpha3": "SLB",
+        "name": "Соломоновы Острова",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/7/74/Flag_of_the_Solomon_Islands.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Somalia",
+        "alpha3": "SOM",
+        "name": "Сомали",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/a/a0/Flag_of_Somalia.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/South_Africa",
+        "alpha3": "ZAF",
+        "name": "Южноафриканская Республика",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/a/af/Flag_of_South_Africa.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/South_Georgia_and_the_South_Sandwich_Islands",
+        "alpha3": "SGS",
+        "name": "Южная Георгия и Южные Сандвичевы острова",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/e/ed/Flag_of_South_Georgia_and_the_South_Sandwich_Islands.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/South_Sudan",
+        "alpha3": "SSD",
+        "name": "Южный Судан",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/7/7a/Flag_of_South_Sudan.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Spain",
+        "alpha3": "ESP",
+        "name": "Испания",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/8/89/Bandera_de_Espa%C3%B1a.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Sri_Lanka",
+        "alpha3": "LKA",
+        "name": "Шри-Ланка",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/1/11/Flag_of_Sri_Lanka.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Sudan",
+        "alpha3": "SDN",
+        "name": "Судан",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/0/01/Flag_of_Sudan.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Suriname",
+        "alpha3": "SUR",
+        "name": "Суринам",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/6/60/Flag_of_Suriname.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Svalbard_and_Jan_Mayen",
+        "alpha3": "SJM",
+        "name": "Свальбард и Ян-Майен",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Norway.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Sweden",
+        "alpha3": "SWE",
+        "name": "Швеция",
+        "file_url": "//upload.wikimedia.org/wikipedia/en/4/4c/Flag_of_Sweden.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Switzerland",
+        "alpha3": "CHE",
+        "name": "Швейцария",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Switzerland.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Syria",
+        "alpha3": "SYR",
+        "name": "Сирийская Арабская Республика",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/5/53/Flag_of_Syria.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Tajikistan",
+        "alpha3": "TJK",
+        "name": "Таджикистан",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/d/d0/Flag_of_Tajikistan.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Tanzania",
+        "alpha3": "TZA",
+        "name": "Объединенная Республика Танзания",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/3/38/Flag_of_Tanzania.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Thailand",
+        "alpha3": "THA",
+        "name": "Таиланд",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/a/a9/Flag_of_Thailand.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/East_Timor",
+        "alpha3": "TLS",
+        "name": "Тимор-Лешти",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/2/26/Flag_of_East_Timor.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Togo",
+        "alpha3": "TGO",
+        "name": "Того",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/6/68/Flag_of_Togo.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Tokelau",
+        "alpha3": "TKL",
+        "name": "Токелау",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/8/8e/Flag_of_Tokelau.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Tonga",
+        "alpha3": "TON",
+        "name": "Тонга",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Tonga.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Trinidad_and_Tobago",
+        "alpha3": "TTO",
+        "name": "Тринидад и Тобаго",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/6/64/Flag_of_Trinidad_and_Tobago.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Tunisia",
+        "alpha3": "TUN",
+        "name": "Тунис",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/c/ce/Flag_of_Tunisia.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Turkey",
+        "alpha3": "TUR",
+        "name": "Турция",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Turkmenistan",
+        "alpha3": "TKM",
+        "name": "Туркменистан",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/1/1b/Flag_of_Turkmenistan.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Turks_and_Caicos_Islands",
+        "alpha3": "TCA",
+        "name": "Теркс и Кайкос",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/a/a0/Flag_of_the_Turks_and_Caicos_Islands.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Tuvalu",
+        "alpha3": "TUV",
+        "name": "Тувалу",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/3/38/Flag_of_Tuvalu.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Uganda",
+        "alpha3": "UGA",
+        "name": "Уганда",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/4/4e/Flag_of_Uganda.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Ukraine",
+        "alpha3": "UKR",
+        "name": "Украина",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/United_Arab_Emirates",
+        "alpha3": "ARE",
+        "name": "Объединенные Арабские Эмираты",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/c/cb/Flag_of_the_United_Arab_Emirates.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/United_Kingdom",
+        "alpha3": "GBR",
+        "name": "Великобритания",
+        "file_url": "//upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/United_States",
+        "alpha3": "USA",
+        "name": "Соединенные Штаты Америки",
+        "file_url": "//upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/United_States_Minor_Outlying_Islands",
+        "alpha3": "UMI",
+        "name": "Малые отдаленные острова США",
+        "file_url": "//upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Uruguay",
+        "alpha3": "URY",
+        "name": "Уругвай",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/f/fe/Flag_of_Uruguay.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Uzbekistan",
+        "alpha3": "UZB",
+        "name": "Узбекистан",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/8/84/Flag_of_Uzbekistan.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Vanuatu",
+        "alpha3": "VUT",
+        "name": "Вануату",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/6/6e/Flag_of_Vanuatu_%28official%29.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Venezuela",
+        "alpha3": "VEN",
+        "name": "Венесуэла (Боливарианская Республика)",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/0/06/Flag_of_Venezuela.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Vietnam",
+        "alpha3": "VNM",
+        "name": "Вьетнам",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/British_Virgin_Islands",
+        "alpha3": "VGB",
+        "name": "Британские Виргинские острова",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/4/42/Flag_of_the_British_Virgin_Islands.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/United_States_Virgin_Islands",
+        "alpha3": "VIR",
+        "name": "Виргинские острова (США)",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/f/f8/Flag_of_the_United_States_Virgin_Islands.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Wallis_and_Futuna",
+        "alpha3": "WLF",
+        "name": "Уоллис и Футуна",
+        "file_url": "//upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Yemen",
+        "alpha3": "YEM",
+        "name": "Йемен",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/8/89/Flag_of_Yemen.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Zambia",
+        "alpha3": "ZMB",
+        "name": "Замбия",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/0/06/Flag_of_Zambia.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "/wiki/Zimbabwe",
+        "alpha3": "ZWE",
+        "name": "Зимбабве",
+        "file_url": "//upload.wikimedia.org/wikipedia/commons/6/6a/Flag_of_Zimbabwe.svg",
+        "license": "Public domain"
+    },
+    {
+        "url": "",
+        "alpha3": "TWN",
+        "name": "Тайвань",
+        "file_url": "https://flagcdn.com/w320/tw.png",
+        "license": "Public domain"
+    },
+    {
+        "url": "",
+        "alpha3": "PSE",
+        "name": "Палестина",
+        "file_url": "https://flagcdn.com/w320/ps.png",
+        "license": "Public domain"
+    },
+    {
+        "url": "",
+        "alpha3": "ESH",
+        "name": "Западная Сахара",
+        "file_url": "https://flagcdn.com/w320/eh.png",
+        "license": "Public domain"
+    },
+    {
+        "url": "",
+        "alpha3": "XKX",
+        "name": "Косово",
+        "file_url": "https://flagcdn.com/w320/xk.png",
+        "license": "Public domain"
+    },
+    {
+        "url": "",
+        "alpha3": "OS",
+        "name": "Южная Осетия",
+        "file_url": "https://flagcdn.com/w320/so.png",
+        "license": "Public domain"
+    },
+    {
+        "url": "",
+        "alpha3": "ABK",
+        "name": "Абхазия",
+        "file_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Flag_of_the_Republic_of_Abkhazia.svg/800px-Flag_of_the_Republic_of_Abkhazia.svg.png",
+        "license": "Public domain"
+    },
+    {
+        "url": "",
+        "alpha3": "NKR",
+        "name": "Нагорный Карабах (Арцах)",
+        "file_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Flag_of_Artsakh.svg/800px-Flag_of_Artsakh.svg.png",
+        "license": "Public domain"
+    },
+    {
+        "url": "",
+        "alpha3": "TNR",
+        "name": "Приднестровье",
+        "file_url": "https://flagcdn.com/w320/tn.png",
+        "license": "Public domain"
+    },
+    {
+        "url": "",
+        "alpha3": "SML",
+        "name": "Сомалиленд",
+        "file_url": "https://flagcdn.com/w320/sm.png",
+        "license": "Public domain"
+    },
+    {
+        "url": "",
+        "alpha3": "NCY",
+        "name": "Северный Кипр",
+        "file_url": "https://flagcdn.com/w320/nc.png",
+        "license": "Public domain"
+    },
+    {
+        "url": "",
+        "alpha3": "SAU",
+        "name": "Саудовская Аравия",
+        "file_url": "https://flagcdn.com/w320/sa.png",
+        "license": "Public domain"
+    },
+    {
+        "url": "",
+        "alpha3": "YUG",
+        "name": "Югославия",
+        "file_url": "https://cdn.britannica.com/16/116816-004-F99D601F/Flag-Socialist-Federal-Republic-of-Yugoslavia.jpg",
+        "license": "Public domain"
+    }
+]

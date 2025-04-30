@@ -1,0 +1,529 @@
+{
+  "10000": {
+    "en": {
+      "status": "CREATED",
+      "message": "The transaction is created.",
+      "details": "The transaction is created."
+    },
+    "fr": {
+      "status": "CRÉÉ",
+      "message": "La transaction est créée.",
+      "details": "La transaction est créée."
+    },
+    "es": {
+      "status": "CREADO",
+      "message": "La transacción está creada.",
+      "details": "La transacción está creada."
+    }
+  },
+  "20000": {
+    "en": {
+      "status": "CONFIRMED",
+      "message": "The transaction is confirmed.",
+      "details": "The transaction is confirmed."
+    },
+    "fr": {
+      "status": "CONFIRMÉ",
+      "message": "La transaction est confirmée.",
+      "details": "La transaction est confirmée."
+    },
+    "es": {
+      "status": "CONFIRMADO",
+      "message": "La transacción está confirmada.",
+      "details": "La transacción está confirmada."
+    }
+  },
+  "20110": {
+    "en": {
+      "status": "CONFIRMED-UNDER-REVIEW-SLS",
+      "message": "The transaction is under sanctions list screening for sender or beneficiary.",
+      "details": "The transaction is under sanctions list screening for sender or beneficiary."
+    },
+    "fr": {
+      "status": "CONFIRMÉ-SOUS-RÉVISION-LISTE-DES-SANCTIONS",
+      "message": "La transaction est en cours de vérification sur la liste des sanctions pour l'expéditeur ou le bénéficiaire.",
+      "details": "La transaction est en cours de vérification sur la liste des sanctions pour l'expéditeur ou le bénéficiaire."
+    },
+    "es": {
+      "status": "CONFIRMADO-BAJO-REVISIÓN-LISTA-DE-SANCIONES",
+      "message": "La transacción está bajo revisión en la lista de sanciones para el remitente o el beneficiario.",
+      "details": "La transacción está bajo revisión en la lista de sanciones para el remitente o el beneficiario."
+    }
+  },
+  "20150": {
+    "en": {
+      "status": "CONFIRMED-WAITING-FOR-PICKUP",
+      "message": "The transaction is available for cash pick up by the beneficiary. Applicable for universal cash pick up only.",
+      "details": "The transaction is available for cash pick up by the beneficiary. Applicable for universal cash pick up only."
+    },
+    "fr": {
+      "status": "CONFIRMÉ-EN-ATTENTE-DE-RÉCUPÉRATION",
+      "message": "La transaction est disponible pour être retirée en espèces par le bénéficiaire. Applicable uniquement pour le retrait en espèces universel.",
+      "details": "La transaction est disponible pour être retirée en espèces par le bénéficiaire. Applicable uniquement pour le retrait en espèces universel."
+    },
+    "es": {
+      "status": "CONFIRMADO-ESPERANDO-RECOGIDA",
+      "message": "La transacción está disponible para ser recogida en efectivo por el beneficiario. Aplicable solo para recogida universal en efectivo.",
+      "details": "La transacción está disponible para ser recogida en efectivo por el beneficiario. Aplicable solo para recogida universal en efectivo."
+    }
+  },
+  "30000": {
+    "en": {
+      "status": "REJECTED",
+      "message": "The transaction is rejected.",
+      "details": "The transaction is rejected."
+    },
+    "fr": {
+      "status": "REJETÉ",
+      "message": "La transaction est rejetée.",
+      "details": "La transaction est rejetée."
+    },
+    "es": {
+      "status": "RECHAZADO",
+      "message": "La transacción ha sido rechazada.",
+      "details": "La transacción ha sido rechazada."
+    }
+  },
+  "30110": {
+    "en": {
+      "status": "REJECTED-SLS-SENDER",
+      "message": "The transaction is rejected as the sender failed the sanctions list screening.",
+      "details": "The transaction is rejected as the sender failed the sanctions list screening."
+    },
+    "fr": {
+      "status": "REJETÉ-SLS-EXPÉDITEUR",
+      "message": "La transaction est rejetée car l'expéditeur a échoué au contrôle de la liste des sanctions.",
+      "details": "La transaction est rejetée car l'expéditeur a échoué au contrôle de la liste des sanctions."
+    },
+    "es": {
+      "status": "RECHAZADO-SLS-REMITENTE",
+      "message": "La transacción ha sido rechazada porque el remitente no superó la verificación de la lista de sanciones.",
+      "details": "La transacción ha sido rechazada porque el remitente no superó la verificación de la lista de sanciones."
+    }
+  },
+  "30120": {
+    "en": {
+      "status": "REJECTED-SLS-BENEFICIARY",
+      "message": "The transaction is rejected as the beneficiary failed the sanctions list screening.",
+      "details": "The transaction is rejected as the beneficiary failed the sanctions list screening."
+    },
+    "fr": {
+      "status": "REJETÉ-SLS-BÉNÉFICIAIRE",
+      "message": "La transaction est rejetée car le bénéficiaire a échoué au contrôle de la liste des sanctions.",
+      "details": "La transaction est rejetée car le bénéficiaire a échoué au contrôle de la liste des sanctions."
+    },
+    "es": {
+      "status": "RECHAZADO-SLS-BENEFICIARIO",
+      "message": "La transacción ha sido rechazada porque el beneficiario no superó la verificación de la lista de sanciones.",
+      "details": "La transacción ha sido rechazada porque el beneficiario no superó la verificación de la lista de sanciones."
+    }
+  },
+  "30200": {
+    "en": {
+      "status": "REJECTED-INVALID-BENEFICIARY",
+      "message": "The transaction is rejected as the beneficiary account is invalid.",
+      "details": "The transaction is rejected as the beneficiary account is invalid."
+    },
+    "fr": {
+      "status": "REJETÉ-INVALIDE-BÉNÉFICIAIRE",
+      "message": "La transaction est rejetée car le compte du bénéficiaire est invalide.",
+      "details": "La transaction est rejetée car le compte du bénéficiaire est invalide."
+    },
+    "es": {
+      "status": "RECHAZADO-INVALIDO-BENEFICIARIO",
+      "message": "La transacción ha sido rechazada porque la cuenta del beneficiario es inválida.",
+      "details": "La transacción ha sido rechazada porque la cuenta del beneficiario es inválida."
+    }
+  },
+  "30201": {
+    "en": {
+      "status": "REJECTED-BARRED-BENEFICIARY",
+      "message": "The transaction is rejected as the beneficiary is blacklisted.",
+      "details": "The transaction is rejected as the beneficiary is blacklisted."
+    },
+    "fr": {
+      "status": "REJETÉ-INTERDIT-BÉNÉFICIAIRE",
+      "message": "La transaction est rejetée car le bénéficiaire est sur liste noire.",
+      "details": "La transaction est rejetée car le bénéficiaire est sur liste noire."
+    },
+    "es": {
+      "status": "RECHAZADO-PROHIBIDO-BENEFICIARIO",
+      "message": "La transacción ha sido rechazada porque el beneficiario está en la lista negra.",
+      "details": "La transacción ha sido rechazada porque el beneficiario está en la lista negra."
+    }
+  },
+  "30202": {
+    "en": {
+      "status": "REJECTED-BARRED-SENDER",
+      "message": "The transaction is rejected as the sender is blacklisted.",
+      "details": "The transaction is rejected as the sender is blacklisted."
+    },
+    "fr": {
+      "status": "REJETÉ-INTERDIT-EXPÉDITEUR",
+      "message": "La transaction est rejetée car l'expéditeur est sur liste noire.",
+      "details": "La transaction est rejetée car l'expéditeur est sur liste noire."
+    },
+    "es": {
+      "status": "RECHAZADO-PROHIBIDO-REMITENTE",
+      "message": "La transacción ha sido rechazada porque el remitente está en la lista negra.",
+      "details": "La transacción ha sido rechazada porque el remitente está en la"
+    }
+  },
+  "30210": {
+    "en": {
+      "status": "REJECTED-INVALID-BENEFICIARY-DETAILS",
+      "message": "The transaction is rejected as the beneficiary details are invalid, e.g. name, email, phone number.",
+      "details": "The transaction is rejected as the beneficiary details are invalid, e.g. name, email, phone number."
+    },
+    "fr": {
+      "status": "REJETÉ-DÉTAILS-INACCEPTABLES-BÉNÉFICIAIRE",
+      "message": "La transaction est rejetée car les détails du bénéficiaire sont invalides, par exemple le nom, l'email, le numéro de téléphone.",
+      "details": "La transaction est rejetée car les détails du bénéficiaire sont invalides, par exemple le nom, l'email, le numéro de téléphone."
+    },
+    "es": {
+      "status": "RECHAZADO-DETALLES-INVÁLIDOS-BENEFICIARIO",
+      "message": "La transacción ha sido rechazada porque los detalles del beneficiario son inválidos, por ejemplo nombre, correo electrónico, número de teléfono.",
+      "details": "La transacción ha sido rechazada porque los detalles del beneficiario son inválidos, por ejemplo nombre, correo electrónico, número de teléfono."
+    }
+  },
+  "30305": {
+    "en": {
+      "status": "REJECTED-LIMITATIONS-ON-TRANSACTION-VALUE",
+      "message": "The transaction is rejected as the transaction value exceeds the transaction value limit.",
+      "details": "The transaction is rejected as the transaction value exceeds the transaction value limit."
+    },
+    "fr": {
+      "status": "REJETÉ-LIMITATIONS-SUR-VALEUR-DE-TRANSACTION",
+      "message": "La transaction est rejetée car la valeur de la transaction dépasse la limite de valeur de transaction.",
+      "details": "La transaction est rejetée car la valeur de la transaction dépasse la limite de valeur de transaction."
+    },
+    "es": {
+      "status": "RECHAZADO-LIMITACIONES-EN-VALOR-DE-TRANSACCIÓN",
+      "message": "La transacción ha sido rechazada porque el valor de la transacción excede el límite de valor de la transacción.",
+      "details": "La transacción ha sido rechazada porque el valor de la transacción excede el límite de valor de la transacción."
+    }
+  },
+  "30310": {
+    "en": {
+      "status": "REJECTED-LIMITATIONS-ON-SENDER-VALUE",
+      "message": "The transaction is rejected as the transaction value exceeds the value that the sender can send.",
+      "details": "The transaction is rejected as the transaction value exceeds the value that the sender can send."
+    },
+    "fr": {
+      "status": "REJETÉ-LIMITATIONS-SUR-VALEUR-DE-SENDER",
+      "message": "La transaction est rejetée car la valeur de la transaction dépasse la valeur que l'expéditeur peut envoyer.",
+      "details": "La transaction est rejetée car la valeur de la transaction dépasse la valeur que l'expéditeur peut envoyer."
+    },
+    "es": {
+      "status": "RECHAZADO-LIMITACIONES-EN-VALOR-DE-REMITENTE",
+      "message": "La transacción ha sido rechazada porque el valor de la transacción excede el valor que el remitente puede enviar.",
+      "details": "La transacción ha sido rechazada porque el valor de la transacción excede el valor que el remitente puede enviar."
+    }
+  },
+  "30320": {
+    "en": {
+      "status": "REJECTED-LIMITATIONS-ON-BENEFICIARY-VALUE",
+      "message": "The transaction is rejected as the transaction value exceeds the value that the beneficiary can receive.",
+      "details": "The transaction is rejected as the transaction value exceeds the value that the beneficiary can receive."
+    },
+    "fr": {
+      "status": "REJETÉ-LIMITATIONS-SUR-VALEUR-DE-BÉNÉFICIAIRE",
+      "message": "La transaction est rejetée car la valeur de la transaction dépasse la valeur que le bénéficiaire peut recevoir.",
+      "details": "La transaction est rejetée car la valeur de la transaction dépasse la valeur que le bénéficiaire peut recevoir."
+    },
+    "es": {
+      "status": "RECHAZADO-LIMITACIONES-EN-VALOR-DE-BENEFICIARIO",
+      "message": "La transacción ha sido rechazada porque el valor de la transacción excede el valor que el beneficiario puede recibir.",
+      "details": "La transacción ha sido rechazada porque el valor de la transacción excede el valor que el beneficiario puede recibir."
+    }
+  },
+  "30330": {
+    "en": {
+      "status": "REJECTED-LIMITATIONS-ON-ACCOUNT-VALUE",
+      "message": "The transaction is rejected as the transaction value exceeds the value that the account can receive.",
+      "details": "The transaction is rejected as the transaction value exceeds the value that the account can receive."
+    },
+    "fr": {
+      "status": "REJETÉ-LIMITATIONS-SUR-VALEUR-DE-COMPTE",
+      "message": "La transaction est rejetée car la valeur de la transaction dépasse la valeur que le compte peut recevoir.",
+      "details": "La transaction est rejetée car la valeur de la transaction dépasse la valeur que le compte peut recevoir."
+    },
+    "es": {
+      "status": "RECHAZADO-LIMITACIONES-EN-VALOR-DE-CUENTA",
+      "message": "La transacción ha sido rechazada porque el valor de la transacción excede el valor que la cuenta puede recibir.",
+      "details": "La transacción ha sido rechazada porque el valor de la transacción excede el valor que la cuenta puede recibir."
+    }
+  },
+  "30350": {
+    "en": {
+      "status": "REJECTED-LIMITATIONS-ON-SENDER-QUANTITY",
+      "message": "The transaction is rejected as the sender exceeded the number of transactions that the sender can send.",
+      "details": "The transaction is rejected as the sender exceeded the number of transactions that the sender can send."
+    },
+    "fr": {
+      "status": "REJETÉ-LIMITATIONS-SUR-QUANTITÉ-DE-SENDER",
+      "message": "La transaction est rejetée car l'expéditeur a dépassé le nombre de transactions que l'expéditeur peut envoyer.",
+      "details": "La transaction est rejetée car l'expéditeur a dépassé le nombre de transactions que l'expéditeur peut envoyer."
+    },
+    "es": {
+      "status": "RECHAZADO-LIMITACIONES-EN-CANTIDAD-DE-REMITENTE",
+      "message": "La transacción ha sido rechazada porque el remitente ha excedido el número de transacciones que el remitente puede enviar.",
+      "details": "La transacción ha sido rechazada porque el remitente ha excedido el número de transacciones que el remitente puede enviar."
+    }
+  },
+  "30360": {
+    "en": {
+      "status": "REJECTED-LIMITATIONS-ON-BENEFICIARY-QUANTITY",
+      "message": "The transaction is rejected as the beneficiary exceeded the number of transactions that the beneficiary can receive.",
+      "details": "The transaction is rejected as the beneficiary exceeded the number of transactions that the beneficiary can receive."
+    },
+    "fr": {
+      "status": "REJETÉ-LIMITATIONS-SUR-QUANTITÉ-DE-BÉNÉFICIAIRE",
+      "message": "La transaction est rejetée car le bénéficiaire a dépassé le nombre de transactions que le bénéficiaire peut recevoir.",
+      "details": "La transaction est rejetée car le bénéficiaire a dépassé le nombre de transactions que le bénéficiaire peut recevoir."
+    },
+    "es": {
+      "status": "RECHAZADO-LIMITACIONES-EN-CANTIDAD-DE-BENEFICIARIO",
+      "message": "La transacción ha sido rechazada porque el beneficiario ha excedido el número de transacciones que el beneficiario puede recibir.",
+      "details": "La transacción ha sido rechazada porque el beneficiario ha excedido el número de transacciones que el beneficiario puede recibir."
+    }
+  },
+  "30370": {
+    "en": {
+      "status": "REJECTED-LIMITATIONS-ON-ACCOUNT-QUANTITY",
+      "message": "The transaction is rejected as the account exceeded the number of transactions that the account can receive.",
+      "details": "The transaction is rejected as the account exceeded the number of transactions that the account can receive."
+    }
+  },
+  "30392": {
+    "en": {
+      "status": "REJECTED-COMPLIANCE-REASON",
+      "message": "The transaction is rejected due to compliance reason.",
+      "details": "The transaction is rejected due to compliance reason."
+    }
+  },
+  "30400": {
+    "en": {
+      "status": "REJECTED-PAYER-CURRENTLY-UNAVAILABLE",
+      "message": "The transaction is rejected as the payer is either under payer maintenance or currently unavailable.",
+      "details": "The transaction is rejected as the payer is either under payer maintenance or currently unavailable."
+    }
+  },
+  "30500": {
+    "en": {
+      "status": "REJECTED-INSUFFICIENT-BALANCE",
+      "message": "The transaction is rejected due to insufficient balance on the pay-in partner’s account.",
+      "details": "The transaction is rejected due to insufficient balance on the pay-in partner’s account."
+    }
+  },
+  "40000": {
+    "en": {
+      "status": "CANCELLED",
+      "message": "The transaction is cancelled upon request.",
+      "details": "The transaction is cancelled upon request."
+    }
+  },
+  "50000": {
+    "en": {
+      "status": "SUBMITTED",
+      "message": "The transaction is submitted to the pay-out partner for processing.",
+      "details": "The transaction is submitted to the pay-out partner for processing."
+    }
+  },
+  "60000": {
+    "en": {
+      "status": "AVAILABLE",
+      "message": "The transaction is available for cash pick up by the beneficiary.",
+      "details": "The transaction is available for cash pick up by the beneficiary."
+    }
+  },
+  "70000": {
+    "en": {
+      "status": "COMPLETED",
+      "message": "The transaction is completed and payout has been made to the beneficiary.",
+      "details": "The transaction is completed and payout has been made to the beneficiary."
+    }
+  },
+  "80000": {
+    "en": {
+      "status": "REVERSED",
+      "message": "The transaction is reversed.",
+      "details": "The transaction is reversed."
+    }
+  },
+  "90000": {
+    "en": {
+      "status": "DECLINED",
+      "message": "The transaction is declined by the pay-out partner.",
+      "details": "The transaction is declined by the pay-out partner."
+    }
+  },
+  "90110": {
+    "en": {
+      "status": "DECLINED-SLS-SENDER",
+      "message": "The transaction is declined by the pay-out partner as the sender failed the sanctions list screening.",
+      "details": "The transaction is declined by the pay-out partner as the sender failed the sanctions list screening."
+    }
+  },
+  "90120": {
+    "en": {
+      "status": "DECLINED-SLS-BENEFICIARY",
+      "message": "The transaction is declined by the pay-out partner as the beneficiary failed the sanctions list screening.",
+      "details": "The transaction is declined by the pay-out partner as the beneficiary failed the sanctions list screening."
+    }
+  },
+  "90200": {
+    "en": {
+      "status": "DECLINED-INVALID-BENEFICIARY",
+      "message": "The transaction is declined by the pay-out partner due to invalid beneficiary, e.g. bank account number.",
+      "details": "The transaction is declined by the pay-out partner due to invalid beneficiary, e.g. bank account number."
+    }
+  },
+  "90201": {
+    "en": {
+      "status": "DECLINED-BARRED-BENEFICIARY",
+      "message": "The transaction is declined by the pay-out partner as the beneficiary is blacklisted.",
+      "details": "The transaction is declined by the pay-out partner as the beneficiary is blacklisted."
+    }
+  },
+  "90202": {
+    "en": {
+      "status": "DECLINED-UNSUPPORTED-BENEFICIARY",
+      "message": "The transaction is declined by the pay-out partner as the beneficiary does not allow overseas transactions or payer is unavailable for payout.",
+      "details": "The transaction is declined by the pay-out partner as the beneficiary does not allow overseas transactions or payer is unavailable for payout."
+    }
+  },
+  "90210": {
+    "en": {
+      "status": "DECLINED-INVALID-BENEFICIARY-DETAILS",
+      "message": "The transaction is declined by the pay-out partner as the beneficiary’s details are invalid, e.g. name or address.",
+      "details": "The transaction is declined by the pay-out partner as the beneficiary’s details are invalid, e.g. name or address."
+    }
+  },
+  "90211": {
+    "en": {
+      "status": "DECLINED-INVALID-SENDER-DETAILS",
+      "message": "The transaction is declined by the pay-out partner as the sender details are in the wrong format per pay-out partner’s rules on sender, e.g. character type length.",
+      "details": "The transaction is declined by the pay-out partner as the sender details are in the wrong format per pay-out partner’s rules on sender, e.g. character type length."
+    }
+  },
+  "90305": {
+    "en": {
+      "status": "DECLINED-LIMITATIONS-ON-TRANSACTION-VALUE",
+      "message": "The transaction is declined by the pay-out partner as the value exceeds the amount allowed per transaction.",
+      "details": "The transaction is declined by the pay-out partner as the value exceeds the amount allowed per transaction."
+    }
+  },
+  "90310": {
+    "en": {
+      "status": "DECLINED-LIMITATIONS-ON-SENDER-VALUE",
+      "message": "The transaction is declined by the pay-out partner as the transaction value exceeds the value that the sender can send per transaction.",
+      "details": "The transaction is declined by the pay-out partner as the transaction value exceeds the value that the sender can send per transaction."
+    }
+  },
+  "90320": {
+    "en": {
+      "status": "DECLINED-LIMITATIONS-ON-BENEFICIARY-VALUE",
+      "message": "The transaction is declined by the pay-out partner as the transaction value exceeds the total value that the beneficiary can receive.",
+      "details": "The transaction is declined by the pay-out partner as the transaction value exceeds the total value that the beneficiary can receive."
+    }
+  },
+  "90330": {
+    "en": {
+      "status": "DECLINED-LIMITATIONS-ON-ACCOUNT-VALUE",
+      "message": "The transaction is declined by the pay-out partner as the transaction value exceeds the total value that the beneficiary can receive per account.",
+      "details": "The transaction is declined by the pay-out partner as the transaction value exceeds the total value that the beneficiary can receive per account."
+    }
+  },
+  "90331": {
+    "en": {
+      "status": "DECLINED-LIMITATIONS-ON-ACCOUNT-VALUE-DAILY",
+      "message": "The transaction is declined by the pay-out partner as the transaction value exceeds the total value that the beneficiary can receive per day.",
+      "details": "The transaction is declined by the pay-out partner as the transaction value exceeds the total value that the beneficiary can receive per day."
+    }
+  },
+  "90332": {
+    "en": {
+      "status": "DECLINED-LIMITATIONS-ON-ACCOUNT-VALUE-WEEKLY",
+      "message": "The transaction is declined by the pay-out partner as the transaction value exceeds the total value that the beneficiary can receive per week.",
+      "details": "The transaction is declined by the pay-out partner as the transaction value exceeds the total value that the beneficiary can receive per week."
+    }
+  },
+  "90333": {
+    "en": {
+      "status": "DECLINED-LIMITATIONS-ON-ACCOUNT-VALUE-MONTHLY",
+      "message": "The transaction is declined by the pay-out partner as the transaction value exceeds the total value that the beneficiary can receive per month.",
+      "details": "The transaction is declined by the pay-out partner as the transaction value exceeds the total value that the beneficiary can receive per month."
+    }
+  },
+  "90334": {
+    "en": {
+      "status": "DECLINED-LIMITATIONS-ON-ACCOUNT-VALUE-YEARLY",
+      "message": "The transaction is declined by the pay-out partner as the transaction value exceeds the total value that the beneficiary can receive per year.",
+      "details": "The transaction is declined by the pay-out partner as the transaction value exceeds the total value that the beneficiary can receive per year."
+    }
+  },
+  "90350": {
+    "en": {
+      "status": "DECLINED-LIMITATIONS-ON-SENDER-QUANTITY",
+      "message": "The transaction is declined by the pay-out partner as the sender has exceeded the number of transactions that the sender can send.",
+      "details": "The transaction is declined by the pay-out partner as the sender has exceeded the number of transactions that the sender can send."
+    }
+  },
+  "90360": {
+    "en": {
+      "status": "DECLINED-LIMITATIONS-ON-BENEFICIARY-QUANTITY",
+      "message": "The transaction is declined by the pay-out partner as the beneficiary exceeds the total number of transactions that the beneficiary can receive.",
+      "details": "The transaction is declined by the pay-out partner as the beneficiary exceeds the total number of transactions that the beneficiary can receive."
+    }
+  },
+  "90370": {
+    "en": {
+      "status": "DECLINED-LIMITATIONS-ON-ACCOUNT-QUANTITY",
+      "message": "The transaction is declined by the pay-out partner as the beneficiary’s account exceeds the total number of transactions that the account can receive.",
+      "details": "The transaction is declined by the pay-out partner as the beneficiary’s account exceeds the total number of transactions that the account can receive."
+    }
+  },
+  "90380": {
+    "en": {
+      "status": "DECLINED-DUPLICATED-TRANSACTION",
+      "message": "The transaction is declined by the pay-out partner due to duplication in the transaction.",
+      "details": "The transaction is declined by the pay-out partner due to duplication in the transaction."
+    }
+  },
+  "90390": {
+    "en": {
+      "status": "DECLINED-CANCELLED",
+      "message": "The transaction is declined by the pay-out partner as the pay-in partner contacted support and asked for the transaction to be cancelled.",
+      "details": "The transaction is declined by the pay-out partner as the pay-in partner contacted support and asked for the transaction to be cancelled."
+    }
+  },
+  "90391": {
+    "en": {
+      "status": "DECLINED-REFUSED",
+      "message": "The transaction is declined by the pay-out partner as the beneficiary has actively refused to perform the required onboarding, the time has elapsed or the beneficiary was unresponsive.",
+      "details": "The transaction is declined by the pay-out partner as the beneficiary has actively refused to perform the required onboarding, the time has elapsed or the beneficiary was unresponsive."
+    }
+  },
+  "90392": {
+    "en": {
+      "status": "DECLINED-COMPLIANCE-REASON",
+      "message": "The transaction is declined by the pay-out partner due to compliance reason.",
+      "details": "The transaction is declined by the pay-out partner due to compliance reason."
+    }
+  },
+  "90393": {
+    "en": {
+      "status": "DECLINED-INVALID-PURPOSE-OF-REMITTANCE",
+      "message": "The transaction is declined by the pay-out partner due to invalid purpose of remittance, e.g. pay-out partner does not allow gifts/donations.",
+      "details": "The transaction is declined by the pay-out partner due to invalid purpose of remittance, e.g. pay-out partner does not allow gifts/donations."
+    }
+  },
+  "90400": {
+    "en": {
+      "status": "DECLINED-PAYER-CURRENTLY-UNAVAILABLE",
+      "message": "The transaction is declined by the pay-out partner as their system is not available.",
+      "details": "The transaction is declined by the pay-out partner as their system is not available."
+    }
+  }
+}

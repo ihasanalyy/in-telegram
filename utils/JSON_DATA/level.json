@@ -1,0 +1,428 @@
+{
+    "intital_level": {
+        "data": {
+            "international_transfer": {
+                "bank": true,
+                "mobile_money": true,
+                "cash_pickup": true,
+                "card_payment": true
+            },
+            "withdrawal_channel": {
+                "bank": true,
+                "mobile_money": true,
+                "cash_pickup": true,
+                "card_payment": true
+            },
+            "topup_channel": {
+                "bank": false,
+                "mobile_money": false,
+                "paypal": false,
+                "card_payment": true
+            },
+            "wallet_to_wallet": {
+                "send": true,
+                "receive": true,
+                "conversion": true,
+                "crypto_to_fiat": true,
+                "send_crypto": true,
+                "receive_crypto": true
+            },
+            "payment_request": {
+                "send": true,
+                "receive": true
+            },
+            "payment_address": {
+                "send": true,
+                "receive": true
+            },
+            "qr_pay": {
+                "send": true,
+                "receive": true
+            },
+            "quotation": {
+                "send": true,
+                "receive": true
+            },
+            "wallet_limit_conversion": 2000,
+            "daily_sending_limit": 150,
+            "monthly_sending_limit": 150,
+            "yearly_sending_limit": 1800,
+            "daily_receiving_limit": 150,
+            "monthly_receiving_limit": 150,
+            "yearly_receiving_limit": 1800,
+            "transaction_amount_limit": 150,
+            "daily_transaction_count": 2,
+            "monthly_transaction_count": 30,
+            "yearly_transaction_count": 360,
+            "topup_min_amount": 10,
+            "topup_max_amount": 150,
+            "account_balance_limit": 150,
+            "airtime": true,
+            "bundle": true,
+            "cash_card": true,
+            "data": true,
+            "entertainment": true,
+            "internet": true,
+            "retail": true,
+            "send_crypto_to_other_wallet": true,
+            "television": true,
+            "travel_and_transport": true,
+            "voip": true
+        }
+    },
+    "Individual Accounts for Natural Persons": {
+        "data": {
+            "international_transfer": {
+                "bank": true,
+                "mobile_money": true,
+                "cash_pickup": true,
+                "card_payment": true
+            },
+            "withdrawal_channel": {
+                "bank": true,
+                "mobile_money": true,
+                "cash_pickup": true,
+                "card_payment": true
+            },
+            "topup_channel": {
+                "bank": false,
+                "mobile_money": false,
+                "paypal": false,
+                "card_payment": true
+            },
+            "wallet_to_wallet": {
+                "send": true,
+                "receive": true,
+                "conversion": true,
+                "crypto_to_fiat": true,
+                "send_crypto": true,
+                "receive_crypto": true
+            },
+            "payment_request": {
+                "send": true,
+                "receive": true
+            },
+            "payment_address": {
+                "send": true,
+                "receive": true
+            },
+            "qr_pay": {
+                "send": true,
+                "receive": true
+            },
+            "quotation": {
+                "send": true,
+                "receive": true
+            },
+            "wallet_limit_conversion": 2000,
+            "daily_sending_limit": 3000,
+            "monthly_sending_limit": 3000,
+            "yearly_sending_limit": 25000,
+            "daily_receiving_limit": 3000,
+            "monthly_receiving_limit": 5000,
+            "yearly_receiving_limit": 25000,
+            "transaction_amount_limit": 3000,
+            "daily_transaction_count": 3,
+            "monthly_transaction_count": 45,
+            "yearly_transaction_count": 450,
+            "topup_min_amount": 10,
+            "topup_max_amount": 3000,
+            "account_balance_limit": 5000,
+            "airtime": true,
+            "bundle": true,
+            "cash_card": true,
+            "data": true,
+            "entertainment": true,
+            "internet": true,
+            "retail": true,
+            "send_crypto_to_other_wallet": true,
+            "television": true,
+            "travel_and_transport": true,
+            "voip": true
+        }
+    },
+    "Association / NGOs / Charities": {
+        "data": {
+            "international_transfer": {
+                "bank": true,
+                "mobile_money": true,
+                "cash_pickup": true,
+                "card_payment": true
+            },
+            "withdrawal_channel": {
+                "bank": true,
+                "mobile_money": true,
+                "cash_pickup": true,
+                "card_payment": true
+            },
+            "topup_channel": {
+                "bank": false,
+                "mobile_money": false,
+                "paypal": false,
+                "card_payment": true
+            },
+            "wallet_to_wallet": {
+                "send": true,
+                "receive": true,
+                "conversion": true,
+                "crypto_to_fiat": true,
+                "send_crypto": true,
+                "receive_crypto": true
+            },
+            "payment_request": {
+                "send": true,
+                "receive": true
+            },
+            "payment_address": {
+                "send": true,
+                "receive": true
+            },
+            "qr_pay": {
+                "send": true,
+                "receive": true
+            },
+            "quotation": {
+                "send": true,
+                "receive": true
+            },
+            "wallet_limit_conversion": 2000,
+            "daily_sending_limit": 5000,
+            "monthly_sending_limit": 15000,
+            "yearly_sending_limit": 150000,
+            "daily_receiving_limit": 5000,
+            "monthly_receiving_limit": 15000,
+            "yearly_receiving_limit": 150000,
+            "transaction_amount_limit": 5000,
+            "daily_transaction_count": 3,
+            "monthly_transaction_count": 90,
+            "yearly_transaction_count": 1080,
+            "topup_min_amount": 10,
+            "topup_max_amount": 15000,
+            "account_balance_limit": 20000,
+            "airtime": true,
+            "bundle": true,
+            "cash_card": true,
+            "data": true,
+            "entertainment": true,
+            "internet": true,
+            "retail": true,
+            "send_crypto_to_other_wallet": true,
+            "television": true,
+            "travel_and_transport": true,
+            "voip": true
+        }
+    },
+    "Sole Proprietorships": {
+        "data": {
+            "international_transfer": {
+                "bank": true,
+                "mobile_money": true,
+                "cash_pickup": true,
+                "card_payment": true
+            },
+            "withdrawal_channel": {
+                "bank": true,
+                "mobile_money": true,
+                "cash_pickup": true,
+                "card_payment": true
+            },
+            "topup_channel": {
+                "bank": false,
+                "mobile_money": false,
+                "paypal": false,
+                "card_payment": true
+            },
+            "wallet_to_wallet": {
+                "send": true,
+                "receive": true,
+                "conversion": true,
+                "crypto_to_fiat": true,
+                "send_crypto": true,
+                "receive_crypto": true
+            },
+            "payment_request": {
+                "send": true,
+                "receive": true
+            },
+            "payment_address": {
+                "send": true,
+                "receive": true
+            },
+            "qr_pay": {
+                "send": true,
+                "receive": true
+            },
+            "quotation": {
+                "send": true,
+                "receive": true
+            },
+            "wallet_limit_conversion": 2000,
+            "daily_sending_limit": 5000,
+            "monthly_sending_limit": 15000,
+            "yearly_sending_limit": 180000,
+            "daily_receiving_limit": 5000,
+            "monthly_receiving_limit": 15000,
+            "yearly_receiving_limit": 180000,
+            "transaction_amount_limit": 5000,
+            "daily_transaction_count": 3,
+            "monthly_transaction_count": 90,
+            "yearly_transaction_count": 1080,
+            "topup_min_amount": 10,
+            "topup_max_amount": 5000,
+            "account_balance_limit": 15000,
+            "airtime": true,
+            "bundle": true,
+            "cash_card": true,
+            "data": true,
+            "entertainment": true,
+            "internet": true,
+            "retail": true,
+            "send_crypto_to_other_wallet": true,
+            "television": true,
+            "travel_and_transport": true,
+            "voip": true
+        }
+    },
+    "Private Limited Companies or equivalent": {
+        "data": {
+            "international_transfer": {
+                "bank": true,
+                "mobile_money": true,
+                "cash_pickup": true,
+                "card_payment": true
+            },
+            "withdrawal_channel": {
+                "bank": true,
+                "mobile_money": true,
+                "cash_pickup": true,
+                "card_payment": true
+            },
+            "topup_channel": {
+                "bank": false,
+                "mobile_money": false,
+                "paypal": false,
+                "card_payment": true
+            },
+            "wallet_to_wallet": {
+                "send": true,
+                "receive": true,
+                "conversion": true,
+                "crypto_to_fiat": true,
+                "send_crypto": true,
+                "receive_crypto": true
+            },
+            "payment_request": {
+                "send": true,
+                "receive": true
+            },
+            "payment_address": {
+                "send": true,
+                "receive": true
+            },
+            "qr_pay": {
+                "send": true,
+                "receive": true
+            },
+            "quotation": {
+                "send": true,
+                "receive": true
+            },
+            "wallet_limit_conversion": 2000,
+            "daily_sending_limit": 50000,
+            "monthly_sending_limit": 50000,
+            "yearly_sending_limit": 500000,
+            "daily_receiving_limit": 15000,
+            "monthly_receiving_limit": 50000,
+            "yearly_receiving_limit": 500000,
+            "transaction_amount_limit": 50000,
+            "daily_transaction_count": 3,
+            "monthly_transaction_count": 90,
+            "yearly_transaction_count": 1080,
+            "topup_min_amount": 10,
+            "topup_max_amount": 15000,
+            "account_balance_limit": 50000,
+            "airtime": true,
+            "bundle": true,
+            "cash_card": true,
+            "data": true,
+            "entertainment": true,
+            "internet": true,
+            "retail": true,
+            "send_crypto_to_other_wallet": true,
+            "television": true,
+            "travel_and_transport": true,
+            "voip": true
+        }
+    },
+    "Publicly Listed Companies": {
+        "data": {
+            "international_transfer": {
+                "bank": true,
+                "mobile_money": true,
+                "cash_pickup": true,
+                "card_payment": true
+            },
+            "withdrawal_channel": {
+                "bank": true,
+                "mobile_money": true,
+                "cash_pickup": true,
+                "card_payment": true
+            },
+            "topup_channel": {
+                "bank": false,
+                "mobile_money": false,
+                "paypal": false,
+                "card_payment": true
+            },
+            "wallet_to_wallet": {
+                "send": true,
+                "receive": true,
+                "conversion": true,
+                "crypto_to_fiat": true,
+                "send_crypto": true,
+                "receive_crypto": true
+            },
+            "payment_request": {
+                "send": true,
+                "receive": true
+            },
+            "payment_address": {
+                "send": true,
+                "receive": true
+            },
+            "qr_pay": {
+                "send": true,
+                "receive": true
+            },
+            "quotation": {
+                "send": true,
+                "receive": true
+            },
+            "wallet_limit_conversion": 2000,
+            "daily_sending_limit": 50000,
+            "monthly_sending_limit": 50000,
+            "yearly_sending_limit": 500000,
+            "daily_receiving_limit": 15000,
+            "monthly_receiving_limit": 50000,
+            "yearly_receiving_limit": 500000,
+            "transaction_amount_limit": 50000,
+            "daily_transaction_count": 3,
+            "monthly_transaction_count": 90,
+            "yearly_transaction_count": 1080,
+            "topup_min_amount": 10,
+            "topup_max_amount": 15000,
+            "account_balance_limit": 50000,
+            "airtime": true,
+            "bundle": true,
+            "cash_card": true,
+            "data": true,
+            "entertainment": true,
+            "internet": true,
+            "retail": true,
+            "send_crypto_to_other_wallet": true,
+            "television": true,
+            "travel_and_transport": true,
+            "voip": true
+        }
+    }
+}
