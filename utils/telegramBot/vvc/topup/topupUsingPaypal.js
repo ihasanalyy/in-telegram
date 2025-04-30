@@ -30,15 +30,16 @@ async function topupUsingPaypal(chatId, payload, chat, text, selectedLanguage) {
         console.log({ fee, feeType });
 
         if (!fee) {
-            return await sendMessage(chatId, "Something went wrong. Please try again. If the problem persists, contact our support team.", "4");
+            return await sendMessage(chatId, lang[selectedLanguage].SOMETHING_WENT_WRONG, "4");
         }
 
         // Check if the entered amount is lower than the top-up fee
         const minRequiredAmount = fee + fee * 0.1; // Top-up fee + 10%
+        const minimumAmount = formattedAmount(minRequiredAmount); // new var
         if (chat.vcc.amount < minRequiredAmount) {
             return await sendMessage(
                 chatId,
-                `The amount entered is too low. The minimum amount required for a top-up is ${formattedAmount(minRequiredAmount)} ${cardDetails.currency}. Please enter a higher amount.`,
+                lang[selectedLanguage].MIN_AMOUNT_LOW.replace("{{minimumAmount}}", minimumAmount).replace("{{currency}}", cardDetails.currency), //Hassan
                 "vcc_add_funds_ppl_min_amount"
             );
         }
@@ -87,7 +88,7 @@ You'll get: ${formattedAmount(formatDecimalNumbersWithLimit(chat.vcc.amount - fe
         const buttons = [
             [{ text: lang[selectedLanguage].PROCEED_TITLE, callback_data: "vcc_add_funds_ppl_confirm" }],
             [{ text: lang[selectedLanguage].ADJUST_AMOUNT_TITLE, callback_data: "vcc_add_funds_ppl_adjust" }],
-            [{ text: "My MasterCard", callback_data: "vcc_menu" }],
+            [{ text: lang[selectedLanguage].MY_MASTERCARD, callback_data: "vcc_menu" }],
         ];
 
         await sendButtons(chatId, message, buttons, "vcc_add_funds_ppl_confirm");
@@ -122,15 +123,17 @@ You'll get: ${formattedAmount(formatDecimalNumbersWithLimit(chat.vcc.amount - fe
         console.log({ fee, feeType });
 
         if (!fee) {
-            return await sendMessage(chatId, "Something went wrong. Please try again. If the problem persists, contact our support team.", "4");
+            return await sendMessage(chatId, lang[selectedLanguage].SOMETHING_WENT_WRONG, "4");
         }
 
         // Check if the entered amount is lower than the top-up fee
         const minRequiredAmount = fee + fee * 0.1; // Top-up fee + 10%
+        const minimumAmount = formattedAmount(minRequiredAmount);
+
         if (chat.vcc.amount < minRequiredAmount) {
             return await sendMessage(
                 chatId,
-                `The amount entered is too low. The minimum amount required for a top-up is ${formattedAmount(minRequiredAmount)} ${cardDetails.currency}. Please enter a higher amount.`,
+                lang[selectedLanguage].MIN_AMOUNT_LOW.replace("{{minimumAmount}}", minimumAmount).replace("{{currency}}", cardDetails.currency),
                 "vcc_add_funds_ppl_min_amount"
             );
         }
@@ -179,7 +182,7 @@ You'll get: ${formattedAmount(formatDecimalNumbersWithLimit(chat.vcc.amount - fe
         const buttons = [
             [{ text: lang[selectedLanguage].PROCEED_TITLE, callback_data: "vcc_add_funds_ppl_confirm" }],
             [{ text: lang[selectedLanguage].ADJUST_AMOUNT_TITLE, callback_data: "vcc_add_funds_ppl_adjust" }],
-            [{ text: "My MasterCard", callback_data: "vcc_menu" }],
+            [{ text: lang[selectedLanguage].MY_MASTERCARD, callback_data: "vcc_menu" }],
         ];
 
         await sendButtons(chatId, message, buttons, "vcc_add_funds_ppl_confirm");
@@ -198,7 +201,7 @@ You'll get: ${formattedAmount(formatDecimalNumbersWithLimit(chat.vcc.amount - fe
                 decoded = jwt.verify(chat.vcc.topup_transaction_token, process.env.jwtKey);
             } catch (error) {
                 // transaction expiry message
-                return await sendButtons(chatId, "Your transaction has been expired. Please try again.", [[{ text: "My MasterCard", callback_data: "vcc_menu" }]], "4");
+                return await sendButtons(chatId, lang[selectedLanguage].TRANSACTION_EXPIRED, [[{ text: lang[selectedLanguage].MY_MASTERCARD, callback_data: "vcc_menu" }]], "4");
 
             }
 

@@ -179,9 +179,9 @@ async function standardCardCreationUsingWallet(senderId, payload, account, bot, 
                 if (vvcCreation.message?.includes("Insufficient")) {
                     message = lang[selectedLanguage].INSUFFICIENT_BALANCE;
                 } else if (vvcCreation.message?.includes("maximum")) {
-                    message = "You can only have a maximum of 3 virtual cards.";
+                    message = lang[selectedLanguage].LIMIT_VIRTUAL_CARDS;
                 } else {
-                    message = "Something went wrong. Please try again later.";
+                    message = lang[selectedLanguage].SOMETHING_WENT_WRONG_;
                 }
 
                 const quickReplies = [

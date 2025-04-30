@@ -166,13 +166,13 @@ ${lang[selectedLanguage].AMOUNT_IN_USD} ${formattedAmount(paypal?.paypal_convert
     else if (payload === "w2w_paypal_add_attch" && chat?.last_message === "w2w_paypal_note_added") {
         const buttons = [
             [{ text: lang[selectedLanguage].SKIP, callback_data: "w2w_paypal_no_attch" }],
-            [{ text: "Images", callback_data: "w2w_paypal_attch_images" }],
-            [{ text: "Video", callback_data: "w2w_paypal_attch_videos" }],
-            [{ text: "Both", callback_data: "w2w_paypal_attch_both" }],
+            [{ text: lang[selectedLanguage].IMAGES_OPTIONS, callback_data: "w2w_paypal_attch_images" }],
+            [{ text: lang[selectedLanguage].VIDEOS_OPTIONS, callback_data: "w2w_paypal_attch_videos" }],
+            [{ text: lang[selectedLanguage].BOTH_OPTIONS, callback_data: "w2w_paypal_attch_both" }],
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }],
         ];
 
-        await sendButtons(chatId, "What do you want to attach? You can only attach up to 4 images and 1 video, totaling 5 files. ", buttons, "w2w_paypal_attachments");
+        await sendButtons(chatId, lang[selectedLanguage].ATTACH_MESSAGE, buttons, "w2w_paypal_attachments");
     }
 
     // user has not proceeded with adding an attachement
@@ -186,14 +186,14 @@ ${lang[selectedLanguage].AMOUNT_IN_USD} ${formattedAmount(paypal?.paypal_convert
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
         ];
 
-        await sendButtons(chatId, "Please upload up to 4 images.", buttons, "w2w_paypal_images");
+        await sendButtons(chatId, lang[selectedLanguage].UPLOAD_IMAGES, buttons, "w2w_paypal_images");
     }
 
     // bot is expecting images when last message is "w2w_paypal_images"
     else if (chat?.last_message === "w2w_paypal_images" && image_payloads.length > 0) {
 
         if (image_payloads.length > 4) {
-            await sendMessage(chatId, "You can only attach up to 4 images.");
+            await sendMessage(chatId, lang[selectedLanguage].IMG_LIMIT);
             return;
         }
         const uploadedImageUrls = await processImageUploads(image_payloads);
@@ -218,14 +218,14 @@ ${lang[selectedLanguage].AMOUNT_IN_USD} ${formattedAmount(paypal?.paypal_convert
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
         ];
 
-        await sendButtons(chatId, "Please upload a video.", buttons, "w2w_paypal_video");
+        await sendButtons(chatId, lang[selectedLanguage].UPLOAD_VIDEO, buttons, "w2w_paypal_video");
     }
 
     // bot is expecting a video when last message is "w2w_paypal_video"
     else if (chat?.last_message === "w2w_paypal_video" && video_payloads.length > 0) {
 
         if (video_payloads.length > 1) {
-            await sendMessage(chatId, "You can only attach up to 1 video.");
+            await sendMessage(chatId, lang[selectedLanguage].VIDEO_LIMIT);
             return;
         }
 
@@ -243,7 +243,7 @@ ${lang[selectedLanguage].AMOUNT_IN_USD} ${formattedAmount(paypal?.paypal_convert
     }
 
     else if (payload === "w2w_paypal_attch_both" && chat?.last_message === "w2w_paypal_attachments") {
-        const message = "Alright! You can first upload images and then videos. Let’s start with the images. You can upload up to 4 images."
+        const message = lang[selectedLanguage].MAX_FILES
 
         const buttons = [
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
@@ -256,7 +256,7 @@ ${lang[selectedLanguage].AMOUNT_IN_USD} ${formattedAmount(paypal?.paypal_convert
     else if (chat?.last_message === "w2w_paypal_images_both" && image_payloads.length > 0) {
 
         if (image_payloads.length > 4) {
-            await sendMessage(chatId, "You can only attach up to 4 images.");
+            await sendMessage(chatId, lang[selectedLanguage].IMG_LIMIT);
             return;
         }
         const uploadedImageUrls = await processImageUploads(image_payloads);
@@ -272,7 +272,7 @@ ${lang[selectedLanguage].AMOUNT_IN_USD} ${formattedAmount(paypal?.paypal_convert
 
         await chat.save();
 
-        const message = "Got it! Now, please upload up to 1 video."
+        const message = lang[selectedLanguage].GOT_IT_MESSAGE;
 
         const buttons = [
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
@@ -285,7 +285,7 @@ ${lang[selectedLanguage].AMOUNT_IN_USD} ${formattedAmount(paypal?.paypal_convert
     else if (chat?.last_message === "w2w_paypal_video_both" && video_payloads.length > 0) {
 
         if (video_payloads.length > 1) {
-            await sendMessage(chatId, "You can only attach up to 1 video.");
+            await sendMessage(chatId, lang[selectedLanguage].VIDEO_LIMIT);
             return;
         }
 
@@ -306,13 +306,13 @@ ${lang[selectedLanguage].AMOUNT_IN_USD} ${formattedAmount(paypal?.paypal_convert
     else if (payload === "w2w_paypal_document" && chat?.last_message === "w2w_paypal_attch") {
         const buttons = [
             [{ text: lang[selectedLanguage].SKIP, callback_data: "w2w_paypal_no_attch" }],
-            [{ text: "Images", callback_data: "w2w_paypal_attch_images_1" }],
-            [{ text: "Video", callback_data: "w2w_paypal_attch_videos_1" }],
-            [{ text: "Both", callback_data: "w2w_paypal_attch_both_1" }],
+            [{ text: lang[selectedLanguage].IMAGES_OPTIONS, callback_data: "w2w_paypal_attch_images_1" }],
+            [{ text: lang[selectedLanguage].VIDEOS_OPTIONS, callback_data: "w2w_paypal_attch_videos_1" }],
+            [{ text: lang[selectedLanguage].BOTH_OPTIONS, callback_data: "w2w_paypal_attch_both_1" }],
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }],
         ];
 
-        await sendButtons(chatId, "What do you want to attach? You can only attach up to 4 images and 1 video, totaling 5 files. ", buttons, "w2w_paypal_attachments");
+        await sendButtons(chatId, lang[selectedLanguage].ATTACH_MESSAGE, buttons, "w2w_paypal_attachments");
     }
 
     // user has asked to upload the images
@@ -321,14 +321,14 @@ ${lang[selectedLanguage].AMOUNT_IN_USD} ${formattedAmount(paypal?.paypal_convert
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
         ];
 
-        await sendButtons(chatId, "Please upload up to 4 images.", buttons, "w2w_paypal_attch_images_1");
+        await sendButtons(chatId, lang[selectedLanguage].UPLOAD_IMAGES, buttons, "w2w_paypal_attch_images_1");
     }
 
     // bot is expecting images when last message is "w2w_paypal_attch_images_1"
     else if (chat?.last_message === "w2w_paypal_attch_images_1" && image_payloads.length > 0) {
 
         if (image_payloads.length > 4) {
-            await sendMessage(chatId, "You can only attach up to 4 images.");
+            await sendMessage(chatId, lang[selectedLanguage].IMG_LIMIT);
             return;
         }
 
@@ -353,14 +353,14 @@ ${lang[selectedLanguage].AMOUNT_IN_USD} ${formattedAmount(paypal?.paypal_convert
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
         ];
 
-        await sendButtons(chatId, "Please upload a video.", buttons, "w2w_paypal_attch_videos_1");
+        await sendButtons(chatId, lang[selectedLanguage].UPLOAD_VIDEO, buttons, "w2w_paypal_attch_videos_1");
     }
 
     // bot is expecting a video when last message is "w2w_paypal_attch_videos_1"
     else if (chat?.last_message === "w2w_paypal_attch_videos_1" && video_payloads.length > 0) {
 
         if (video_payloads.length > 1) {
-            await sendMessage(chatId, "You can only attach up to 1 video.");
+            await sendMessage(chatId, lang[selectedLanguage].VIDEO_LIMIT);
             return;
         }
 
@@ -386,7 +386,7 @@ ${lang[selectedLanguage].AMOUNT_IN_USD} ${formattedAmount(paypal?.paypal_convert
     }
 
     else if (payload === "w2w_paypal_attch_both_1" && chat?.last_message === "w2w_paypal_attachments") {
-        const message = "Alright! You can first upload images and then videos. Let’s start with the images. You can upload up to 4 images."
+        const message = lang[selectedLanguage].MAX_FILES
 
         const buttons = [
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
@@ -399,7 +399,7 @@ ${lang[selectedLanguage].AMOUNT_IN_USD} ${formattedAmount(paypal?.paypal_convert
     else if (chat?.last_message === "w2w_paypal_images_both_1" && image_payloads.length > 0) {
 
         if (image_payloads.length > 4) {
-            await sendMessage(chatId, "You can only attach up to 4 images.");
+            await sendMessage(chatId, lang[selectedLanguage].IMG_LIMIT);
             return;
         }
         const uploadedImageUrls = await processImageUploads(image_payloads);
@@ -414,7 +414,7 @@ ${lang[selectedLanguage].AMOUNT_IN_USD} ${formattedAmount(paypal?.paypal_convert
 
         await chat.save();
 
-        const message = "Got it! Now, please upload up to 1 video."
+        const message = lang[selectedLanguage].GOT_IT_MESSAGE;
 
         const buttons = [
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
@@ -427,7 +427,7 @@ ${lang[selectedLanguage].AMOUNT_IN_USD} ${formattedAmount(paypal?.paypal_convert
     else if (chat?.last_message === "w2w_paypal_video_both_1" && video_payloads.length > 0) {
 
         if (video_payloads.length > 1) {
-            await sendMessage(chatId, "You can only attach up to 1 video.");
+            await sendMessage(chatId, lang[selectedLanguage].VIDEO_LIMIT);
             return;
         }
 

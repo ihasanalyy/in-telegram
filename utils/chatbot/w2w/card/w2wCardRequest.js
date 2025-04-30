@@ -73,8 +73,7 @@ async function w2wCardRequest(senderId, payload, account, bot, text, selectedLan
 
         if (!expiryValidation.status) {
             const pans = await PanModel.find({ account: account._id });
-            const message = "The card you selected has expired and is now removed from your InstaPay account.\n\n" +
-                "To continue with this transaction, please choose an alternative payment method."
+            const message = lang[selectedLanguage].SELECTED_CARD_EXPIRED;
             if (pans.length !== 0) {
 
                 const quickReplies = [

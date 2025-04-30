@@ -547,7 +547,7 @@ ${lang[selectedLanguage].BENEFICIARY}: ${decoded.recipient?.value || decoded.nam
 
             await sendPhoto(chatId, "https://nodejs-checking-bucket.s3.amazonaws.com/telegram_bot_images/Success.png", title)
             await sendButtons(chatId, `${subtitle}`, [
-                [{ text: "New Transaction", callback_data: "mobile_airtime" }],
+                [{ text: lang[selectedLanguage].NEW_TRANSACTION, callback_data: "mobile_airtime" }],
                 [{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }]
             ], "4");
 

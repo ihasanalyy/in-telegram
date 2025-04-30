@@ -74,8 +74,7 @@ async function airtimeCard(chatId, payload, chat, text, selectedLanguage, data, 
             let buttons = [];
 
             if (pans.length !== 0) {
-                const message = "The card you selected has expired and is now removed from your InstaPay account.\n\n" +
-                    "To continue with this transaction, please choose an alternative payment method.";
+                const message = lang[selectedLanguage].EXPIRED_CARD;
 
                 buttons = [
                     [{ text: lang[selectedLanguage].PAYMENT_CARD, callback_data: "airtime_card" }],
@@ -86,8 +85,7 @@ async function airtimeCard(chatId, payload, chat, text, selectedLanguage, data, 
 
                 await sendButtons(chatId, message, buttons);
             } else {
-                const message = "The card you selected has expired and is now removed from your InstaPay account.\n\n" +
-                    "To continue with this transaction, please choose an alternative payment method.";
+                const message = lang[selectedLanguage].EXPIRED_CARD;
 
                 buttons = [
                     [{ text: lang[selectedLanguage].INSTAPAY_WALLETS, callback_data: "airtime_wallets_flow_wallets" }],

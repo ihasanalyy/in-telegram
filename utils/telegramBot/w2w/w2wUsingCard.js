@@ -47,8 +47,7 @@ async function w2wUsingCard(chatId, payload, chat, text, selectedLanguage, data,
         const expiryValidation = await validateCardExpiry(cardId);
         if (!expiryValidation.status) {
             const pans = await PanModel.find({ account: chat.account._id });
-            const message = "The card you selected has expired and is now removed from your InstaPay account.\n\n" +
-                "To continue with this transaction, please choose an alternative payment method.";
+            const message = lang[selectedLanguage].SELECTED_CARD_EXPIRED;
 
             let buttons;
             if (pans.length !== 0) {
@@ -212,13 +211,13 @@ ${totalAmountText}: ${formattedAmount(totalAmountWithFee)} ${defaultWallet?.curr
     else if (payload === "w2w_card_add_attch" && chat?.last_message === "w2w_card_note_added") {
         const buttons = [
             [{ text: lang[selectedLanguage].SKIP, callback_data: "w2w_card_no_attch" }],
-            [{ text: "Images", callback_data: "w2w_card_attch_images" }],
-            [{ text: "Video", callback_data: "w2w_card_attch_videos" }],
-            [{ text: "Both", callback_data: "w2w_card_attch_both" }],
+            [{ text: lang[selectedLanguage].IMAGES_OPTIONS, callback_data: "w2w_card_attch_images" }],
+            [{ text: lang[selectedLanguage].VIDEOS_OPTIONS, callback_data: "w2w_card_attch_videos" }],
+            [{ text: lang[selectedLanguage].BOTH_OPTIONS, callback_data: "w2w_card_attch_both" }],
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }],
         ];
 
-        await sendButtons(chatId, "What do you want to attach? You can only attach up to 4 images and 1 video, totaling 5 files. ", buttons, "w2w_card_attachments");
+        await sendButtons(chatId, lang[selectedLanguage].ATTACH_MESSAGE, buttons, "w2w_card_attachments");
     }
 
     // user has not proceeded with adding an attachement
@@ -232,14 +231,14 @@ ${totalAmountText}: ${formattedAmount(totalAmountWithFee)} ${defaultWallet?.curr
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
         ];
 
-        await sendButtons(chatId, "Please upload up to 4 images.", buttons, "w2w_card_images");
+        await sendButtons(chatId, lang[selectedLanguage].UPLOAD_IMAGES, buttons, "w2w_card_images");
     }
 
     // bot is expecting images when last message is "w2w_card_images"
     else if (chat?.last_message === "w2w_card_images" && image_payloads.length > 0) {
 
         if (image_payloads.length > 4) {
-            await sendMessage(chatId, "You can only attach up to 4 images.");
+            await sendMessage(chatId, lang[selectedLanguage].IMG_LIMIT);
             return;
         }
         const uploadedImageUrls = await processImageUploads(image_payloads);
@@ -264,14 +263,14 @@ ${totalAmountText}: ${formattedAmount(totalAmountWithFee)} ${defaultWallet?.curr
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
         ];
 
-        await sendButtons(chatId, "Please upload a video.", buttons, "w2w_card_video");
+        await sendButtons(chatId, lang[selectedLanguage].UPLOAD_VIDEO, buttons, "w2w_card_video");
     }
 
     // bot is expecting a video when last message is "w2w_card_video"
     else if (chat?.last_message === "w2w_card_video" && video_payloads.length > 0) {
 
         if (video_payloads.length > 1) {
-            await sendMessage(chatId, "You can only attach up to 1 video.");
+            await sendMessage(chatId, lang[selectedLanguage].VIDEO_LIMIT);
             return;
         }
 
@@ -289,7 +288,7 @@ ${totalAmountText}: ${formattedAmount(totalAmountWithFee)} ${defaultWallet?.curr
     }
 
     else if (payload === "w2w_card_attch_both" && chat?.last_message === "w2w_card_attachments") {
-        const message = "Alright! You can first upload images and then videos. Let’s start with the images. You can upload up to 4 images."
+        const message = lang[selectedLanguage].MAX_FILES
 
         const buttons = [
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
@@ -302,7 +301,7 @@ ${totalAmountText}: ${formattedAmount(totalAmountWithFee)} ${defaultWallet?.curr
     else if (chat?.last_message === "w2w_card_images_both" && image_payloads.length > 0) {
 
         if (image_payloads.length > 4) {
-            await sendMessage(chatId, "You can only attach up to 4 images.");
+            await sendMessage(chatId, lang[selectedLanguage].IMG_LIMIT);
             return;
         }
         const uploadedImageUrls = await processImageUploads(image_payloads);
@@ -318,7 +317,7 @@ ${totalAmountText}: ${formattedAmount(totalAmountWithFee)} ${defaultWallet?.curr
 
         await chat.save();
 
-        const message = "Got it! Now, please upload up to 1 video."
+        const message = lang[selectedLanguage].GOT_IT_MESSAGE;
 
         const buttons = [
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
@@ -331,7 +330,7 @@ ${totalAmountText}: ${formattedAmount(totalAmountWithFee)} ${defaultWallet?.curr
     else if (chat?.last_message === "w2w_card_video_both" && video_payloads.length > 0) {
 
         if (video_payloads.length > 1) {
-            await sendMessage(chatId, "You can only attach up to 1 video.");
+            await sendMessage(chatId, lang[selectedLanguage].VIDEO_LIMIT);
             return;
         }
 
@@ -352,13 +351,13 @@ ${totalAmountText}: ${formattedAmount(totalAmountWithFee)} ${defaultWallet?.curr
     else if (payload === "w2w_card_document" && chat?.last_message === "w2w_card_attch") {
         const buttons = [
             [{ text: lang[selectedLanguage].SKIP, callback_data: "w2w_card_no_attch" }],
-            [{ text: "Images", callback_data: "w2w_card_attch_images_1" }],
-            [{ text: "Video", callback_data: "w2w_card_attch_videos_1" }],
-            [{ text: "Both", callback_data: "w2w_card_attch_both_1" }],
+            [{ text: lang[selectedLanguage].IMAGES_OPTIONS, callback_data: "w2w_card_attch_images_1" }],
+            [{ text: lang[selectedLanguage].VIDEOS_OPTIONS, callback_data: "w2w_card_attch_videos_1" }],
+            [{ text: lang[selectedLanguage].BOTH_OPTIONS, callback_data: "w2w_card_attch_both_1" }],
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }],
         ];
 
-        await sendButtons(chatId, "What do you want to attach? You can only attach up to 4 images and 1 video, totaling 5 files. ", buttons, "w2w_card_attachments");
+        await sendButtons(chatId, lang[selectedLanguage].ATTACH_MESSAGE, buttons, "w2w_card_attachments");
     }
 
     // user has asked to upload the images
@@ -367,14 +366,14 @@ ${totalAmountText}: ${formattedAmount(totalAmountWithFee)} ${defaultWallet?.curr
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
         ];
 
-        await sendButtons(chatId, "Please upload up to 4 images.", buttons, "w2w_card_attch_images_1");
+        await sendButtons(chatId, lang[selectedLanguage].UPLOAD_IMAGES, buttons, "w2w_card_attch_images_1");
     }
 
     // bot is expecting images when last message is "w2w_card_attch_images_1"
     else if (chat?.last_message === "w2w_card_attch_images_1" && image_payloads.length > 0) {
 
         if (image_payloads.length > 4) {
-            await sendMessage(chatId, "You can only attach up to 4 images.");
+            await sendMessage(chatId, lang[selectedLanguage].IMG_LIMIT);
             return;
         }
 
@@ -399,14 +398,14 @@ ${totalAmountText}: ${formattedAmount(totalAmountWithFee)} ${defaultWallet?.curr
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
         ];
 
-        await sendButtons(chatId, "Please upload a video.", buttons, "w2w_card_attch_videos_1");
+        await sendButtons(chatId, lang[selectedLanguage].UPLOAD_VIDEO, buttons, "w2w_card_attch_videos_1");
     }
 
     // bot is expecting a video when last message is "w2w_card_attch_videos_1"
     else if (chat?.last_message === "w2w_card_attch_videos_1" && video_payloads.length > 0) {
 
         if (video_payloads.length > 1) {
-            await sendMessage(chatId, "You can only attach up to 1 video.");
+            await sendMessage(chatId, lang[selectedLanguage].VIDEO_LIMIT);
             return;
         }
 
@@ -432,7 +431,7 @@ ${totalAmountText}: ${formattedAmount(totalAmountWithFee)} ${defaultWallet?.curr
     }
 
     else if (payload === "w2w_card_attch_both_1" && chat?.last_message === "w2w_card_attachments") {
-        const message = "Alright! You can first upload images and then videos. Let’s start with the images. You can upload up to 4 images."
+        const message = lang[selectedLanguage].MAX_FILES
 
         const buttons = [
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
@@ -445,7 +444,7 @@ ${totalAmountText}: ${formattedAmount(totalAmountWithFee)} ${defaultWallet?.curr
     else if (chat?.last_message === "w2w_card_images_both_1" && image_payloads.length > 0) {
 
         if (image_payloads.length > 4) {
-            await sendMessage(chatId, "You can only attach up to 4 images.");
+            await sendMessage(chatId, lang[selectedLanguage].IMG_LIMIT);
             return;
         }
         const uploadedImageUrls = await processImageUploads(image_payloads);
@@ -460,7 +459,7 @@ ${totalAmountText}: ${formattedAmount(totalAmountWithFee)} ${defaultWallet?.curr
 
         await chat.save();
 
-        const message = "Got it! Now, please upload up to 1 video."
+        const message = lang[selectedLanguage].GOT_IT_MESSAGE;
 
         const buttons = [
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
@@ -473,7 +472,7 @@ ${totalAmountText}: ${formattedAmount(totalAmountWithFee)} ${defaultWallet?.curr
     else if (chat?.last_message === "w2w_card_video_both_1" && video_payloads.length > 0) {
 
         if (video_payloads.length > 1) {
-            await sendMessage(chatId, "You can only attach up to 1 video.");
+            await sendMessage(chatId, lang[selectedLanguage].VIDEO_LIMIT);
             return;
         }
 

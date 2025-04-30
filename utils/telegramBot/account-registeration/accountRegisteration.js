@@ -40,7 +40,7 @@ async function accountRegisteration(chatId, payload, chat, text, selectedLanguag
             [{ text: lang[selectedLanguage].REGISTER_BUTTON_TITLE, callback_data: "register" }],
             [{ text: lang[selectedLanguage].CHANGE_LANGUAGE, callback_data: "language_change" }],
         ];
-        await sendButtons(chatId, "How can we help you today? Let's get started!🚀👇", buttons);
+        await sendButtons(chatId, lang[selectedLanguage].START_HELP, buttons);
     }
 
     else if (payload === "register" && chat.last_message === "connect") {
@@ -92,7 +92,7 @@ async function accountRegisteration(chatId, payload, chat, text, selectedLanguag
         chat.registeration.last_name = text;
         await chat.save();
 
-        const message = "Please enter your date of birth in the format DD-MM-YYYY";
+        const message = lang[selectedLanguage].DOB_FORMAT;
         const buttons = [
             [{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "register_cancel" }],
         ];
@@ -104,7 +104,7 @@ async function accountRegisteration(chatId, payload, chat, text, selectedLanguag
         // Validate format DD-MM-YYYY
         const dobRegex = /^(\d{2})-(\d{2})-(\d{4})$/;
         if (!dobRegex.test(text)) {
-            await sendMessage(chatId, "❌ Invalid format. Please use DD-MM-YYYY (e.g. 17-02-1976)");
+            await sendMessage(chatId, lang[selectedLanguage].INVALID_FORMAT);
             return;
         }
 
@@ -114,7 +114,7 @@ async function accountRegisteration(chatId, payload, chat, text, selectedLanguag
 
         // Basic numerical validation
         if (month < 1 || month > 12 || day < 1 || day > 31 || year < 1900 || year > currentYear) {
-            await sendMessage(chatId, "❌ Invalid date. Please check and try again.");
+            await sendMessage(chatId, lang[selectedLanguage].INVALID_DATE);
             return;
         }
 
@@ -125,7 +125,7 @@ async function accountRegisteration(chatId, payload, chat, text, selectedLanguag
             date.getMonth() + 1 !== month ||
             date.getDate() !== day
         ) {
-            await sendMessage(chatId, "❌ Invalid date. Please check and try again.");
+            await sendMessage(chatId, lang[selectedLanguage].INVALID_DATE);
             return;
         }
 
@@ -135,7 +135,7 @@ async function accountRegisteration(chatId, payload, chat, text, selectedLanguag
         const dayDiff = currentDate.getDate() - day;
 
         if (age < 16 || (age === 16 && (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)))) {
-            await sendMessage(chatId, "❌ You must be at least 16 years old to register.");
+            await sendMessage(chatId, lang[selectedLanguage].MIN_AGE);
             return;
         }
 
@@ -245,19 +245,19 @@ ${lang[selectedLanguage].COUNTRY}: ${numberDetails.message?.[0]?.country?.name}`
         const token = jwt.sign(tokenPayload, process.env.jwtKey, { expiresIn: '10m' })
 
         const buttons = [
-            [{ text: "Set your password", url: `https://my.insta-pay.ch/create-password/${token}` }]
+            [{ text: lang[selectedLanguage].SET_PASSWORD, url: `https://my.insta-pay.ch/create-password/${token}` }]
         ];
 
         await sendPhoto(chatId, "https://nodejs-checking-bucket.s3.amazonaws.com/telegram_bot_images/otp%20%284%29.png");
-        await sendButtons(chatId, 'Please save your password by clicking on the below link.', buttons, "register_password");
+        await sendButtons(chatId, lang[selectedLanguage].SAVE_PASSWORD, buttons, "register_password");
     }
 
     // if the last message is set to "register_password", the user has proceeded with password
     // user is shown terms and conditions page
     else if (payload === "register_terms" && chat?.last_message === "register_password") {
-        const message = "Please read the terms and conditions carefully before proceeding. By clicking “I agree” below, you agree to the terms and conditions.";
+        const message = lang[selectedLanguage].READ_TERMS_TELEGRAM;
         const buttons = [
-            [{ text: "I agree", callback_data: "register_proceed_terms" }],
+            [{ text: lang[selectedLanguage].I_AGREE, callback_data: "register_proceed_terms" }],
             [{ text: lang[selectedLanguage].READ_TERMS, url: "https://insta-pay.ch/terms-and-conditions" }],
         ];
 
@@ -290,7 +290,7 @@ ${lang[selectedLanguage].COUNTRY}: ${numberDetails.message?.[0]?.country?.name}`
         } else {
             // SMS failed, log the error
             console.log("SMS failed to send");
-            await sendMessage(chatId, "An error occurred while sending the OTP. Please try again.");
+            await sendMessage(chatId, lang[selectedLanguage].OTP_ERROR);
         }
     }
     // user has requested verification code again
@@ -305,7 +305,7 @@ ${lang[selectedLanguage].COUNTRY}: ${numberDetails.message?.[0]?.country?.name}`
         // check if the cooldown period has passed
         if (now - chat.lastResendCodeTime < cooldownPeriod) {
             const remainingTime = Math.ceil((cooldownPeriod - (now - chat.lastResendCodeTime)) / 1000);
-            await sendMessage(chatId, `Please wait ${remainingTime} seconds before requesting another code.`);
+            await sendMessage(chatId, lang[selectedLanguage].WAIT_FOR_OTP.replace("{{remainingTime}}", remainingTime));
             return;
         }
 
@@ -338,7 +338,7 @@ ${lang[selectedLanguage].COUNTRY}: ${numberDetails.message?.[0]?.country?.name}`
             console.log(otp, "otp"); // Log OTP for debugging purposes
         } else {
             console.log("SMS failed to send");
-            await sendMessage(chatId, "An error occurred while sending the OTP. Please try again.");
+            await sendMessage(chatId, lang[selectedLanguage].OTP_ERROR);
         }
     }
     // user has entered the verification code
@@ -415,7 +415,7 @@ ${lang[selectedLanguage].COUNTRY}: ${numberDetails.message?.[0]?.country?.name}`
                     [{ text: lang[selectedLanguage].INSTAPAY_PORTAL, url: "https://my.insta-pay.ch/login" }],
                 ];
                 await sendPhoto(chatId, "https://nodejs-checking-bucket.s3.eu-west-3.amazonaws.com/chatbot_images/Confirmed.png");
-                await sendButtons(chatId, 'Your account has been created successfully!', buttons, "register_nousername");
+                await sendButtons(chatId, lang[selectedLanguage].ACCOUNT_CREATED, buttons, "register_nousername");
 
             } else {
                 await sendMessage(chatId, lang[selectedLanguage].REGISTRATION_ERROR, "connect");
@@ -696,14 +696,14 @@ async function showTimezones(chatId, chat, pageIndex, selectedLanguage) {
 
 async function sendPinSetupMessage(chatId, account, selectedLanguage) {
     const buttons = [
-        [{ text: "Set Your PIN", url: `https://my.insta-pay.ch/set-account-pin/${account._id}/telegram` }]
+        [{ text: lang[selectedLanguage].SET_YOUR_PIN_, url: `https://my.insta-pay.ch/set-account-pin/${account._id}/telegram` }]
     ];
 
     await sendPhoto(chatId, "https://nodejs-checking-bucket.s3.amazonaws.com/telegram_bot_images/sshh.png");
 
     await sendButtons(
         chatId,
-        "🔐 To keep your account secure, we need you to set up a 4-digit PIN.\n\nSimply click the button below to get started:",
+        lang[selectedLanguage].SET_PIN,
         buttons,
         "pin_setup"
     );

@@ -87,8 +87,7 @@ async function w2wAddFunds(chatId, payload, chat, text, selectedLanguage) {
 
             await sendButtons(
                 chatId,
-                "The card you selected has expired and is now removed from your InstaPay account.\n\n" +
-                "To continue with this transaction, please choose an alternative payment method.",
+                lang[selectedLanguage].SELECTED_CARD_EXPIRED,
                 buttons,
                 "w_add_funds"
             );

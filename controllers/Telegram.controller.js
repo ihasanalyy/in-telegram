@@ -100,7 +100,7 @@ const telegramWebhook = async (data) => {
                     await chat.save()
                 }
                 await sendMessage(chatId, 'Your session has been expired!', "connect");
-                const buttonText = "How can we help you today? Let's get started!🚀👇"
+                const buttonText = lang[selectedLanguage].START_HELP
                 const buttons = [
                     [{ text: lang[selectedLanguage].CONNECT_BUTTON_TITLE, callback_data: "connect_account" }],
                     [{ text: lang[selectedLanguage].REGISTER_BUTTON_TITLE, callback_data: "register" }],
@@ -155,8 +155,9 @@ const telegramWebhook = async (data) => {
         });
         await chat.save();
 
-        const buttonText = "How can we help you today? Let's get started!🚀👇"
-        const message = `Hi ${data?.message?.chat?.first_name || data?.callback_query?.message?.chat?.first_name}! 🎉 Welcome to the InstaPay Telegram channel! 💬`;
+        const buttonText = lang[selectedLanguage].START_HELP
+        const dynamicName = data?.message?.chat?.first_name || data?.callback_query?.message?.chat?.first_name;
+        const message = lang[selectedLanguage].WELCOME_MESSAGE_TELEGRAM.replace("{{dynamicName}}", dynamicName);
         const buttons = [
             [{ text: lang[selectedLanguage].CONNECT_BUTTON_TITLE, callback_data: "connect_account" }],
             [{ text: lang[selectedLanguage].REGISTER_BUTTON_TITLE, callback_data: "register" }],
@@ -206,7 +207,7 @@ const telegramWebhook = async (data) => {
             chat.registeration = {}
             await chat.save()
         }
-        const buttonText = "How can we help you today? Let's get started!🚀👇"
+        const buttonText = lang[selectedLanguage].START_HELP
         const buttons = [
             [{ text: lang[selectedLanguage].CONNECT_BUTTON_TITLE, callback_data: "connect_account" }],
             [{ text: lang[selectedLanguage].REGISTER_BUTTON_TITLE, callback_data: "register" }],
@@ -885,7 +886,7 @@ Get started now and enjoy seamless payments with InstaPay! 🔥`
                 "Your InstaPay Digital Wallets are being created. Please try again later.\nIf the issue persists, please reach out to our support team.";
 
             const buttons = [
-                [{ text: "Contact Support", callback_data: "assistance" }],
+                [{ text: lang[selectedLanguage].CONTACT_SUPPORT, callback_data: "assistance" }],
                 [{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }],
             ];
 

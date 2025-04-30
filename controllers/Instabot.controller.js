@@ -204,7 +204,7 @@ module.exports.unlinkTelegramBot = async (req, res) => {
             const selectedLanguage = telegramBot?.selectedLanguage ? user?.language : "en";
 
             // trigger telegram notification
-            await registerMenuKeyboardMessage(chatId, selectedLanguage, `Your account has been unlinked from Telegram InstaPay Bot.`);
+            await registerMenuKeyboardMessage(chatId, selectedLanguage, lang[selectedLanguage].ACC_UNLINKED);
 
             res.status(200).send({
                 status: "true",

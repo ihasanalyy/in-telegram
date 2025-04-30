@@ -23,7 +23,7 @@ async function telegramCodeVerification(code, chatId, username, selectedLanguage
 
                     if (telegramBot?.chatbotBannedUntil && telegramBot?.chatbotBannedUntil > currentTime) {
                         // User is currently banned
-                        await sendMessage(chatId, `Your account has been temporarly banned. Please try again later.`, "connect");
+                        await sendMessage(chatId, lang[selectedLanguage].ACC_BANNED, "connect");
                         return;
                     }
 
@@ -52,7 +52,7 @@ async function telegramCodeVerification(code, chatId, username, selectedLanguage
                                         await TelegramBotModel.updateOne({ _id: telegramBot._id }, { $set: { chatbotBannedUntil: banExpiryTime, chatbotFailedAttempts: 0, chatbotFirstFailedAttempt: null } });
 
 
-                                        await sendMessage(chatId, `Your account has been temporarly banned. Please try again later.`, "connect");
+                                        await sendMessage(chatId, lang[selectedLanguage].ACC_BANNED, "connect");
                                     } else {
                                         console.log("5th running")
                                         TelegramBotModel.updateOne({ _id: telegramBot._id }, { $set: { chatbotFailedAttempts, chatbotFirstFailedAttempt } }).then(async (updated) => {
@@ -71,7 +71,7 @@ async function telegramCodeVerification(code, chatId, username, selectedLanguage
                                                 const buttons = [
                                                     [{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }],
                                                 ]
-                                                await sendButtons(chatId, "Great Job! Your telegram is now synced with InstaPay✔️.Tap below to head back to the Main menu.", buttons, "4");
+                                                await sendButtons(chatId, lang[selectedLanguage].SYNC_SUCCESS, buttons, "4");
                                             }).catch(async (err) => {
                                                 console.log(err, "someting went wrong")
                                                 const buttons = [
@@ -112,7 +112,7 @@ async function telegramConnection(chatId, payload, chat, text, selectedLanguage,
     console.log({ chatId, payload, chat, text, selectedLanguage, chat: data?.message?.chat })
 
     if (chat.account_connected && chat?.account?.telegram_bot) {
-        const message = "Your account is already connected to the InstaPay Telegram channel! ✅";
+        const message = lang[selectedLanguage].ALREADY_LINKED;
         const buttons = [
             [{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }],
         ]
@@ -124,8 +124,9 @@ async function telegramConnection(chatId, payload, chat, text, selectedLanguage,
             chat.registeration = {}
             await chat.save()
         }
-        const buttonText = "How can we help you today? Let's get started!🚀👇"
-        const message = `Hi ${data?.message?.chat?.first_name || data?.callback_query?.message?.chat?.first_name}! 🎉 Welcome to the InstaPay Telegram channel! 💬`;
+        const buttonText = lang[selectedLanguage].START_HELP;
+        const dynamicName = data?.message?.chat?.first_name || data?.callback_query?.message?.chat?.first_name;
+        const message = lang[selectedLanguage].WELCOME_MESSAGE_TELEGRAM.replace("{{dynamicName}}", dynamicName);
         const buttons = [
             [{ text: lang[selectedLanguage].CONNECT_BUTTON_TITLE, callback_data: "connect_account" }],
             [{ text: lang[selectedLanguage].REGISTER_BUTTON_TITLE, callback_data: "register" }],
@@ -136,7 +137,7 @@ async function telegramConnection(chatId, payload, chat, text, selectedLanguage,
 
     } else if (payload === "connect_account" && chat.last_message === "connect") {
 
-        await sendPhoto(chatId, "https://nodejs-checking-bucket.s3.amazonaws.com/telegram_bot_images/welcome-TG.png", "Please type in your InstaPay username to get started. 😊✨", "connect_username");
+        await sendPhoto(chatId, "https://nodejs-checking-bucket.s3.amazonaws.com/telegram_bot_images/welcome-TG.png", lang[selectedLanguage].ENTER_USERNAME, "connect_username");
     }
     // user has entered username
     else if (!payload && text && chat.last_message === "connect_username") {
@@ -146,11 +147,11 @@ async function telegramConnection(chatId, payload, chat, text, selectedLanguage,
         if (!accountDetails) {
             await sendMessage(chatId, lang[selectedLanguage].INVALID_USERNAME_MESSAGE);
         } else if (accountDetails?.telegram_bot) {
-            await sendMessage(chatId, "This InstaPay account has already been linked");
+            await sendMessage(chatId, lang[selectedLanguage].ACC_ALREADY_LINKED);
         } else {
             chat.account = accountDetails._id;
             await chat.save()
-            await sendMessage(chatId, "To link your Telegram account with InstaPay, please follow these steps:\n1. Open InstaPay and go to the Settings section.\n2. Select Social Network Accounts.\n3. Enable Telegram.\n4. Enter the InstaPay code displayed there to complete the linking process.", "connect_code");
+            await sendMessage(chatId, lang[selectedLanguage].LINK_INSTRUCTIONS, "connect_code");
         }
     }
 

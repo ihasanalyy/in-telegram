@@ -340,7 +340,7 @@ async function handleRegistration(senderId, payload, account, bot, text, selecte
         bot.registeration.last_name = text;
         await bot.save();
 
-        const message = "Please enter your date of birth in the format DD-MM-YYYY";
+        const message = lang[selectedLanguage].DOB_FORMAT;
         const quickReplies = [
             { content_type: "text", title: lang[selectedLanguage].MAIN_MENU, payload: "register_cancel" }
         ]
@@ -353,7 +353,7 @@ async function handleRegistration(senderId, payload, account, bot, text, selecte
         // Validate format DD-MM-YYYY
         const dobRegex = /^(\d{2})-(\d{2})-(\d{4})$/;
         if (!dobRegex.test(text)) {
-            await quickMessage(data, "❌ Invalid format. Please use DD-MM-YYYY (e.g. 17-02-1976)");
+            await quickMessage(data, lang[selectedLanguage].INVALID_FORMAT);
             return;
         }
 
@@ -363,7 +363,7 @@ async function handleRegistration(senderId, payload, account, bot, text, selecte
 
         // Basic numerical validation
         if (month < 1 || month > 12 || day < 1 || day > 31 || year < 1900 || year > currentYear) {
-            await quickMessage(data, "❌ Invalid date. Please check and try again.");
+            await quickMessage(data, lang[selectedLanguage].INVALID_DATE);
             return;
         }
 
@@ -374,7 +374,7 @@ async function handleRegistration(senderId, payload, account, bot, text, selecte
             date.getMonth() + 1 !== month ||
             date.getDate() !== day
         ) {
-            await quickMessage(data, "❌ Invalid date. Please check and try again.");
+            await quickMessage(data, lang[selectedLanguage].INVALID_DATE);
             return;
         }
 
@@ -384,7 +384,7 @@ async function handleRegistration(senderId, payload, account, bot, text, selecte
         const dayDiff = currentDate.getDate() - day;
 
         if (age < 16 || (age === 16 && (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)))) {
-            await quickMessage(data, "❌ You must be at least 16 years old to register.");
+            await quickMessage(data, lang[selectedLanguage].MIN_AGE);
             return;
         }
 
@@ -1050,7 +1050,7 @@ async function sendPinSetupMessage(data, senderId, account) {
         template_type: "generic",
         elements: [
             {
-                title: "To keep your account secure, we need you to set up a 4-digit PIN.\n\n🔐 Simply click the button below to get started:",
+                title: lang[selectedLanguage].SET_PIN,
                 image_url: "https://nodejs-checking-bucket.s3.amazonaws.com/chatbot_images/Login.png",
                 buttons: [
                     {

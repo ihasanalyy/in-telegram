@@ -67,7 +67,8 @@ async function processRequestPayment(chatId, account, chat, selectedLanguage) {
         const recipientName = benefAccount.account_type === "individual" ? benefAccount.first_name + " " + benefAccount.last_name : benefAccount?.company_name;
         const senderName = senderAccount.account_type === "individual" ? senderAccount.first_name + " " + senderAccount.last_name : senderAccount?.company_name;
 
-        const message = `Request successfully dispatched!\n\nRequest ID: ${requestDetails?.requestDetails?.reference_id}\nRecipient Name: ${recipientName}\n${lang[selectedLanguage].AMOUNT}: ${chat?.request.amount.toFixed(2)} ${requestDetails?.requestDetails?.currency?.code}\nCountry: ${benefAccount?.country_name}`;
+        // const message = `Request successfully dispatched!\n\nRequest ID: ${requestDetails?.requestDetails?.reference_id}\nRecipient Name: ${recipientName}\n${lang[selectedLanguage].AMOUNT}: ${chat?.request.amount.toFixed(2)} ${requestDetails?.requestDetails?.currency?.code}\nCountry: ${benefAccount?.country_name}`;
+        const message = lang[selectedLanguage].REQUEST_DISPATCHED.replace("{{request_id}}", requestDetails?.requestDetails?.reference_id).replace("{{recipient_name}}", recipientName).replace("{{amount}}", formattedAmount(requestDetails?.requestDetails?.amount?.toFixed(2))).replace("{{currency}}", requestDetails?.requestDetails?.currency?.code).replace("{{country}}", benefAccount?.country_name); //Hassan
 
         const buttons = [
             [{ text: lang[selectedLanguage].SEND_ANOTHER, callback_data: `req_pay` }],
@@ -90,13 +91,15 @@ async function processRequestPayment(chatId, account, chat, selectedLanguage) {
             await sendButtons(benefAccount?.telegram_id, recipientMessage, recipientButtons, "4");
 
             if (geoData.status) {
-                const addressMessage = `The above payment request originated from the below address 👇\n\n${geoData?.data?.display_name || 'Unknown'}`;
-                const addressButton = [[{ text: "View Pin Location📍", url: `https://my.insta-pay.ch/chatbot/payment-request?longitude=${geoData.data.lon}&latitude=${geoData.data.lat}` }]];
+                // const addressMessage = `The above payment request originated from the below address 👇\n\n${geoData?.data?.display_name || 'Unknown'}`;
+                const addressMessage = lang[selectedLanguage].PAYMENT_ORIGIN.replace("{{address}}", geoData?.data?.display_name || 'Unknown');
+                const addressButton = [[{ text: lang[selectedLanguage].VIEW_PIN, url: `https://my.insta-pay.ch/chatbot/payment-request?longitude=${geoData.data.lon}&latitude=${geoData.data.lat}` }]];
                 await sendButtons(benefAccount?.telegram_id, addressMessage, addressButton);
             }
 
             if (chat.request.attachments?.length > 0 || chat.request.note) {
-                const detailsMessage = `Attached are details with the payment request 👇\n\n${chat.request.note ? "Note: " + chat.request.note : ""}`;
+                // const detailsMessage = `Attached are details with the payment request 👇\n\n${chat.request.note ? "Note: " + chat.request.note : ""}`;
+                const detailsMessage = lang[selectedLanguage].PAYMENT_DETAILS.replace("{{note}}", chat.request.note ? "Note: " + chat.request.note : "");
                 await sendMessage(benefAccount?.telegram_id, detailsMessage);
 
                 if (chat.request.attachments?.length > 0) {
@@ -313,10 +316,11 @@ ${lang[selectedLanguage].COUNTRY}: ${user.country_name}
             let buttons = [[{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }]];
 
             if (chat.account.level.level_no === 1) {
-                buttons.push([{ text: "Identity Verification", callback_data: "kyc_verification" }]);
+                buttons.push([{ text: lang[selectedLanguage].IDENTITY_VERIFICATION, callback_data: "kyc_verification" }]);
                 await sendButtons(
                     chatId,
-                    `Completing this transaction will exceed your balance limit. Your remaining balance is ${formattedAmount(receiverBalanceCheck?.remainingBalance)} ${receivingWallet?.currency.code}. Please enter an amount within your balance limit or complete KYC verification to increase your balance limit.`,
+                    lang[selectedLanguage].BALANCE_LIMIT.replace("{{amount}}", formattedAmount(receiverBalanceCheck?.remainingBalance)).replace("{{currency}}", receivingWallet?.currency.code), //HAssam
+                    // `Completing this transaction will exceed your balance limit. Your remaining balance is ${formattedAmount(receiverBalanceCheck?.remainingBalance)} ${receivingWallet?.currency.code}. Please enter an amount within your balance limit or complete KYC verification to increase your balance limit.`,
                     buttons
                 );
             } else {
@@ -330,7 +334,7 @@ ${lang[selectedLanguage].COUNTRY}: ${user.country_name}
         } else if (!receiverBalanceCheck?.status) {
             let buttons = [[{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }]];
 
-            await sendButtons(chatId, "Something went wrong while checking your balance limit. Please try again.", buttons);
+            await sendButtons(chatId, lang[selectedLanguage].BALANCE_CHECK_ERROR, buttons);
             return;
         }
 
@@ -367,13 +371,13 @@ ${lang[selectedLanguage].COUNTRY}: ${user.country_name}
     else if (payload === "req_pay_add_attch" && chat?.last_message === "req_pay_note_added") {
         const buttons = [
             [{ text: lang[selectedLanguage].SKIP, callback_data: "req_pay_no_attch" }],
-            [{ text: "Images", callback_data: "req_pay_attch_images" }],
-            [{ text: "Video", callback_data: "req_pay_attch_videos" }],
-            [{ text: "Both", callback_data: "req_pay_attch_both" }],
+            [{ text: lang[selectedLanguage].IMAGES_OPTIONS, callback_data: "req_pay_attch_images" }],
+            [{ text: lang[selectedLanguage].VIDEOS_OPTIONS, callback_data: "req_pay_attch_videos" }],
+            [{ text: lang[selectedLanguage].BOTH_OPTIONS, callback_data: "req_pay_attch_both" }],
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }],
         ];
 
-        await sendButtons(chatId, "What do you want to attach? You can only attach up to 4 images and 1 video, totaling 5 files. ", buttons, "req_pay_attachments");
+        await sendButtons(chatId, lang[selectedLanguage].ATTACH_MESSAGE, buttons, "req_pay_attachments");
     }
 
     // user has not proceeded with adding an attachement
@@ -387,14 +391,14 @@ ${lang[selectedLanguage].COUNTRY}: ${user.country_name}
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
         ];
 
-        await sendButtons(chatId, "Please upload up to 4 images.", buttons, "req_pay_images");
+        await sendButtons(chatId, lang[selectedLanguage].UPLOAD_IMAGES, buttons, "req_pay_images");
     }
 
     // bot is expecting images when last message is "req_pay_images"
     else if (chat?.last_message === "req_pay_images" && image_payloads.length > 0) {
 
         if (image_payloads.length > 4) {
-            await sendMessage(chatId, "You can only attach up to 4 images.");
+            await sendMessage(chatId, lang[selectedLanguage].IMG_LIMIT);
             return;
         }
         const uploadedImageUrls = await processImageUploads(image_payloads);
@@ -419,14 +423,14 @@ ${lang[selectedLanguage].COUNTRY}: ${user.country_name}
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
         ];
 
-        await sendButtons(chatId, "Please upload a video.", buttons, "req_pay_video");
+        await sendButtons(chatId, lang[selectedLanguage].UPLOAD_VIDEO, buttons, "req_pay_video");
     }
 
     // bot is expecting a video when last message is "req_pay_video"
     else if (chat?.last_message === "req_pay_video" && video_payloads.length > 0) {
 
         if (video_payloads.length > 1) {
-            await sendMessage(chatId, "You can only attach up to 1 video.");
+            await sendMessage(chatId, lang[selectedLanguage].VIDEO_LIMIT);
             return;
         }
 
@@ -444,7 +448,7 @@ ${lang[selectedLanguage].COUNTRY}: ${user.country_name}
     }
 
     else if (payload === "req_pay_attch_both" && chat?.last_message === "req_pay_attachments") {
-        const message = "Alright! You can first upload images and then videos. Let’s start with the images. You can upload up to 4 images."
+        const message = lang[selectedLanguage].MAX_FILES
 
         const buttons = [
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
@@ -457,7 +461,7 @@ ${lang[selectedLanguage].COUNTRY}: ${user.country_name}
     else if (chat?.last_message === "req_pay_images_both" && image_payloads.length > 0) {
 
         if (image_payloads.length > 4) {
-            await sendMessage(chatId, "You can only attach up to 4 images.");
+            await sendMessage(chatId, lang[selectedLanguage].IMG_LIMIT);
             return;
         }
         const uploadedImageUrls = await processImageUploads(image_payloads);
@@ -473,7 +477,7 @@ ${lang[selectedLanguage].COUNTRY}: ${user.country_name}
 
         await chat.save();
 
-        const message = "Got it! Now, please upload up to 1 video."
+        const message = lang[selectedLanguage].GOT_IT_MESSAGE;
 
         const buttons = [
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
@@ -486,7 +490,7 @@ ${lang[selectedLanguage].COUNTRY}: ${user.country_name}
     else if (chat?.last_message === "req_pay_video_both" && video_payloads.length > 0) {
 
         if (video_payloads.length > 1) {
-            await sendMessage(chatId, "You can only attach up to 1 video.");
+            await sendMessage(chatId, lang[selectedLanguage].VIDEO_LIMIT);
             return;
         }
 
@@ -507,13 +511,13 @@ ${lang[selectedLanguage].COUNTRY}: ${user.country_name}
     else if (payload === "req_pay_document" && chat?.last_message === "req_pay_attch") {
         const buttons = [
             [{ text: lang[selectedLanguage].SKIP, callback_data: "req_pay_no_attch" }],
-            [{ text: "Images", callback_data: "req_pay_attch_images_1" }],
-            [{ text: "Video", callback_data: "req_pay_attch_videos_1" }],
-            [{ text: "Both", callback_data: "req_pay_attch_both_1" }],
+            [{ text: lang[selectedLanguage].IMAGES_OPTIONS, callback_data: "req_pay_attch_images_1" }],
+            [{ text: lang[selectedLanguage].VIDEOS_OPTIONS, callback_data: "req_pay_attch_videos_1" }],
+            [{ text: lang[selectedLanguage].BOTH_OPTIONS, callback_data: "req_pay_attch_both_1" }],
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }],
         ];
 
-        await sendButtons(chatId, "What do you want to attach? You can only attach up to 4 images and 1 video, totaling 5 files. ", buttons, "req_pay_attachments");
+        await sendButtons(chatId, lang[selectedLanguage].ATTACH_MESSAGE, buttons, "req_pay_attachments");
     }
 
     // user has asked to upload the images
@@ -522,14 +526,14 @@ ${lang[selectedLanguage].COUNTRY}: ${user.country_name}
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
         ];
 
-        await sendButtons(chatId, "Please upload up to 4 images.", buttons, "req_pay_attch_images_1");
+        await sendButtons(chatId, lang[selectedLanguage].UPLOAD_IMAGES, buttons, "req_pay_attch_images_1");
     }
 
     // bot is expecting images when last message is "req_pay_attch_images_1"
     else if (chat?.last_message === "req_pay_attch_images_1" && image_payloads.length > 0) {
 
         if (image_payloads.length > 4) {
-            await sendMessage(chatId, "You can only attach up to 4 images.");
+            await sendMessage(chatId, lang[selectedLanguage].IMG_LIMIT);
             return;
         }
 
@@ -554,14 +558,14 @@ ${lang[selectedLanguage].COUNTRY}: ${user.country_name}
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
         ];
 
-        await sendButtons(chatId, "Please upload a video.", buttons, "req_pay_attch_videos_1");
+        await sendButtons(chatId, lang[selectedLanguage].UPLOAD_VIDEO, buttons, "req_pay_attch_videos_1");
     }
 
     // bot is expecting a video when last message is "req_pay_attch_videos_1"
     else if (chat?.last_message === "req_pay_attch_videos_1" && video_payloads.length > 0) {
 
         if (video_payloads.length > 1) {
-            await sendMessage(chatId, "You can only attach up to 1 video.");
+            await sendMessage(chatId, lang[selectedLanguage].VIDEO_LIMIT);
             return;
         }
 
@@ -587,7 +591,7 @@ ${lang[selectedLanguage].COUNTRY}: ${user.country_name}
     }
 
     else if (payload === "req_pay_attch_both_1" && chat?.last_message === "req_pay_attachments") {
-        const message = "Alright! You can first upload images and then videos. Let’s start with the images. You can upload up to 4 images."
+        const message = lang[selectedLanguage].MAX_FILES
 
         const buttons = [
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
@@ -600,7 +604,7 @@ ${lang[selectedLanguage].COUNTRY}: ${user.country_name}
     else if (chat?.last_message === "req_pay_images_both_1" && image_payloads.length > 0) {
 
         if (image_payloads.length > 4) {
-            await sendMessage(chatId, "You can only attach up to 4 images.");
+            await sendMessage(chatId, lang[selectedLanguage].IMG_LIMIT);
             return;
         }
         const uploadedImageUrls = await processImageUploads(image_payloads);
@@ -615,7 +619,7 @@ ${lang[selectedLanguage].COUNTRY}: ${user.country_name}
 
         await chat.save();
 
-        const message = "Got it! Now, please upload up to 1 video."
+        const message = lang[selectedLanguage].GOT_IT_MESSAGE;
 
         const buttons = [
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
@@ -628,7 +632,7 @@ ${lang[selectedLanguage].COUNTRY}: ${user.country_name}
     else if (chat?.last_message === "req_pay_video_both_1" && video_payloads.length > 0) {
 
         if (video_payloads.length > 1) {
-            await sendMessage(chatId, "You can only attach up to 1 video.");
+            await sendMessage(chatId, lang[selectedLanguage].VIDEO_LIMIT);
             return;
         }
 

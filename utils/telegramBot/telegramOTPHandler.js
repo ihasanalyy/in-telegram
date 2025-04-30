@@ -32,9 +32,10 @@ async function handleOTPGenerationTG(selectedLang, chat, context, lastMessage, t
             const language = 'english';
             const template_name = templateName;
             const templateId = getTemplateId(language, template_name);
+            const userName = chat.account?.username;
 
             const emailStatus = await sendMailsExport(chat.account?.email,
-                `Hi ${chat.account?.username},\n\nThis is your InstaPay transaction OTP: ${otp}`,
+                lang[selectedLang].OTP_MESSAGE.replace('{{OTP}}', otp).replace('{{USERNAME}}', userName), //Hassan
                 "Transaction Verification",
                 templateId,
                 { otp });

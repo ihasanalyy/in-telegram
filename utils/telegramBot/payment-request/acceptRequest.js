@@ -176,7 +176,7 @@ ${lang[selectedLanguage].TOTAL_AMOUNT}: ${formattedAmount(totalAmountWithFee)} $
             ];
 
             await sendMessage(chatId, message);
-            return await sendButtons(chatId, "Insufficient Balance! Please top up your wallet.", buttons);
+            return await sendButtons(chatId, lang[selectedLanguage].INSUFFICIENT_BALANCE_MESSAGE, buttons);
         }
 
         chat.request.sending_wallet = sendingWalletId;
@@ -296,9 +296,10 @@ ${lang[selectedLanguage].TOTAL_AMOUNT}: ${formattedAmount(totalAmountWithFee)} $
                 if (requestingUser?.sender?.telegram_id && requestingUser?.sender?.telegram_bot) {
                     const requestingUserBot = await TelegramBotModel.findOne({ recipient: requestingUser?.sender?.telegram_id });
                     const requestingUserLang = requestingUserBot.selected_language || requestingUser?.sender?.language || "en";
+                    const userName = chat.account?.username;
 
                     await sendPhoto(requestingUser?.sender?.telegram_id, "https://nodejs-checking-bucket.s3.amazonaws.com/telegram_bot_images/Instant.png");
-                    await sendButtons(requestingUser?.sender?.telegram_id, `Excellent! ${chat.account?.username} has accepted your payment request! Funds received.`, [
+                    await sendButtons(requestingUser?.sender?.telegram_id, lang[selectedLanguage].PAYMENT_ACCEPTED.replace("{{USERNAME}}", userName), [
                         [{ text: lang[requestingUserLang].CASH_OUT_NOW, callback_data: `cash_out_id_${walletToWalletResponse?.exchanged?._id}` }],
                         [{ text: lang[requestingUserLang].MAIN_MENU_MESSAGE, callback_data: "main_menu" }]
                     ], "4");
@@ -319,7 +320,7 @@ ${lang[selectedLanguage].TOTAL_AMOUNT}: ${formattedAmount(totalAmountWithFee)} $
                 await sendButtons(chatId, message, [[{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }]]);
             }
             else {
-                await sendButtons(chatId, "Something went wrong while accepting the payment request. Please try again!", [[{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }]]);
+                await sendButtons(chatId, lang[selectedLanguage].PAYMENT_ERROR, [[{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }]]);
             }
 
         } else {
@@ -498,7 +499,7 @@ ${lang[selectedLanguage].BUYER_RATING}: ${generateRatingStars(requestingUser?.bu
             }
 
         } else {
-            const message = "Review could not be added, please contact the administrator";
+            const message = lang[selectedLanguage].REVIEW_ERROR;
             const buttons = [
                 [{ text: lang[selectedLanguage].MAIN_MENU_MESSAGE, callback_data: "main_menu" }]
             ];
@@ -549,7 +550,7 @@ Reply: ${text}
             await sendMessage(requestedReview?.buyer?.telegram_id, message1);
             await sendButtons(chatId, message2, buttons);
         } else {
-            const message = "Reply could not be added, please contact the administrator";
+            const message = lang[selectedLanguage].REPLY_ERROR;
             const buttons = [
                 [{ text: lang[selectedLanguage].MAIN_MENU_MESSAGE, callback_data: "main_menu" }]
             ];

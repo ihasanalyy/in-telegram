@@ -6,7 +6,7 @@ async function currencyRequest(chatId, payload, chat, text, selectedLanguage, da
     if (payload === "add_currency") {
         const currencies = await availableCurrencies();
         if (currencies?.length === 0) {
-            return await sendButtons(chatId, "Unfortunately, there are no currencies available for now.", [
+            return await sendButtons(chatId, lang[selectedLanguage].NO_CURRENCY, [
                 [{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }]
             ]);
         }

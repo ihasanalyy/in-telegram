@@ -144,31 +144,22 @@ async function premiumCardCreationUsingWallet(chatId, payload, chat, text, selec
             if (vvcCreation.status) {
                 await sendPhoto(chatId, "https://nodejs-checking-bucket.s3.amazonaws.com/telegram_bot_images/Premium1.png");
 
-                const message = `🎉 Done! Your InstaPay Virtual Card is ready to use! 🚀
-
-
-👉 iPhone Users: Add your card to Apple Wallet for instant tap-to-pay convenience!
-👉 Android Users: Google Pay support is coming soon! Stay tuned.
-`
-
+                const message = lang[selectedLanguage].VIRTUAL_CARD_READY;
                 await sendButtons(chatId, message, [[{ text: "Card Management Menu", callback_data: "vcc_menu" }]], "4");
-                const message1 = `🌍 Want to explore more card features?
-Visit our InstaPay Guide for detailed information! 🔗
-
-`
+                const message1 = lang[selectedLanguage].INSTAPAY_GUIDE;
 
                 await sendButtons(chatId, message1, [
                     [{ text: "📖 InstaPay Guide", url: "https://instapay.gitbook.io/kemit-kingdom-sa/8CXSlU3g9aU7Li42DHE4/faq/faq/instapay-mastercard-virtual-prepaid-card" }],
-                    [{ text: "🔄 Need more help? Let’s chat!", callback_data: "main_menu" }]
+                    [{ text: lang[selectedLanguage].MORE_HELP, callback_data: "main_menu" }]
                 ]);
             } else {
                 let message;
                 if (vvcCreation.message?.includes("Insufficient")) {
                     message = lang[selectedLanguage].INSUFFICIENT_BALANCE;
                 } else if (vvcCreation.message?.includes("maximum")) {
-                    message = "You can only have a maximum of 3 virtual cards.";
+                    message = lang[selectedLanguage].LIMIT_VIRTUAL_CARDS;
                 } else {
-                    message = "Something went wrong. Please try again later.";
+                    message = lang[selectedLanguage].SOMETHING_WENT_WRONG_;
                 }
 
                 await sendButtons(chatId, message, [[{ text: lang[selectedLanguage].MAIN_MENU_MESSAGE, callback_data: "main_menu" }]], "4");

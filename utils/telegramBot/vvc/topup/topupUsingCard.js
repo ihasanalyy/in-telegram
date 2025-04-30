@@ -47,8 +47,7 @@ async function topupUsingCard(chatId, payload, chat, text, selectedLanguage) {
         const expiryValidation = await validateCardExpiry(cardId);
         if (!expiryValidation.status) {
             const pans = await PanModel.find({ account: chat.account._id });
-            const message = "The card you selected has expired and is now removed from your InstaPay account.\n\n" +
-                "To continue with this transaction, please choose an alternative payment method.";
+            const message = lang[selectedLanguage].SELECTED_CARD_EXPIRED;
 
             let buttons;
             if (pans.length !== 0) {
@@ -82,15 +81,16 @@ async function topupUsingCard(chatId, payload, chat, text, selectedLanguage) {
         );
 
         if (!fee) {
-            return await sendMessage(chatId, "Something went wrong. Please try again. If the problem persists, contact our support team.");
+            return await sendMessage(chatId, lang[selectedLanguage].SOMETHING_WENT_WRONG);
         }
 
         // Check if the entered amount is lower than the top-up fee
         const minRequiredAmount = fee + fee * 0.1; // Top-up fee + 10%
+        const minimumAmount = formattedAmount(minRequiredAmount);
         if (chat.vcc.amount < minRequiredAmount) {
             return await sendMessage(
                 chatId,
-                `The amount entered is too low. The minimum amount required for a top-up is ${formattedAmount(minRequiredAmount)} ${cardDetails.currency}. Please enter a higher amount.`,
+                lang[selectedLanguage].MIN_AMOUNT_LOW.replace("{{minimumAmount}}", minimumAmount).replace("{{currency}}", cardDetails.currency), //Hassan
                 "vcc_add_funds_card_min_amount"
             );
         }
@@ -116,7 +116,7 @@ You'll get: ${formattedAmount(chat.vcc.amount - fee)} ${cardDetails.currency}
         const buttons = [
             [{ text: lang[selectedLanguage].PROCEED_TITLE, callback_data: "vcc_add_funds_card_confirm" }],
             [{ text: lang[selectedLanguage].ADJUST_AMOUNT_TITLE, callback_data: "vcc_add_funds_adjust" }],
-            [{ text: "My MasterCard", callback_data: "vcc_menu" }],
+            [{ text: lang[selectedLanguage].MY_MASTERCARD, callback_data: "vcc_menu" }],
         ];
 
         await sendButtons(chatId, message, buttons, "vcc_add_funds_card_confirm");
@@ -150,15 +150,16 @@ You'll get: ${formattedAmount(chat.vcc.amount - fee)} ${cardDetails.currency}
         );
 
         if (!fee) {
-            return await sendMessage(chatId, "Something went wrong. Please try again. If the problem persists, contact our support team.");
+            return await sendMessage(chatId, lang[selectedLanguage].SOMETHING_WENT_WRONG);
         }
 
         // Check if the entered amount is lower than the top-up fee
         const minRequiredAmount = fee + fee * 0.1; // Top-up fee + 10%
+        const minimumAmount = formattedAmount(minRequiredAmount);
         if (amount < minRequiredAmount) {
             return await sendMessage(
                 chatId,
-                `The amount entered is too low. The minimum amount required for a top-up is ${formattedAmount(minRequiredAmount)} ${cardDetails.currency}. Please enter a higher amount.`,
+                lang[selectedLanguage].MIN_AMOUNT_LOW.replace("{{minimumAmount}}", minimumAmount).replace("{{currency}}", cardDetails.currency), //Hassan
                 "vcc_add_funds_card_min_amount"
             );
         }
@@ -184,7 +185,7 @@ You'll get: ${formattedAmount(amount - fee)} ${cardDetails.currency}
         const buttons = [
             [{ text: lang[selectedLanguage].PROCEED_TITLE, callback_data: "vcc_add_funds_card_confirm" }],
             [{ text: lang[selectedLanguage].ADJUST_AMOUNT_TITLE, callback_data: "vcc_add_funds_adjust" }],
-            [{ text: "My MasterCard", callback_data: "vcc_menu" }],
+            [{ text: lang[selectedLanguage].MY_MASTERCARD, callback_data: "vcc_menu" }],
         ];
 
         await sendButtons(chatId, message, buttons, "vcc_add_funds_card_confirm");
@@ -205,7 +206,7 @@ You'll get: ${formattedAmount(amount - fee)} ${cardDetails.currency}
                 decoded = jwt.verify(chat.vcc.topup_transaction_token, process.env.jwtKey);
             } catch (error) {
                 // transaction expiry message
-                return await sendButtons(chatId, "Your transaction has been expired. Please try again.", [[{ text: "My MasterCard", callback_data: "vcc_menu" }]], "4");
+                return await sendButtons(chatId, lang[selectedLanguage].TRANSACTION_EXPIRED, [[{ text:lang[selectedLanguage].MY_MASTERCARD, callback_data: "vcc_menu" }]], "4");
 
             }
 

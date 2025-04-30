@@ -46,7 +46,7 @@ ${lang[selectedLanguage].PHONE}: ${text}
                 await sendButtons(chatId, message, buttons);
             } else {
                 const buttons = [[{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }]];
-                await sendButtons(chatId, "We couldn't identify the operator for this number, please enter a valid phone number.", buttons);
+                await sendButtons(chatId, lang[selectedLanguage].INVALID_NUMBER, buttons);
             }
         } else {
             const buttons = [[{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }]];

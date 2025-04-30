@@ -33,7 +33,7 @@ async function topupUsingPaypal(senderId, payload, account, bot, text, selectedL
         );
 
         if (!fee) {
-            return await somethingWentWrongQuickReply(data, "Something went wrong. Please try again. If the problem persists, contact our support team.");
+            return await somethingWentWrongQuickReply(data, lang[selectedLanguage].SOMETHING_WENT_WRONG);
         }
 
         // Check if the entered amount is lower than the top-up fee
@@ -136,7 +136,7 @@ You'll get: ${formattedAmount(formatDecimalNumbersWithLimit(bot.vcc.amount - fee
         console.log({ fee, feeType });
 
         if (!fee) {
-            return await somethingWentWrongQuickReply(data, "Something went wrong. Please try again. If the problem persists, contact our support team.");
+            return await somethingWentWrongQuickReply(data, lang[selectedLanguage].SOMETHING_WENT_WRONG);
         }
 
         // Check if the entered amount is lower than the top-up fee

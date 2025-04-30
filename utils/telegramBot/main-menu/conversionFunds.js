@@ -26,7 +26,7 @@ async function convertFunds(chatId, payload, chat, text, selectedLanguage, data,
                 [{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }]
             ];
 
-            await sendButtons(chatId, "You do not have multiple currencies available for conversion!\nPlease add your desired currency by clicking below", buttons);
+            await sendButtons(chatId, lang[selectedLanguage].CURRENCY_ERROR, buttons);
         }
     }
 

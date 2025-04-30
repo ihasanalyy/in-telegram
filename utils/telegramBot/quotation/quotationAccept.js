@@ -24,7 +24,7 @@ async function acceptQuotation(chatId, payload, chat, text, selectedLanguage) {
 
         // validate if the current quotation belongs to you
         if (quotation?.reciever.toString() !== chat.account._id.toString()) {
-            await sendButtons(chatId, "The quotation does not belong to you.", [
+            await sendButtons(chatId, lang[selectedLanguage].QUOTE_NOT_BELONG, [
                 [{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }]
             ]);
             return;
@@ -38,8 +38,8 @@ async function acceptQuotation(chatId, payload, chat, text, selectedLanguage) {
             quotation?.status !== "bargain-accepted" &&
             quotation?.status !== "revise"
         ) {
-            await sendMessage(chatId, "The quotation has already been accepted, declined, or is currently in process.");
-            await sendButtons(chatId, "Choose an option:", [
+            await sendMessage(chatId, lang[selectedLanguage].QUOTE_IN_PROCESS);
+            await sendButtons(chatId, lang[selectedLanguage].CHOOSE_OPTION, [
                 [{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }]
             ]);
         }
@@ -95,7 +95,7 @@ async function acceptQuotation(chatId, payload, chat, text, selectedLanguage) {
 
         buttons.push([{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }]);
 
-        const message = "Select the Wallet currency you would like to pay with.";
+        const message = lang[selectedLanguage].SELECT_WALLET_PAY;
         await sendButtons(chatId, message, buttons, 'quotation_accept_wallets_payment');
     }
 
@@ -155,7 +155,7 @@ ${lang[selectedLanguage].TOTAL_AMOUNT}: ${formattedAmount(totalAmountWithFee)} $
             ];
 
             await sendMessage(chatId, message);
-            return await sendButtons(chatId, "Insufficient Balance! Please top up your wallet.", buttons);
+            return await sendButtons(chatId, lang[selectedLanguage].INSUFFICIENT_BALANCE_MESSAGE, buttons);
         }
 
         chat.quotation.accepting_currency = walletId;
@@ -289,7 +289,7 @@ ${lang[selectedLanguage].TOTAL_AMOUNT}: ${formattedAmount(totalAmountWithFee)} $
 
                 const quotationInfo = `\nQuotation ID: ${quotationDetails.reference_id}\n${lang[selectedLanguage].AMOUNT}: ${formattedAmount(amount.toFixed(2))} ${currencyDetails?.currency.code}\nUsername: ${quotationSender?.username}\n${lang[selectedLanguage].TITLE}: ${quotationDetails?.title}\n`;
 
-                await sendPhoto(chatId, "https://nodejs-checking-bucket.s3.amazonaws.com/telegram_bot_images/Success.png", `You've accepted the quote. The payment will be processed per the agreed terms.\n`)
+                await sendPhoto(chatId, "https://nodejs-checking-bucket.s3.amazonaws.com/telegram_bot_images/Success.png", lang[selectedLanguage].QUOTE_ACCEPTED)
                 await sendButtons(chatId, quotationInfo, [
                     [{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }]
                 ], "4");
@@ -297,7 +297,8 @@ ${lang[selectedLanguage].TOTAL_AMOUNT}: ${formattedAmount(totalAmountWithFee)} $
                 if (quotationSender?.telegram_id && quotationSender?.telegram_bot) {
                     const senderBot = await TelegramBotModel.findOne({ recipient: quotationSender?.telegram_id });
                     const receiverLang = senderBot?.selected_language || quotationSender?.language || "en";
-                    const receiverMessage = `Excellent! ${chat.account?.username} has accepted your quote!`;
+                    const userName = chat.account?.username;
+                    const receiverMessage = lang[selectedLanguage].QUOTE_ACCEPTED_SUCCESS.replace("{{username}}", userName); //Hassan
                     await sendPhoto(quotationSender?.telegram_id, "https://nodejs-checking-bucket.s3.amazonaws.com/telegram_bot_images/Success.png", receiverMessage);
                     await sendButtons(quotationSender?.telegram_id, quotationInfo, [
                         [{ text: lang[receiverLang].CASH_OUT_NOW, callback_data: `cash_out_id_${walletToWalletResponse?.exchanged?._id}` }],
@@ -322,9 +323,9 @@ ${lang[selectedLanguage].TOTAL_AMOUNT}: ${formattedAmount(totalAmountWithFee)} $
                 ], "4");
             }
             else {
-                await sendButtons(chatId, "The transaction could not be processed. Please review your wallet balance or try again later", [
-                    [{ text: "Check Wallet Balance", callback_data: "wallet_overview" }],
-                    [{ text: "Contact Support", callback_data: "assistance" }],
+                await sendButtons(chatId, lang[selectedLanguage].TRANSACTION_ERROR, [
+                    [{ text: lang[selectedLanguage].CHECK_WALLET_BALANCE, callback_data: "wallet_overview" }],
+                    [{ text: lang[selectedLanguage].CONTACT_SUPPORT, callback_data: "assistance" }],
                     [{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }]
                 ], "4");
             }

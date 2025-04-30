@@ -39,7 +39,7 @@ async function intlTransferWallet(chatId, payload, chat, text, selectedLanguage,
 
         // wallet account validation
         if (walletDetails.account.toString() !== chat.account._id.toString()) {
-            return await sendButtons(chatId, "The selected wallet does not belong to you.", [[{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }]]);
+            return await sendButtons(chatId, lang[selectedLanguage].WALLET_ERROR, [[{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }]]);
         }
 
         chat.international_transfer.intl_sending_currency = walletID;
@@ -248,13 +248,13 @@ ${lang[selectedLanguage].TOTAL_MESSAGE}: ${formattedAmount(rates?.total?.value) 
     else if (payload === "intl_transfer_w2w_add_attch" && chat?.last_message === "intl_transfer_w2w_note_added") {
         const buttons = [
             [{ text: lang[selectedLanguage].SKIP, callback_data: "intl_transfer_w2w_no_attch" }],
-            [{ text: "Images", callback_data: "intl_transfer_w2w_attch_images" }],
-            [{ text: "Video", callback_data: "intl_transfer_w2w_attch_videos" }],
-            [{ text: "Both", callback_data: "intl_transfer_w2w_attch_both" }],
+            [{ text: lang[selectedLanguage].IMAGES_OPTIONS, callback_data: "intl_transfer_w2w_attch_images" }],
+            [{ text: lang[selectedLanguage].VIDEOS_OPTIONS, callback_data: "intl_transfer_w2w_attch_videos" }],
+            [{ text: lang[selectedLanguage].BOTH_OPTIONS, callback_data: "intl_transfer_w2w_attch_both" }],
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }],
         ];
 
-        await sendButtons(chatId, "What do you want to attach? You can only attach up to 4 images and 1 video, totaling 5 files. ", buttons, "intl_transfer_w2w_attachments");
+        await sendButtons(chatId, lang[selectedLanguage].ATTACH_MESSAGE, buttons, "intl_transfer_w2w_attachments");
     }
 
     // user has not proceeded with adding an attachement
@@ -268,14 +268,14 @@ ${lang[selectedLanguage].TOTAL_MESSAGE}: ${formattedAmount(rates?.total?.value) 
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
         ];
 
-        await sendButtons(chatId, "Please upload up to 4 images.", buttons, "intl_transfer_w2w_images");
+        await sendButtons(chatId, lang[selectedLanguage].UPLOAD_IMAGES, buttons, "intl_transfer_w2w_images");
     }
 
     // bot is expecting images when last message is "intl_transfer_w2w_images"
     else if (chat?.last_message === "intl_transfer_w2w_images" && image_payloads.length > 0) {
 
         if (image_payloads.length > 4) {
-            await sendMessage(chatId, "You can only attach up to 4 images.");
+            await sendMessage(chatId, lang[selectedLanguage].IMG_LIMIT);
             return;
         }
         const uploadedImageUrls = await processImageUploads(image_payloads);
@@ -300,14 +300,14 @@ ${lang[selectedLanguage].TOTAL_MESSAGE}: ${formattedAmount(rates?.total?.value) 
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
         ];
 
-        await sendButtons(chatId, "Please upload a video.", buttons, "intl_transfer_w2w_video");
+        await sendButtons(chatId, lang[selectedLanguage].UPLOAD_VIDEO, buttons, "intl_transfer_w2w_video");
     }
 
     // bot is expecting a video when last message is "intl_transfer_w2w_video"
     else if (chat?.last_message === "intl_transfer_w2w_video" && video_payloads.length > 0) {
 
         if (video_payloads.length > 1) {
-            await sendMessage(chatId, "You can only attach up to 1 video.");
+            await sendMessage(chatId, lang[selectedLanguage].VIDEO_LIMIT);
             return;
         }
 
@@ -325,7 +325,7 @@ ${lang[selectedLanguage].TOTAL_MESSAGE}: ${formattedAmount(rates?.total?.value) 
     }
 
     else if (payload === "intl_transfer_w2w_attch_both" && chat?.last_message === "intl_transfer_w2w_attachments") {
-        const message = "Alright! You can first upload images and then videos. Let’s start with the images. You can upload up to 4 images."
+        const message = lang[selectedLanguage].MAX_FILES
 
         const buttons = [
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
@@ -338,7 +338,7 @@ ${lang[selectedLanguage].TOTAL_MESSAGE}: ${formattedAmount(rates?.total?.value) 
     else if (chat?.last_message === "intl_transfer_w2w_images_both" && image_payloads.length > 0) {
 
         if (image_payloads.length > 4) {
-            await sendMessage(chatId, "You can only attach up to 4 images.");
+            await sendMessage(chatId, lang[selectedLanguage].IMG_LIMIT);
             return;
         }
         const uploadedImageUrls = await processImageUploads(image_payloads);
@@ -354,7 +354,7 @@ ${lang[selectedLanguage].TOTAL_MESSAGE}: ${formattedAmount(rates?.total?.value) 
 
         await chat.save();
 
-        const message = "Got it! Now, please upload up to 1 video."
+        const message = lang[selectedLanguage].GOT_IT_MESSAGE;
 
         const buttons = [
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
@@ -367,7 +367,7 @@ ${lang[selectedLanguage].TOTAL_MESSAGE}: ${formattedAmount(rates?.total?.value) 
     else if (chat?.last_message === "intl_transfer_w2w_video_both" && video_payloads.length > 0) {
 
         if (video_payloads.length > 1) {
-            await sendMessage(chatId, "You can only attach up to 1 video.");
+            await sendMessage(chatId, lang[selectedLanguage].VIDEO_LIMIT);
             return;
         }
 
@@ -388,13 +388,13 @@ ${lang[selectedLanguage].TOTAL_MESSAGE}: ${formattedAmount(rates?.total?.value) 
     else if (payload === "intl_transfer_w2w_doc" && chat?.last_message === "intl_transfer_w2w_attch") {
         const buttons = [
             [{ text: lang[selectedLanguage].SKIP, callback_data: "intl_transfer_w2w_no_attch" }],
-            [{ text: "Images", callback_data: "intl_transfer_w2w_attch_images_1" }],
-            [{ text: "Video", callback_data: "intl_transfer_w2w_attch_videos_1" }],
-            [{ text: "Both", callback_data: "intl_transfer_w2w_attch_both_1" }],
+            [{ text: lang[selectedLanguage].IMAGES_OPTIONS, callback_data: "intl_transfer_w2w_attch_images_1" }],
+            [{ text: lang[selectedLanguage].VIDEOS_OPTIONS, callback_data: "intl_transfer_w2w_attch_videos_1" }],
+            [{ text: lang[selectedLanguage].BOTH_OPTIONS, callback_data: "intl_transfer_w2w_attch_both_1" }],
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }],
         ];
 
-        await sendButtons(chatId, "What do you want to attach? You can only attach up to 4 images and 1 video, totaling 5 files. ", buttons, "intl_transfer_w2w_attachments");
+        await sendButtons(chatId, lang[selectedLanguage].ATTACH_MESSAGE, buttons, "intl_transfer_w2w_attachments");
     }
 
     // user has asked to upload the images
@@ -403,14 +403,14 @@ ${lang[selectedLanguage].TOTAL_MESSAGE}: ${formattedAmount(rates?.total?.value) 
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
         ];
 
-        await sendButtons(chatId, "Please upload up to 4 images.", buttons, "intl_transfer_w2w_attch_images_1");
+        await sendButtons(chatId, lang[selectedLanguage].UPLOAD_IMAGES, buttons, "intl_transfer_w2w_attch_images_1");
     }
 
     // bot is expecting images when last message is "intl_transfer_w2w_attch_images_1"
     else if (chat?.last_message === "intl_transfer_w2w_attch_images_1" && image_payloads.length > 0) {
 
         if (image_payloads.length > 4) {
-            await sendMessage(chatId, "You can only attach up to 4 images.");
+            await sendMessage(chatId, lang[selectedLanguage].IMG_LIMIT);
             return;
         }
 
@@ -435,14 +435,14 @@ ${lang[selectedLanguage].TOTAL_MESSAGE}: ${formattedAmount(rates?.total?.value) 
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
         ];
 
-        await sendButtons(chatId, "Please upload a video.", buttons, "intl_transfer_w2w_attch_videos_1");
+        await sendButtons(chatId, lang[selectedLanguage].UPLOAD_VIDEO, buttons, "intl_transfer_w2w_attch_videos_1");
     }
 
     // bot is expecting a video when last message is "intl_transfer_w2w_attch_videos_1"
     else if (chat?.last_message === "intl_transfer_w2w_attch_videos_1" && video_payloads.length > 0) {
 
         if (video_payloads.length > 1) {
-            await sendMessage(chatId, "You can only attach up to 1 video.");
+            await sendMessage(chatId, lang[selectedLanguage].VIDEO_LIMIT);
             return;
         }
 
@@ -468,7 +468,7 @@ ${lang[selectedLanguage].TOTAL_MESSAGE}: ${formattedAmount(rates?.total?.value) 
     }
 
     else if (payload === "intl_transfer_w2w_attch_both_1" && chat?.last_message === "intl_transfer_w2w_attachments") {
-        const message = "Alright! You can first upload images and then videos. Let’s start with the images. You can upload up to 4 images."
+        const message = lang[selectedLanguage].MAX_FILES
 
         const buttons = [
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
@@ -481,7 +481,7 @@ ${lang[selectedLanguage].TOTAL_MESSAGE}: ${formattedAmount(rates?.total?.value) 
     else if (chat?.last_message === "intl_transfer_w2w_images_both_1" && image_payloads.length > 0) {
 
         if (image_payloads.length > 4) {
-            await sendMessage(chatId, "You can only attach up to 4 images.");
+            await sendMessage(chatId, lang[selectedLanguage].IMG_LIMIT);
             return;
         }
         const uploadedImageUrls = await processImageUploads(image_payloads);
@@ -496,7 +496,7 @@ ${lang[selectedLanguage].TOTAL_MESSAGE}: ${formattedAmount(rates?.total?.value) 
 
         await chat.save();
 
-        const message = "Got it! Now, please upload up to 1 video."
+        const message = lang[selectedLanguage].GOT_IT_MESSAGE;
 
         const buttons = [
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
@@ -509,7 +509,7 @@ ${lang[selectedLanguage].TOTAL_MESSAGE}: ${formattedAmount(rates?.total?.value) 
     else if (chat?.last_message === "intl_transfer_w2w_video_both_1" && video_payloads.length > 0) {
 
         if (video_payloads.length > 1) {
-            await sendMessage(chatId, "You can only attach up to 1 video.");
+            await sendMessage(chatId, lang[selectedLanguage].VIDEO_LIMIT);
             return;
         }
 
@@ -638,7 +638,7 @@ ${lang[selectedLanguage].TOTAL_MESSAGE}: ${formattedAmount(rates?.total?.value) 
             ];
             await sendButtons(chatId, message, buttons);
         } else if (quotationDetails?.message === "Differences in exchange rates") {
-            const message = `There has been exchange rate differences. Please try again.`;
+            const message = lang[selectedLanguage].EXCHANGE_ERROR;
             const buttons = [
                 [{ text: lang[selectedLanguage].SEND_ANOTHER, callback_data: "intl_transfer" }],
                 [{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }]
@@ -819,7 +819,7 @@ ${lang[selectedLanguage].STATUS}: ${lang[selectedLanguage].PROCESSING}
 
                 const buttons = [
                     [{ text: lang[selectedLanguage].MAIN_MENU_MESSAGE, callback_data: "main_menu" }],
-                    [{ text: "Track Status", callback_data: "my_transactions" }]
+                    [{ text: lang[selectedLanguage].TRACK_STATUS, callback_data: "my_transactions" }]
                 ];
 
                 await sendPhoto(

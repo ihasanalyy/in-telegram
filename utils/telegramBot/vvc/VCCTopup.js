@@ -17,7 +17,7 @@ async function VCCTopup(chatId, payload, chat, text, selectedLanguage) {
         const vccs = await VirtualCardModel.find({ account: chat.account._id })
         console.log({ vccs })
         if (vccs.length === 0) {
-            await sendButtons(chatId, 'You do not have any active Cards', [[{ text: 'Main Menu', callback_data: 'main_menu' }]], '4');
+            await sendButtons(chatId, lang[selectedLanguage].INACTIVE_CARDS, [[{ text: 'Main Menu', callback_data: 'main_menu' }]], '4');
         } else {
 
             // if single card, proceed the user to next step
@@ -25,12 +25,12 @@ async function VCCTopup(chatId, payload, chat, text, selectedLanguage) {
                 chat.vcc.card === vccs[0]._id
                 await chat.save()
 
-                await sendButtons(chatId, "Enter the amount you want to topup in your card", [{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }], "vcc_add_funds_ip_amount");
+                await sendButtons(chatId, lang[selectedLanguage].TOPUP_AMOUNT, [{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }], "vcc_add_funds_ip_amount");
 
             } else {
-                const message = "💳 Please select the card to which you would like to add funds 👇"
+                const message = lang[selectedLanguage].SELECT_CARD_TO_TOPUP;
                 const buttons = vccs.map((vvc) => [{ text: `${vvc.last4}`, callback_data: `vcc_add_funds_w-${vvc._id}` }])
-                buttons.push([{ text: `Back`, callback_data: "vcc_menu" }]);
+                buttons.push([{ text: lang[selectedLanguage].BACK, callback_data: "vcc_menu" }]);
 
                 await sendButtons(chatId, message, buttons, "vcc_add_funds_w");
             }
@@ -43,12 +43,12 @@ async function VCCTopup(chatId, payload, chat, text, selectedLanguage) {
         chat.vcc.card = card_id
         await chat.save()
 
-        await sendButtons(chatId, "Enter the amount in USD you want to topup in your card. Example: 150", [[{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }]], "vcc_add_funds_ip_amount");
+        await sendButtons(chatId, lang[selectedLanguage].USD_TOPUP, [[{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }]], "vcc_add_funds_ip_amount");
     }
 
     // // user has asked to adjust the amount
     else if (payload?.includes("vcc_add_funds_adjust") && chat?.last_message === "vcc_add_funds_ip_confirm") {
-        await sendButtons(chatId, "Enter the amount in USD you want to topup in your card. Example: 150", [[{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }]], "vcc_add_funds_ip_adjust_amount");
+        await sendButtons(chatId, lang[selectedLanguage].USD_TOPUP, [[{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }]], "vcc_add_funds_ip_adjust_amount");
     }
 
     // user has entered the amount
@@ -194,15 +194,16 @@ async function VCCTopup(chatId, payload, chat, text, selectedLanguage) {
         }
 
         if (!fee) {
-            return await sendMessage(chatId, "Something went wrong. Please try again. If the problem persists, contact our support team.");
+            return await sendMessage(chatId, lang[selectedLanguage].SOMETHING_WENT_WRONG);
         }
 
         // Check if the entered amount is lower than the top-up fee
         const minRequiredAmount = fee + fee * 0.1; // Top-up fee + 10%
+        const minimumAmount = formattedAmount(minRequiredAmount);
         if (chat.vcc.amount < minRequiredAmount) {
             return await sendMessage(
                 chatId,
-                `The amount entered is too low. The minimum amount required for a top-up is ${formattedAmount(minRequiredAmount)} ${cardDetails.currency}. Please enter a higher amount.`,
+                lang[selectedLanguage].MIN_AMOUNT_LOW.replace("{{minimumAmount}}", minimumAmount).replace("{{currency}}", cardDetails.currency), //Hassan,
                 "vcc_add_funds_ip_min_amount"
             );
         }
@@ -217,11 +218,11 @@ async function VCCTopup(chatId, payload, chat, text, selectedLanguage) {
         // Balance check
         if (totalAmount > walletDetails.balance.available) {
             const buttons = [
-                [{ text: "My MasterCard", callback_data: "vcc_menu" }],
+                [{ text: lang[selectedLanguage].MY_MASTERCARD, callback_data: "vcc_menu" }],
             ];
             return await sendButtons(
                 chatId,
-                `Insufficient balance! Your available balance is ${formattedAmount(walletDetails.balance.available)} ${walletDetails.currency.code} but required amount is ${formattedAmount(totalAmount)} ${walletDetails.currency.code}`,
+                lang[selectedLanguage].INSUFFICIENT_BALANCE_AMOUNT_MESSAGE.replace("{{amount}}", formattedAmount(walletDetails.balance.available)).replace("{{currency}}", walletDetails.currency.code).replace("{{totalAmount}}", formattedAmount(totalAmount)).replace("{{currency}}", walletDetails.currency.code),
                 buttons
             );
         }
@@ -253,7 +254,7 @@ ${lang[selectedLanguage].TOTAL_AMOUNT}: ${formattedAmount(totalAmount)} ${wallet
         const buttons = [
             [{ text: lang[selectedLanguage].PROCEED_TITLE, callback_data: "vcc_add_funds_ip_confirm" }],
             [{ text: lang[selectedLanguage].ADJUST_AMOUNT_TITLE, callback_data: "vcc_add_funds_adjust" }],
-            [{ text: "My MasterCard", callback_data: "vcc_menu" }],
+            [{ text: lang[selectedLanguage].MY_MASTERCARD, callback_data: "vcc_menu" }],
         ];
 
         await sendButtons(chatId, message, buttons, "vcc_add_funds_ip_confirm");
@@ -290,15 +291,16 @@ ${lang[selectedLanguage].TOTAL_AMOUNT}: ${formattedAmount(totalAmount)} ${wallet
         }
 
         if (!fee) {
-            return await sendMessage(chatId, "Something went wrong. Please try again. If the problem persists, contact our support team.");
+            return await sendMessage(chatId, lang[selectedLanguage].SOMETHING_WENT_WRONG);
         }
 
         // Check if the entered amount is lower than the top-up fee
         const minRequiredAmount = fee + fee * 0.1; // Top-up fee + 10%
+        const minimumAmount = formattedAmount(minRequiredAmount);
         if (amount < minRequiredAmount) {
             return await sendMessage(
                 chatId,
-                `The amount entered is too low. The minimum amount required for a top-up is ${formattedAmount(minRequiredAmount)} ${cardDetails.currency}. Please enter a higher amount.`
+                lang[selectedLanguage].MIN_AMOUNT_LOW.replace("{{minimumAmount}}", minimumAmount).replace("{{currency}}", cardDetails.currency) //Hassan
             );
         }
 
@@ -309,11 +311,11 @@ ${lang[selectedLanguage].TOTAL_AMOUNT}: ${formattedAmount(totalAmount)} ${wallet
         // balance check
         if (totalAmount > walletDetails.balance.available) {
             const buttons = [
-                [{ text: "My MasterCard", callback_data: "vcc_menu" }],
+                [{ text: lang[selectedLanguage].MY_MASTERCARD, callback_data: "vcc_menu" }],
             ]
             return await sendButtons(
                 chatId,
-                `Insufficient balance! Your available balance is ${formattedAmount(walletDetails.balance.available)} ${walletDetails.currency.code} but required amount is ${formattedAmount(totalAmount)} ${walletDetails.currency.code}`,
+                lang[selectedLanguage].INSUFFICIENT_BALANCE_AMOUNT_MESSAGE.replace("{{amount}}", formattedAmount(walletDetails.balance.available)).replace("{{currency}}", walletDetails.currency.code).replace("{{totalAmount}}", formattedAmount(totalAmount)).replace("{{currency}}", walletDetails.currency.code),
                 buttons);
         }
 
@@ -347,7 +349,7 @@ ${lang[selectedLanguage].TOTAL_AMOUNT}: ${formattedAmount(totalAmount)} ${wallet
         const buttons = [
             [{ text: lang[selectedLanguage].PROCEED_TITLE, callback_data: "vcc_add_funds_ip_confirm" }],
             [{ text: lang[selectedLanguage].ADJUST_AMOUNT_TITLE, callback_data: "vcc_add_funds_adjust" }],
-            [{ text: "My MasterCard", callback_data: "vcc_menu" }],
+            [{ text: lang[selectedLanguage].MY_MASTERCARD, callback_data: "vcc_menu" }],
         ];
 
         await sendButtons(chatId, ratesMessage, buttons, "vcc_add_funds_ip_confirm");
@@ -370,16 +372,17 @@ ${lang[selectedLanguage].TOTAL_AMOUNT}: ${formattedAmount(totalAmount)} ${wallet
             console.log({ transaction })
 
             if (transaction.status) {
-                const message = `Your topup of ${formattedAmount(chat.vcc.amount)} USD was successful.`
+                // const message = `Your topup of ${formattedAmount(chat.vcc.amount)} USD was successful.`
+                const message = lang[selectedLanguage].TOPUP_SUCCESS.replace("{{amount}}", formattedAmount(chat.vcc.amount)); //Hasssan
 
                 await sendPhoto(chatId, "https://nodejs-checking-bucket.s3.amazonaws.com/telegram_bot_images/Success.png", message, "4");
                 const buttons = [
                     [{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }],
-                    [{ text: "My MasterCard", callback_data: "vcc_menu" }],
+                    [{ text: lang[selectedLanguage].MY_MASTERCARD, callback_data: "vcc_menu" }],
                 ];
                 await sendButtons(chatId, `${lang[selectedLanguage].TRANSACTION_ID} ${transaction.data.transactionId}`, buttons, "4");
             } else {
-                await sendMessage(chatId, "Something went wrong. Please try again. If the problem persists, contact our support team.", "4");
+                await sendMessage(chatId, lang[selectedLanguage].SOMETHING_WENT_WRONG, "4");
             }
         } else {
             if (otpValidationResult.message === "max_attempts_exceeded") {

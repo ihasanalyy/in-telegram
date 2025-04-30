@@ -142,7 +142,7 @@ ${lang[selectedLanguage].COUNTRY_LABEL}: ${user?.country_name}
         chat.quotation.currency = walletId;
         await chat.save();
 
-        await sendMessage(chatId, "Please enter the amount of your quote.\nExample: 100", "quotation_amount");
+        await sendMessage(chatId, lang[selectedLanguage].ENTER_QUOTE_AMOUNT, "quotation_amount");
     }
     // User has entered amount
     else if (chat.last_message === "quotation_amount" && text) {
@@ -163,10 +163,11 @@ ${lang[selectedLanguage].COUNTRY_LABEL}: ${user?.country_name}
             let buttons = [[{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }]];
 
             if (chat.account.level.level_no === 1) {
-                buttons.push([{ text: "Identity Verification", callback_data: "kyc_verification" }]);
+                buttons.push([{ text: lang[selectedLanguage].IDENTITY_VERIFICATION, callback_data: "kyc_verification" }]);
                 await sendButtons(
                     chatId,
-                    `Completing this transaction will exceed your balance limit. Your remaining balance is ${formattedAmount(receiverBalanceCheck?.remainingBalance)} ${receivingWallet?.currency.code}. Please enter an amount within your balance limit or complete KYC verification to increase your balance limit.`,
+                    lang[selectedLanguage].BALANCE_LIMIT.replace("{{amount}}", formattedAmount(receiverBalanceCheck?.remainingBalance)).replace("{{currency}}", receivingWallet?.currency.code), // Hassan 
+                    // `Completing this transaction will exceed your balance limit. Your remaining balance is ${formattedAmount(receiverBalanceCheck?.remainingBalance)} ${receivingWallet?.currency.code}. Please enter an amount within your balance limit or complete KYC verification to increase your balance limit.`,
                     buttons
                 );
             } else {
@@ -179,14 +180,14 @@ ${lang[selectedLanguage].COUNTRY_LABEL}: ${user?.country_name}
             return;
         } else if (!receiverBalanceCheck?.status) {
             let buttons = [[{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }]];
-            await sendButtons(chatId, `Something went wrong while checking your balance limit. Please try again.`, buttons);
+            await sendButtons(chatId, lang[selectedLanguage].BALANCE_CHECK_ERROR, buttons);
             return;
         }
 
         chat.quotation.amount = amount;
         await chat.save();
 
-        await sendMessage(chatId, "Add a title for your quote", "quotation_title");
+        await sendMessage(chatId, lang[selectedLanguage].QUOTE_TITLE, "quotation_title");
     }
 
     // User has entered a title
@@ -224,13 +225,13 @@ ${lang[selectedLanguage].COUNTRY_LABEL}: ${user?.country_name}
     else if (payload === "quotation_add_attch" && chat?.last_message === "quotation_note_added") {
         const buttons = [
             [{ text: lang[selectedLanguage].SKIP, callback_data: "quotation_no_attch" }],
-            [{ text: "Images", callback_data: "quotation_attch_images" }],
-            [{ text: "Video", callback_data: "quotation_attch_videos" }],
-            [{ text: "Both", callback_data: "quotation_attch_both" }],
+            [{ text: lang[selectedLanguage].IMAGES_OPTIONS, callback_data: "quotation_attch_images" }],
+            [{ text: lang[selectedLanguage].VIDEOS_OPTIONS, callback_data: "quotation_attch_videos" }],
+            [{ text: lang[selectedLanguage].BOTH_OPTIONS, callback_data: "quotation_attch_both" }],
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }],
         ];
 
-        await sendButtons(chatId, "What do you want to attach? You can only attach up to 4 images and 1 video, totaling 5 files. ", buttons, "quotation_attachments");
+        await sendButtons(chatId, lang[selectedLanguage].ATTACH_MESSAGE, buttons, "quotation_attachments");
     }
 
     // user has not proceeded with adding an attachement
@@ -251,14 +252,14 @@ ${lang[selectedLanguage].COUNTRY_LABEL}: ${user?.country_name}
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
         ];
 
-        await sendButtons(chatId, "Please upload up to 4 images.", buttons, "quotation_images");
+        await sendButtons(chatId, lang[selectedLanguage].UPLOAD_IMAGES, buttons, "quotation_images");
     }
 
     // bot is expecting images when last message is "quotation_images"
     else if (chat?.last_message === "quotation_images" && image_payloads.length > 0) {
 
         if (image_payloads.length > 4) {
-            await sendMessage(chatId, "You can only attach up to 4 images.");
+            await sendMessage(chatId, lang[selectedLanguage].IMG_LIMIT);
             return;
         }
         const uploadedImageUrls = await processImageUploads(image_payloads);
@@ -288,14 +289,14 @@ ${lang[selectedLanguage].COUNTRY_LABEL}: ${user?.country_name}
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
         ];
 
-        await sendButtons(chatId, "Please upload a video.", buttons, "quotation_video");
+        await sendButtons(chatId, lang[selectedLanguage].UPLOAD_VIDEO, buttons, "quotation_video");
     }
 
     // bot is expecting a video when last message is "quotation_video"
     else if (chat?.last_message === "quotation_video" && video_payloads.length > 0) {
 
         if (video_payloads.length > 1) {
-            await sendMessage(chatId, "You can only attach up to 1 video.");
+            await sendMessage(chatId, lang[selectedLanguage].VIDEO_LIMIT);
             return;
         }
 
@@ -320,7 +321,7 @@ ${lang[selectedLanguage].COUNTRY_LABEL}: ${user?.country_name}
     }
 
     else if (payload === "quotation_attch_both" && chat?.last_message === "quotation_attachments") {
-        const message = "Alright! You can first upload images and then videos. Let’s start with the images. You can upload up to 4 images."
+        const message = lang[selectedLanguage].MAX_FILES
 
         const buttons = [
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
@@ -333,7 +334,7 @@ ${lang[selectedLanguage].COUNTRY_LABEL}: ${user?.country_name}
     else if (chat?.last_message === "quotation_images_both" && image_payloads.length > 0) {
 
         if (image_payloads.length > 4) {
-            await sendMessage(chatId, "You can only attach up to 4 images.");
+            await sendMessage(chatId, lang[selectedLanguage].IMG_LIMIT);
             return;
         }
         const uploadedImageUrls = await processImageUploads(image_payloads);
@@ -349,7 +350,7 @@ ${lang[selectedLanguage].COUNTRY_LABEL}: ${user?.country_name}
 
         await chat.save();
 
-        const message = "Got it! Now, please upload up to 1 video."
+        const message = lang[selectedLanguage].GOT_IT_MESSAGE;
 
         const buttons = [
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
@@ -362,7 +363,7 @@ ${lang[selectedLanguage].COUNTRY_LABEL}: ${user?.country_name}
     else if (chat?.last_message === "quotation_video_both" && video_payloads.length > 0) {
 
         if (video_payloads.length > 1) {
-            await sendMessage(chatId, "You can only attach up to 1 video.");
+            await sendMessage(chatId, lang[selectedLanguage].VIDEO_LIMIT);
             return;
         }
 
@@ -390,13 +391,13 @@ ${lang[selectedLanguage].COUNTRY_LABEL}: ${user?.country_name}
     else if (payload === "quotation_document" && chat?.last_message === "quotation_attch") {
         const buttons = [
             [{ text: lang[selectedLanguage].SKIP, callback_data: "quotation_no_attch" }],
-            [{ text: "Images", callback_data: "quotation_attch_images_1" }],
-            [{ text: "Video", callback_data: "quotation_attch_videos_1" }],
-            [{ text: "Both", callback_data: "quotation_attch_both_1" }],
+            [{ text: lang[selectedLanguage].IMAGES_OPTIONS, callback_data: "quotation_attch_images_1" }],
+            [{ text: lang[selectedLanguage].VIDEOS_OPTIONS, callback_data: "quotation_attch_videos_1" }],
+            [{ text: lang[selectedLanguage].BOTH_OPTIONS, callback_data: "quotation_attch_both_1" }],
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }],
         ];
 
-        await sendButtons(chatId, "What do you want to attach? You can only attach up to 4 images and 1 video, totaling 5 files. ", buttons, "quotation_attachments");
+        await sendButtons(chatId, lang[selectedLanguage].ATTACH_MESSAGE, buttons, "quotation_attachments");
     }
 
     // user has asked to upload the images
@@ -405,14 +406,14 @@ ${lang[selectedLanguage].COUNTRY_LABEL}: ${user?.country_name}
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
         ];
 
-        await sendButtons(chatId, "Please upload up to 4 images.", buttons, "quotation_attch_images_1");
+        await sendButtons(chatId, lang[selectedLanguage].UPLOAD_IMAGES, buttons, "quotation_attch_images_1");
     }
 
     // bot is expecting images when last message is "quotation_attch_images_1"
     else if (chat?.last_message === "quotation_attch_images_1" && image_payloads.length > 0) {
 
         if (image_payloads.length > 4) {
-            await sendMessage(chatId, "You can only attach up to 4 images.");
+            await sendMessage(chatId, lang[selectedLanguage].IMG_LIMIT);
             return;
         }
 
@@ -437,14 +438,14 @@ ${lang[selectedLanguage].COUNTRY_LABEL}: ${user?.country_name}
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
         ];
 
-        await sendButtons(chatId, "Please upload a video.", buttons, "quotation_attch_videos_1");
+        await sendButtons(chatId, lang[selectedLanguage].UPLOAD_VIDEO, buttons, "quotation_attch_videos_1");
     }
 
     // bot is expecting a video when last message is "quotation_attch_videos_1"
     else if (chat?.last_message === "quotation_attch_videos_1" && video_payloads.length > 0) {
 
         if (video_payloads.length > 1) {
-            await sendMessage(chatId, "You can only attach up to 1 video.");
+            await sendMessage(chatId, lang[selectedLanguage].VIDEO_LIMIT);
             return;
         }
 
@@ -477,7 +478,7 @@ ${lang[selectedLanguage].COUNTRY_LABEL}: ${user?.country_name}
     }
 
     else if (payload === "quotation_attch_both_1" && chat?.last_message === "quotation_attachments") {
-        const message = "Alright! You can first upload images and then videos. Let’s start with the images. You can upload up to 4 images."
+        const message = lang[selectedLanguage].MAX_FILES
 
         const buttons = [
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
@@ -490,7 +491,7 @@ ${lang[selectedLanguage].COUNTRY_LABEL}: ${user?.country_name}
     else if (chat?.last_message === "quotation_images_both_1" && image_payloads.length > 0) {
 
         if (image_payloads.length > 4) {
-            await sendMessage(chatId, "You can only attach up to 4 images.");
+            await sendMessage(chatId, lang[selectedLanguage].IMG_LIMIT);
             return;
         }
         const uploadedImageUrls = await processImageUploads(image_payloads);
@@ -505,7 +506,7 @@ ${lang[selectedLanguage].COUNTRY_LABEL}: ${user?.country_name}
 
         await chat.save();
 
-        const message = "Got it! Now, please upload up to 1 video."
+        const message = lang[selectedLanguage].GOT_IT_MESSAGE;
 
         const buttons = [
             [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }]
@@ -518,7 +519,7 @@ ${lang[selectedLanguage].COUNTRY_LABEL}: ${user?.country_name}
     else if (chat?.last_message === "quotation_video_both_1" && video_payloads.length > 0) {
 
         if (video_payloads.length > 1) {
-            await sendMessage(chatId, "You can only attach up to 1 video.");
+            await sendMessage(chatId, lang[selectedLanguage].VIDEO_LIMIT);
             return;
         }
 
@@ -567,7 +568,7 @@ ${lang[selectedLanguage].PROCEED} `;
             [{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }]
         ];
 
-        await sendButtons(chatId, "Your quotation has been cancelled as per your request.", buttons, "4");
+        await sendButtons(chatId, lang[selectedLanguage].QUOTE_CANCELLED, buttons, "4");
     }
 
     else if (payload === "quotation_send_continue" && chat?.last_message === "quotation_send_continue") {
@@ -601,8 +602,8 @@ ${lang[selectedLanguage].PROCEED} `;
 
                 const senderTimezone = chat.account?.timezone || "UTC";
                 const senderCurrentTime = moment().tz(senderTimezone).format();
-
-                const message = `Your quote has been sent! Quotation ID: ${quotationDetails?.reference_id}`;
+                const quotation = quotationDetails?.reference_id;
+                const message = lang[selectedLanguage].QUOTE_SENT.replace("{{id}}", quotation);
                 await sendPhoto(chatId, "https://nodejs-checking-bucket.s3.amazonaws.com/telegram_bot_images/Success.png", message)
                 const quotationInfo = `${lang[selectedLanguage].AMOUNT}: ${formattedAmount(quotationDetails?.amount?.toFixed(2))} ${walletDetails?.currency?.code}\n${lang[selectedLanguage].BENEFICIARY}: ${quotationReceiver?.user?.first_name} ${quotationReceiver?.user?.last_name}\nDate sent: ${formatDateToDDMMYYYY(senderCurrentTime)}\n${lang[selectedLanguage].TITLE}: ${quotationDetails?.title}`;
 
@@ -620,13 +621,14 @@ ${lang[selectedLanguage].PROCEED} `;
                     ];
 
                     if (quotationDetails?.bargain) {
-                        buttons.push([{ text: "Negotiate", callback_data: `quotation_bargain-${quotationDetails?._id}` }]);
+                        buttons.push([{ text: lang[selectedLanguage].NEGOTIATE, callback_data: `quotation_bargain-${quotationDetails?._id}` }]);
                     }
 
-                    await sendButtons(quotationReceiver?.telegram_id, `You've received a new quote from ${chat.account?.username}\n${lang[receiverLang].COUNTRY_LABEL}: ${getCountryNameByCode(chat.account?.user_nationaility)}\n${lang[receiverLang].AMOUNT}: ${formattedAmount(quotationDetails?.amount?.toFixed(2))} ${walletDetails?.currency?.code}`, buttons);
+                    // await sendButtons(quotationReceiver?.telegram_id, `You've received a new quote from ${chat.account?.username}\n${lang[receiverLang].COUNTRY_LABEL}: ${getCountryNameByCode(chat.account?.user_nationaility)}\n${lang[receiverLang].AMOUNT}: ${formattedAmount(quotationDetails?.amount?.toFixed(2))} ${walletDetails?.currency?.code}`, buttons);
+                    await sendButtons(quotationReceiver?.telegram_id,lang[selectedLanguage].NEW_QUOTE_RECEIVED.replace("{{username}}", chat.account?.username).replace("{{country}}", getCountryNameByCode(chat.account?.user_nationaility)).replace("{{amount}}", formattedAmount(quotationDetails?.amount?.toFixed(2))).replace("{{currency}}", walletDetails?.currency?.code), buttons);
 
-                    await sendButtons(quotationReceiver?.telegram_id, "Click below to view details", [
-                        [{ text: "View details", callback_data: `quotation_details-${quotationDetails._id}` }],
+                    await sendButtons(quotationReceiver?.telegram_id, lang[selectedLanguage].VIEW_QUOTE, [
+                        [{ text: lang[selectedLanguage].VIEW_DETAILS, callback_data: `quotation_details-${quotationDetails._id}` }],
                         [{ text: lang[receiverLang].MAIN_MENU, callback_data: "main_menu" }]
                     ], "4");
                 }
@@ -661,8 +663,9 @@ ${lang[selectedLanguage].PROCEED} `;
         } else {
             chat.quotation.accepting_quotation = quotationId;
             await chat.save();
+            const counterOffer = quotation?.amount_reciever_currency?.currency?.code;
 
-            const message = `Enter your counter offer in ${quotation?.amount_reciever_currency?.currency.code}, and we'll send it back for approval.`;
+            const message = lang[selectedLanguage].COUNTER_OFFER.replace("{{currency}}", counterOffer);
             await sendMessage(chatId, message, "quotation_bargain_amount");
         }
     }
@@ -705,11 +708,11 @@ ${lang[selectedLanguage].BARGAINING_AMOUNT}: ${formattedAmount(quotation?.revise
 ${lang[selectedLanguage].TITLE}: ${quotation?.title}
 ${lang[selectedLanguage].STATUS}: Negotiation in Progress
     `;
+                const currencyCode = currencyDetails?.currency.code; // New variable for currency code
+                const userName = quotationSender?.username; // New variable for username
 
                 // Accepting message
-                const message = `
-You have successfully submitted a counteroffer in ${currencyDetails?.currency.code} for the quote sent by ${quotationSender?.username}.
-${quotationInfo}`;
+                const message = lang[selectedLanguage].COUNTER_OFFER_SUBMITTED.replace("{{currencycode}}", currencyCode).replace("{{username}}", userName).replace("{{quotationInfo}}", quotationInfo); //Hassan
 
                 const buttons = [
                     [{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }]
@@ -717,10 +720,11 @@ ${quotationInfo}`;
                 await sendButtons(chatId, message, buttons);
 
                 // Receiver message
-                const receiverMessage = `${chat.account?.username} has proposed a new amount. Review and respond.\n${quotationInfo}`;
+                const chatAccountUsername = chat.account?.username; // New variable for chat account username
+                const receiverMessage = lang[selectedLanguage].NEW_AMOUNT_PROPOSED.replace("{{username}}", chatAccountUsername).replace("{{quotationInfo}}", quotationInfo); //Hassan
                 const receiverButtons = [
-                    [{ text: "Accept New Amount", callback_data: `quotation_new_amount_accept-${quotation?._id}` }],
-                    [{ text: "Re-negotiate", callback_data: `quotation_revise_quot-${quotation?._id}` }],
+                    [{ text: lang[selectedLanguage].ACCEPT_NEW_AMOUNT, callback_data: `quotation_new_amount_accept-${quotation?._id}` }],
+                    [{ text: lang[selectedLanguage].RE_NEGOTIATE, callback_data: `quotation_revise_quot-${quotation?._id}` }],
                     [{ text: lang[selectedLanguage].DECLINE, callback_data: `quotation_decline_sender-${quotation?._id}` }]
                 ];
                 await sendButtons(quotationSender?.telegram_id, receiverMessage, receiverButtons);
@@ -921,10 +925,11 @@ ${quotationInfo}`;
 ${lang[selectedLanguage].AMOUNT}: ${formattedAmount(quotation?.revised_amount?.toFixed(2))} ${currencyDetails?.currency.code}
 ${lang[selectedLanguage].TITLE}: ${quotation?.title}
                 `;
+                const userName = quotationReceiver?.username; // New variable for username
 
-                const message = `You've declined the quote sent to ${quotationReceiver?.username}. No payment will be processed.`;
+                const message = lang[selectedLanguage].QUOTE_DECLINED.replace("{{username}}", userName); //Hassan
                 const buttons = [
-                    [{ text: "Send New Quote", callback_data: "quotation" }],
+                    [{ text: lang[selectedLanguage].SEND_NEW_QUOTE, callback_data: "quotation" }],
                     [{ text: lang[selectedLanguage].MAIN_MENU_MESSAGE, callback_data: "main_menu" }]
                 ];
 
@@ -933,9 +938,10 @@ ${lang[selectedLanguage].TITLE}: ${quotation?.title}
                 // Notify receiver
                 if (quotationReceiver?.telegram_id && quotationReceiver?.telegram_bot) {
 
-                    const receiverMessage = `A quote sent to you by ${quotationSender?.username} has been declined.`;
+                    const userName = quotationSender?.username; // New variable for username
+                    const receiverMessage = lang[selectedLanguage].QUOTE_SENT_DECLINED.replace("{{username}}", userName) //Hassan
                     const receiverButtons = [
-                        [{ text: "Quote Details", callback_data: `quotation_details-${quotationId}` }],
+                        [{ text: lang[selectedLanguage].QUOTE_DETAILS, callback_data: `quotation_details-${quotationId}` }],
                         [{ text: lang[selectedLanguage].MAIN_MENU_MESSAGE, callback_data: "main_menu" }]
                     ];
 
@@ -971,18 +977,20 @@ ${lang[selectedLanguage].TITLE}: ${quotation?.title}
                 const quotationSender = await Account.findById(quotationDetails?.sender);
                 const currencyDetails = await Wallet.findById(quotationDetails?.amount_reciever_currency);
                 const quotationInfo = `\nQuotation ID: ${quotationDetails.reference_id}\n${lang[selectedLanguage].AMOUNT}: ${quotationDetails?.revised_amount ? formattedAmount(quotationDetails?.revised_amount?.toFixed(2)) : formattedAmount(quotationDetails?.amount?.toFixed(2))} ${currencyDetails?.currency.code}\n${lang[selectedLanguage].TITLE}: ${quotationDetails?.title}\n`;
+                const userName = quotationSender?.username; // New variable for username
 
                 // User who declined the quotation
-                await sendButtons(chatId, `You've declined the quote from ${quotationSender?.username}. No payment will be processed.\n${quotationInfo}`, [
+                await sendButtons(chatId, lang[selectedLanguage].QUOTE_DECLINED_SENDER.replace("{{username}}",userName).replace("{{quotationInfo}}", quotationInfo), [ //Hassan
                     [{ text: lang[selectedLanguage].MAIN_MENU_MESSAGE, callback_data: "main_menu" }]
                 ], "https://nodejs-checking-bucket.s3.amazonaws.com/telegram_bot_images/cancelled.png");
 
                 // Sender notification
                 if (quotationSender?.telegram_id && quotationSender?.telegram_bot) {
-                    const message1 = `Heads up! ${chat.account?.username} has declined your quote.`;
+                    const userName = chat.account?.username; // New variable for username
+                    const message1 = lang[selectedLanguage].QUOTE_DECLINED_HEADS_UP.replace("{{username}}", userName); //Hassan
                     await sendButtons(quotationSender.telegram_id, `${message1}\n${quotationInfo}`, [
-                        [{ text: "Send New Quote", callback_data: "quotation" }],
-                        [{ text: "Quote Details", callback_data: `quotation_details-${quotationId}` }],
+                        [{ text: lang[selectedLanguage].SEND_NEW_QUOTE, callback_data: "quotation" }],
+                        [{ text: lang[selectedLanguage].QUOTE_DETAILS, callback_data: `quotation_details-${quotationId}` }],
                         [{ text: lang[selectedLanguage].MAIN_MENU_MESSAGE, callback_data: "main_menu" }]
                     ], "https://nodejs-checking-bucket.s3.amazonaws.com/telegram_bot_images/cancelled.png");
                 }

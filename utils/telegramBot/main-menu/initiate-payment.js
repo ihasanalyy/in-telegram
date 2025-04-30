@@ -26,7 +26,7 @@ async function initiatePayment(chatId, payload, chat, text, selectedLanguage, is
             [{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }]
         ]
 
-        await sendButtons(chatId, "Please choose your preferred payment method.", buttons);
+        await sendButtons(chatId, lang[selectedLanguage].CHOOSE_PAYMENT_METHOD, buttons);
     }
 }
 

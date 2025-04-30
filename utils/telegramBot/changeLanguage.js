@@ -99,7 +99,7 @@ async function updateLanguage(chatId, language, chat) {
             [{ text: lang[language].REGISTER_BUTTON_TITLE, callback_data: "register" }],
             [{ text: lang[language].CHANGE_LANGUAGE, callback_data: "language_change" }],
         ];
-        await sendButtons(chatId, "How can we help you today? Let's get started!🚀👇", buttons);
+        await sendButtons(chatId, lang[selectedLanguage].START_HELP, buttons);
     } else {
         // await mainMenuMessage(chatId, language)
         await mainMenuKeyboardMessage(chatId, selectedLanguage, chat)

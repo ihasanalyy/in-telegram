@@ -38,12 +38,7 @@ async function premiumCardCreationUsingPaypal(chatId, payload, chat, text, selec
 
         const convertedFee = formatDecimalNumbersWithLimit(await getExchangeRatesToUSD('USD', walletDetails.currency.code, vccFee.flat_fee));
 
-        let message = `
-🔍 Please confirm the details below:  
-
-💳 Card Type: Virtual  
-🌟 Card Package: Premium  
-💰 Fee: ${formattedAmount(convertedFee)} ${walletDetails.currency.code}`;
+        let message = lang[selectedLanguage].CONFIRM_CARD_DETAILS_PREMIUM.replace("{{currency}}", walletDetails.currency.code).replace("{{amount}}", formattedAmount(convertedFee));
 
         let paypalMessage = "";
         let payload = {
@@ -93,7 +88,7 @@ ${lang[selectedLanguage].AMOUNT_IN_USD} ${formattedAmount(formatDecimalNumbersWi
         if (otpValidationResult.status) {
             jwt.verify(chat.vcc.token, process.env.jwtKey, async function (err, payload) {
                 if (err) {
-                    return await sendButtons(chatId, "Your transaction has been expired. Please try again.", [[{ text: lang[selectedLanguage].MAIN_MENU_MESSAGE, callback_data: "main_menu" }]], "4");
+                    return await sendButtons(chatId, lang[selectedLanguage].TRANSACTION_EXPIRED, [[{ text: lang[selectedLanguage].MAIN_MENU_MESSAGE, callback_data: "main_menu" }]], "4");
                 }
 
                 let serviceName;

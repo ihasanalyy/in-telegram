@@ -313,16 +313,23 @@ Please enter the amount in ${cardDetails.currency} to send. i.e 10, 50 etc`;
         const totalAmount = formatDecimalNumbersWithLimit(bot.vcc.amount + feeDetails.fee, 2);
         const recipientAmount = formatDecimalNumbersWithLimit(bot.vcc.amount * exchangeRate, 2);
 
-        const message = `✅ Please confirm the details below:
+//         const message = `✅ Please confirm the details below:
     
-Recipient Name: ${receiverCard.account.first_name} ${receiverCard.account.last_name}
-Recipient Card Number: ****${receiverCard.last4?.slice(-4)}  
-Amount to Send: ${formattedAmount(recipientAmount)} ${receiverCard.currency}
-${sendingCard.currency !== receiverCard.currency ? `Exchange Rate: 1.00 ${sendingCard.currency} = ${formattedAmount(exchangeRate)} ${receiverCard.currency}` : ""}
-Fee: ${formattedAmount(feeDetails.fee)} ${sendingCard.currency}  
-Sender Card Number: ****${sendingCard.last4?.slice(-4)}  
+// Recipient Name: ${receiverCard.account.first_name} ${receiverCard.account.last_name}
+// Recipient Card Number: ****${receiverCard.last4?.slice(-4)}  
+// Amount to Send: ${formattedAmount(recipientAmount)} ${receiverCard.currency}
+// ${sendingCard.currency !== receiverCard.currency ? `Exchange Rate: 1.00 ${sendingCard.currency} = ${formattedAmount(exchangeRate)} ${receiverCard.currency}` : ""}
+// Fee: ${formattedAmount(feeDetails.fee)} ${sendingCard.currency}  
+// Sender Card Number: ****${sendingCard.last4?.slice(-4)}  
 
-💵 Total Amount: ${formattedAmount(totalAmount)} ${sendingCard.currency}`;
+// 💵 Total Amount: ${formattedAmount(totalAmount)} ${sendingCard.currency}`;
+const message = lang[selectedLanguage].CONFIRM_DETAILS_TELEGRAM.replace("{{recipientName}}", `${receiverCard.account.first_name} ${receiverCard.account.last_name}`)
+            .replace("{{recipientCard}}", `****${receiverCard.last4?.slice(-4)}`)
+            .replace("{{amount}}", `${formattedAmount(recipientAmount)} ${receiverCard.currency}`)
+            .replace("{{exchangeRate}}", sendingCard.currency !== receiverCard.currency ? `1.00 ${sendingCard.currency} = ${formattedAmount(exchangeRate)} ${receiverCard.currency}` : "")
+            .replace("{{fee}}", `${formattedAmount(feeDetails.fee)} ${sendingCard.currency}`)
+            .replace("{{senderCard}}", `****${sendingCard.last4?.slice(-4)}`)
+            .replace("{{totalAmount}}", `${formattedAmount(totalAmount)} ${sendingCard.currency}`)
 
         const tokenPayload = {
             exchangeRate,
@@ -432,7 +439,7 @@ Sender Card Number: ****${sendingCard.last4?.slice(-4)}
                 if (transactionResult.message === "insufficient_funds") {
                     message = `❌ Transaction Failed\n\nWe're sorry, but your transaction could not be completed due to insufficient funds.`;
                 } else if (transactionResult.message?.includes("expired")) {
-                    message = `❌ Transaction Failed\n\nWe're sorry, but your transaction could not be completed due to transaction expiry.`;
+                    message = lang[selectedLanguage].TRANSACTION_FAILED_EXPIRED;
                 }
                 else {
                     message = `❌ Transaction Failed\n\nWe're sorry, but your transaction could not be completed.\n\nDetails:\n🔹 Recipient Name: ${receiverCard?.account.first_name} ${receiverCard?.account.last_name}\n🔹 Recipient Card Number: ****${receiverCard?.last4?.slice(-4)}\n🔹 Amount: ${formattedAmount(bot.vcc.amount)} ${senderCard.currency}\n🔹 Date & Time: ${formatDate(senderCurrentTime)}\n\nPlease check your payment details and try again. If the issue persists, contact our support team for assistance. 📞💬`;

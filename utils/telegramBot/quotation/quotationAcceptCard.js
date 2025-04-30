@@ -23,7 +23,7 @@ async function acceptQuotationCard(chatId, payload, chat, text, selectedLanguage
         const buttons = [
             [{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }]
         ];
-        await sendButtons(chatId, "Updates are going on. Please wait while we process your payment.", buttons, "4");
+        await sendButtons(chatId, lang[selectedLanguage].UPDATE_IN_PROGRESS, buttons, "4");
 
     }
 }

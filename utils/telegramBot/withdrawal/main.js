@@ -15,7 +15,7 @@ async function withdrawal(chatId, payload, chat, text, selectedLanguage) {
     if (payload === "withdrawal_default") {
 
         if (!chat.withdrawal.transaction_id) {
-            return await sendButtons(chatId, "No transaction selected for withdrawal", [
+            return await sendButtons(chatId, lang[selectedLanguage].NO_TRANSACTION_FOUND, [
                 [{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }]
             ]);
         }
@@ -23,7 +23,7 @@ async function withdrawal(chatId, payload, chat, text, selectedLanguage) {
         const defaultPayoutChannel = await findDefaultPayoutChannel(chat.account._id);
 
         if (!defaultPayoutChannel?.status) {
-            return await sendButtons(chatId, "Something went wrong while getting the default payout channel. Please make sure you have one.", [
+            return await sendButtons(chatId, lang[selectedLanguage].WRONG_PAYOUT_CHANNEL, [
                 [{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }]
             ]);
         }
@@ -93,7 +93,7 @@ async function withdrawal(chatId, payload, chat, text, selectedLanguage) {
             return;
         }
 
-        await sendMessage(chatId, "Creating your transaction...");
+        await sendMessage(chatId, lang[selectedLanguage].CREATING_TRANSACTION);
 
         let transactionDetails;
         const another = payload === "withdrawal_proceed_anoth_default";
@@ -155,7 +155,7 @@ async function withdrawal(chatId, payload, chat, text, selectedLanguage) {
                     [{ text: lang[selectedLanguage].ADD_FUNDS, callback_data: "add_funds" }],
                     [{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }]
                 ];
-                return await sendButtons(chatId, "Insufficient Balance! Please top up your wallet.", buttons);
+                return await sendButtons(chatId, lang[selectedLanguage].INSUFFICIENT_BALANCE_MESSAGE, buttons);
             } else {
                 await paymentErrorMessageTG(selectedLanguage, chatId);
             }
@@ -172,14 +172,14 @@ async function withdrawal(chatId, payload, chat, text, selectedLanguage) {
             console.log(confirmTransactionDetails);
 
             if (confirmTransactionDetails.status) {
-                const messageText = `You have successfully withdrawn ${formattedAmount(confirmTransactionDetails?.message?.total?.toFixed(2))} ${confirmTransactionDetails?.message?.currency_code}\n\n` +
+                const messageText = lang[selectedLanguage].SUCESSFUL_WITHDRAWAL.replace("{{totalAmount}}",formattedAmount(confirmTransactionDetails?.message?.total?.toFixed(2))).replace("{{currency}}",confirmTransactionDetails?.message?.currency_code) +
                     `${lang[selectedLanguage].TID}: ${confirmTransactionDetails?.message?.TransactionID}\n` +
                     `${lang[selectedLanguage].STATUS}: ${lang[selectedLanguage].PROCESSING}`;
 
                 const buttons = [
                     [{ text: lang[selectedLanguage].MAIN_MENU_MESSAGE, callback_data: "main_menu" }],
-                    [{ text: "Another withdrawal", callback_data: "withdrawal_another" }],
-                    [{ text: "Track Status", callback_data: "my_transactions" }]
+                    [{ text: lang[selectedLanguage].ANOTHER_WITHDRAWAL, callback_data: "withdrawal_another" }],
+                    [{ text: lang[selectedLanguage].TRACK_STATUS, callback_data: "my_transactions" }]
                 ];
 
                 await sendButtons(chatId, messageText, buttons);
@@ -223,7 +223,7 @@ async function withdrawal(chatId, payload, chat, text, selectedLanguage) {
 
         buttons.push([{ text: lang[selectedLanguage].MAIN_MENU_MESSAGE, callback_data: "main_menu" }]);
 
-        const message = "Select country:";
+        const message = lang[selectedLanguage].SELECT_COUNTRY;
         await sendButtons(chatId, message, buttons, "withdrawal_specify");
     }
 
@@ -244,47 +244,47 @@ async function withdrawal(chatId, payload, chat, text, selectedLanguage) {
         if (userWithdrawal) {
             if (allowedServices.MobileWallet.status === "true") {
                 if (userWithdrawal?.account_type?.includes("mobile")) {
-                    buttons.push([{ text: "✔️ Mobile Wallet", callback_data: `withdrawal_cash_out-mbl-${countryId}` }]);
+                    buttons.push([{ text: `✔️${lang[selectedLanguage].MOBILE_WALLET_EMOJI}`, callback_data: `withdrawal_cash_out-mbl-${countryId}` }]);
                 } else {
-                    buttons.push([{ text: "➕ Mobile Wallet", callback_data: "withdrawal_cash_out_add-mbl" }]);
+                    buttons.push([{ text: `➕${lang[selectedLanguage].MOBILE_WALLET_EMOJI}`, callback_data: "withdrawal_cash_out_add-mbl" }]);
                 }
             }
 
             if (allowedServices.BankAccount.status === "true") {
                 if (userWithdrawal?.account_type?.includes("bank")) {
-                    buttons.push([{ text: "✔️ Bank Account", callback_data: `withdrawal_cash_out-bank-${countryId}` }]);
+                    buttons.push([{ text: `✔️${lang[selectedLanguage].BANK_ACCOUNT_EMOJI}`, callback_data: `withdrawal_cash_out-bank-${countryId}` }]);
                 } else {
-                    buttons.push([{ text: "➕ Bank Account", callback_data: "withdrawal_cash_out_add-bank" }]);
+                    buttons.push([{ text: `➕${lang[selectedLanguage].BANK_ACCOUNT_EMOJI}`, callback_data: "withdrawal_cash_out_add-bank" }]);
                 }
             }
 
             if (allowedServices.PaymentCard && allowedServices.PaymentCard.status === "true") {
                 if (userWithdrawal?.account_type?.includes("card")) {
-                    buttons.push([{ text: "✔️ Payment Card", callback_data: `withdrawal_cash_out-card-${countryId}` }]);
+                    buttons.push([{ text: `✔️${lang[selectedLanguage].PAYMENT_CARD_EMOJI}`, callback_data: `withdrawal_cash_out-card-${countryId}` }]);
                 } else {
-                    buttons.push([{ text: "➕ Payment Card", callback_data: "withdrawal_cash_out_add-card" }]);
+                    buttons.push([{ text: `➕${lang[selectedLanguage].PAYMENT_CARD_EMOJI}`, callback_data: "withdrawal_cash_out_add-card" }]);
                 }
             }
 
             if (allowedServices.CashPickup.status === "true") {
                 if (userWithdrawal?.account_type?.includes("cash")) {
-                    buttons.push([{ text: "✔️ Cash", callback_data: `withdrawal_cash_out-cash-${countryId}` }]);
+                    buttons.push([{ text: `✔️${lang[selectedLanguage].CASH}`, callback_data: `withdrawal_cash_out-cash-${countryId}` }]);
                 } else {
-                    buttons.push([{ text: "➕ Cash", callback_data: "withdrawal_cash_out_add-cash" }]);
+                    buttons.push([{ text: `➕${lang[selectedLanguage].CASH}`, callback_data: "withdrawal_cash_out_add-cash" }]);
                 }
             }
         } else {
             if (allowedServices.MobileWallet.status === "true") {
-                buttons.push([{ text: "➕ Mobile Wallet", callback_data: "withdrawal_cash_out_add-mbl" }]);
+                buttons.push([{ text: `➕${lang[selectedLanguage].MOBILE_WALLET_EMOJI}`, callback_data: "withdrawal_cash_out_add-mbl" }]);
             }
             if (allowedServices.BankAccount.status === "true") {
-                buttons.push([{ text: "➕ Bank Account", callback_data: "withdrawal_cash_out_add-bank" }]);
+                buttons.push([{ text: `➕${lang[selectedLanguage].BANK_ACCOUNT_EMOJI}`, callback_data: "withdrawal_cash_out_add-bank" }]);
             }
             if (allowedServices.PaymentCard && allowedServices.PaymentCard.status === "true") {
-                buttons.push([{ text: "➕ Payment Card", callback_data: "withdrawal_cash_out_add-card" }]);
+                buttons.push([{ text: `➕${lang[selectedLanguage].PAYMENT_CARD_EMOJI}`, callback_data: "withdrawal_cash_out_add-card" }]);
             }
             if (allowedServices.CashPickup.status === "true") {
-                buttons.push([{ text: "➕ Cash", callback_data: "withdrawal_cash_out_add-cash" }]);
+                buttons.push([{ text: `➕${lang[selectedLanguage].CASH}`, callback_data: "withdrawal_cash_out_add-cash" }]);
             }
         }
 
@@ -330,7 +330,7 @@ async function withdrawal(chatId, payload, chat, text, selectedLanguage) {
                 [{ text: lang[selectedLanguage].ADD_FUNDS, callback_data: "add_funds" }],
                 [{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }],
             ];
-            return await sendButtons(chatId, "Insufficient Balance! Please top up your wallet.", buttons);
+            return await sendButtons(chatId, lang[selectedLanguage].INSUFFICIENT_BALANCE_MESSAGE, buttons);
         }
 
         let exchangedAmountSender = await getExchangeRatesToUSD(walletDetails.currency.code, 'USD', transactionDetails.amount);
@@ -426,7 +426,7 @@ Please follow the below steps to set up the withdrawal channel. 👇
                 [{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }]
             ];
 
-            return await sendButtons(chatId, "Something went wrong while getting the default payout channel. Please make sure you have one.", buttons);
+            return await sendButtons(chatId, lang[selectedLanguage].WRONG_PAYOUT_CHANNEL, buttons);
         }
 
         chat.withdrawal.default_withdrawal = defaultPayoutChannel?.withdrawalId;
@@ -484,7 +484,7 @@ Please follow the below steps to set up the withdrawal channel. 👇
 
         const defaultPayoutChannel = await findDefaultPayoutChannel(chat.account._id);
         if (!defaultPayoutChannel?.status) {
-            return await sendButtons(chatId, "Something went wrong while getting the default payout channel. Please make sure you have one.", [
+            return await sendButtons(chatId, lang[selectedLanguage].WRONG_PAYOUT_CHANNEL, [
                 { text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }
             ]);
         }
@@ -576,44 +576,44 @@ Please follow the below steps to set up the withdrawal channel. 👇
         if (userWithdrawal) {
             if (allowedServices.MobileWallet.status === "true") {
                 if (userWithdrawal?.account_type?.includes("mobile")) {
-                    buttons.push([{ text: "✔️ Mobile Wallet", callback_data: `withdrawal_cash_anoth_out-mbl-${countryId}` }]);
+                    buttons.push([{ text: `✔️${lang[selectedLanguage].MOBILE_WALLET_EMOJI}` , callback_data: `withdrawal_cash_anoth_out-mbl-${countryId}` }]);
                 } else {
-                    buttons.push([{ text: "➕ Mobile Wallet", callback_data: "withdrawal_cash_out_add-mbl" }]);
+                    buttons.push([{ text: `➕${lang[selectedLanguage].MOBILE_WALLET_EMOJI}` , callback_data: "withdrawal_cash_out_add-mbl" }]);
                 }
             }
 
             if (allowedServices.BankAccount.status === "true") {
                 if (userWithdrawal?.account_type?.includes("bank")) {
-                    buttons.push([{ text: "✔️ Bank Account", callback_data: `withdrawal_cash_anoth_out-bank-${countryId}` }]);
+                    buttons.push([{ text: `✔️${lang[selectedLanguage].BANK_ACCOUNT_EMOJI}`, callback_data: `withdrawal_cash_anoth_out-bank-${countryId}` }]);
                 } else {
-                    buttons.push([{ text: "➕ Bank Account", callback_data: "withdrawal_cash_out_add-bank" }]);
+                    buttons.push([{ text: `➕${lang[selectedLanguage].BANK_ACCOUNT_EMOJI}`, callback_data: "withdrawal_cash_out_add-bank" }]);
                 }
             }
 
             if (allowedServices.PaymentCard && allowedServices.PaymentCard.status === "true") {
                 if (userWithdrawal?.account_type?.includes("card")) {
-                    buttons.push([{ text: "✔️ Payment Card", callback_data: `withdrawal_cash_anoth_out-card-${countryId}` }]);
+                    buttons.push([{ text: `✔️${lang[selectedLanguage].PAYMENT_CARD_EMOJI}`, callback_data: `withdrawal_cash_anoth_out-card-${countryId}` }]);
                 } else {
-                    buttons.push([{ text: "➕ Payment Card", callback_data: "withdrawal_cash_out_add-card" }]);
+                    buttons.push([{ text: `➕${lang[selectedLanguage].PAYMENT_CARD_EMOJI}`, callback_data: "withdrawal_cash_out_add-card" }]);
                 }
             }
 
             if (allowedServices.CashPickup.status === "true") {
                 if (userWithdrawal?.account_type?.includes("cash")) {
-                    buttons.push([{ text: "✔️ Cash", callback_data: `withdrawal_cash_anoth_out-cash-${countryId}` }]);
+                    buttons.push([{ text: `✔️${lang[selectedLanguage].CASH}`, callback_data: `withdrawal_cash_anoth_out-cash-${countryId}` }]);
                 } else {
-                    buttons.push([{ text: "➕ Cash", callback_data: "withdrawal_cash_out_add-cash" }]);
+                    buttons.push([{ text: `➕${lang[selectedLanguage].CASH}`, callback_data: "withdrawal_cash_out_add-cash" }]);
                 }
             }
         } else {
             if (allowedServices.MobileWallet.status === "true") {
-                buttons.push([{ text: "➕ Mobile Wallet", callback_data: "withdrawal_cash_out_add-mbl" }]);
+                buttons.push([{ text: `➕${lang[selectedLanguage].MOBILE_WALLET_EMOJI}`, callback_data: "withdrawal_cash_out_add-mbl" }]);
             }
             if (allowedServices.BankAccount.status === "true") {
-                buttons.push([{ text: "➕ Bank Account", callback_data: "withdrawal_cash_out_add-bank" }]);
+                buttons.push([{ text: `➕${lang[selectedLanguage].BANK_ACCOUNT_EMOJI}`, callback_data: "withdrawal_cash_out_add-bank" }]);
             }
             if (allowedServices.PaymentCard && allowedServices.PaymentCard.status === "true") {
-                buttons.push([{ text: "➕ Payment Card", callback_data: "withdrawal_cash_out_add-card" }]);
+                buttons.push([{ text: `➕${lang[selectedLanguage].PAYMENT_CARD_EMOJI}`, callback_data: "withdrawal_cash_out_add-card" }]);
             }
             if (allowedServices.CashPickup.status === "true") {
                 buttons.push([{ text: "➕ Cash", callback_data: "withdrawal_cash_out_add-cash" }]);

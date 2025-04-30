@@ -353,7 +353,7 @@ async function mainMenuMessage(chatId, selectedLanguage, chat) {
             { text: lang[selectedLanguage].INITIATE_PAYMENT, callback_data: "initiate_payment" }
         ],
         [
-            { text: "💳 My Mastercard", callback_data: "initiate_payment" }
+            { text: lang[selectedLanguage].MY_MASTERCARD_EMOJI, callback_data: "initiate_payment" }
         ],
         [
             { text: lang[selectedLanguage].MY_TRANSACTIONS, callback_data: "my_transactions" }
@@ -434,11 +434,11 @@ async function mainMenuKeyboardMessage(chatId, selectedLanguage, chat) {
 
     const menuOptions = [
         [
-            { text: "💼 Wallet Overview" },
+            { text: lang[selectedLanguage].WALLET_OVERVIEW }, //Hassan
             { text: lang[selectedLanguage].INITIATE_PAYMENT }
         ],
         [
-            { text: "💳 My Mastercard" },
+            { text: lang[selectedLanguage].MY_MASTERCARD_EMOJI },
             { text: lang[selectedLanguage].MY_TRANSACTIONS }
         ],
         [
@@ -451,7 +451,7 @@ async function mainMenuKeyboardMessage(chatId, selectedLanguage, chat) {
         ],
         [
             { text: lang[selectedLanguage].CHAT_WITH_US },
-            { text: "🔒 Logout" }
+            { text: lang[selectedLanguage].LOGOUT }
         ]
     ];
 
@@ -496,7 +496,7 @@ async function invalidInputResponse(selectedLanguage, chat) {
         ]
     ]
 
-    await sendButtons(chat.recipient, "Invalid input. Please try again with a valid input.", buttons, lastMessage);
+    await sendButtons(chat.recipient, lang[selectedLanguage].INVALID_INPUT, buttons, lastMessage);
 
 
 }
@@ -725,9 +725,9 @@ const processVideoUploads = async (videoPayload) => {
 const sendAttachmentOptions = async (chatId, message, callbackKey, selectedLanguage) => {
     const buttons = [
         [{ text: lang[selectedLanguage].SKIP, callback_data: `${callbackKey}_no_attch` }],
-        [{ text: "Images", callback_data: `${callbackKey}_attch_images` }],
-        [{ text: "Video", callback_data: `${callbackKey}_attch_videos` }],
-        [{ text: "Both", callback_data: `${callbackKey}_attch_both` }],
+        [{ text: lang[selectedLanguage].IMAGES_OPTIONS, callback_data: `${callbackKey}_attch_images` }],
+        [{ text: lang[selectedLanguage].VIDEOS_OPTIONS, callback_data: `${callbackKey}_attch_videos` }],
+        [{ text: lang[selectedLanguage].BOTH_OPTIONS, callback_data: `${callbackKey}_attch_both` }],
         [{ text: lang[selectedLanguage].CANCEL, callback_data: "main_menu" }],
     ];
     await sendButtons(chatId, message, buttons, `${callbackKey}_attachments`);
@@ -735,7 +735,7 @@ const sendAttachmentOptions = async (chatId, message, callbackKey, selectedLangu
 
 const handleImageUploads = async (chat, image_payloads, chatId, nextStepMessage, nextStepKey) => {
     if (image_payloads.length > 4) {
-        await sendMessage(chatId, "You can only attach up to 4 images.");
+        await sendMessage(chatId, lang[selectedLanguage].IMG_LIMIT);
         return;
     }
 
@@ -758,7 +758,7 @@ const handleImageUploads = async (chat, image_payloads, chatId, nextStepMessage,
 
 const handleVideoUploads = async (chat, video_payloads, chatId) => {
     if (video_payloads.length > 1) {
-        await sendMessage(chatId, "You can only attach up to 1 video.");
+        await sendMessage(chatId, lang[selectedLanguage].VIDEO_LIMIT);
         return;
     }
 

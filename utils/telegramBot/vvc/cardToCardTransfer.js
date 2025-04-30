@@ -17,7 +17,7 @@ async function cardToCardTransfer(chatId, payload, chat, text, selectedLanguage,
         await sendPhoto(
             chatId,
             "https://nodejs-checking-bucket.s3.amazonaws.com/telegram_bot_images/Send%20Money.png",
-            "🔢 Please enter the last 4 digits of the recipient's card number or type in the username. ⬇️",
+            lang[selectedLanguage].ENTER_LAST4,
             "vcc_transfer_number"
         );
     }
@@ -102,7 +102,7 @@ ${lang[selectedLanguage].COUNTRY}: ${account?.country_name}
             // No account found
             await sendButtons(
                 chatId,
-                "No account found for this card number or username. Please try again.",
+                lang[selectedLanguage].NO_ACCOUNT_FOUND,
                 [[{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "vcc_menu" }]]
             );
         }
@@ -114,13 +114,13 @@ ${lang[selectedLanguage].COUNTRY}: ${account?.country_name}
         const receiver = await Account.findById(chat.vcc.account);
 
         if (vccs.length === 0) {
-            await sendButtons(chatId, 'No Cards found for this account.', [[{ text: 'Main Menu', callback_data: 'vcc_menu' }]], '4');
+            await sendButtons(chatId, lang[selectedLanguage].NO_CARDS_FOUND, [[{ text: 'Main Menu', callback_data: 'vcc_menu' }]], '4');
         } else {
-            let message = `💳 *${receiver?.first_name} ${receiver?.last_name} has multiple Virtual Cards.*\nPlease select the one you would like to use.`;
+            let message = lang[selectedLanguage].MULTIPLE_VIRTUAL_CARDS.replace("{{name}}", `${receiver.first_name} ${receiver.last_name}`);
             let buttons = vccs.map(card => [
                 { text: `USD ****${card.last4.slice(-4)}`, callback_data: `vcc_transfer_card-${card._id}` }
             ]);
-            buttons.push([{ text: "Back", callback_data: "vcc_transfer" }, { text: "My Mastercard", callback_data: "vcc_menu" }]);
+            buttons.push([{ text: lang[selectedLanguage].BACK, callback_data: "vcc_transfer" }, { text: lang[selectedLanguage].MY_MASTERCARD, callback_data: "vcc_menu" }]);
             await sendButtons(chatId, message, buttons, "vcc_transfer_card");
         }
     }
@@ -138,9 +138,9 @@ ${lang[selectedLanguage].COUNTRY}: ${account?.country_name}
             let buttons = vccs.map((card) => [
                 { text: `USD ****${card.last4.slice(-4)}`, callback_data: `vcc_transfer_sender_card-${card._id}` }
             ])
-            buttons.push([{ text: "Back", callback_data: "vcc_transfer" }], [{ text: "My Mastercard", callback_data: "vcc_menu" }]);
+            buttons.push([{ text: lang[selectedLanguage].BACK, callback_data: "vcc_transfer" }], [{ text: lang[selectedLanguage].MY_MASTERCARD, callback_data: "vcc_menu" }]);
 
-            await sendButtons(chatId, "Please select the card you would like to send from.", buttons, "vcc_transfer_sender_card");
+            await sendButtons(chatId, lang[selectedLanguage].SELECT_CARD, buttons, "vcc_transfer_sender_card");
         }
     }
 
@@ -153,9 +153,9 @@ ${lang[selectedLanguage].COUNTRY}: ${account?.country_name}
             let buttons = vccs.map((card) => [
                 { text: `USD ****${card.last4.slice(-4)}`, callback_data: `vcc_transfer_sender_card-${card._id}` }
             ])
-            buttons.push([{ text: "Back", callback_data: "vcc_transfer" }], [{ text: "My Mastercard", callback_data: "vcc_menu" }]);
+            buttons.push([{ text: lang[selectedLanguage].BACK, callback_data: "vcc_transfer" }], [{ text: lang[selectedLanguage].MY_MASTERCARD, callback_data: "vcc_menu" }]);
 
-            await sendButtons(chatId, "Please select the card you would like to send from.", buttons, "vcc_transfer_sender_card");
+            await sendButtons(chatId, lang[selectedLanguage].SELECT_CARD, buttons, "vcc_transfer_sender_card");
         }
     }
 
@@ -172,9 +172,9 @@ ${lang[selectedLanguage].COUNTRY}: ${account?.country_name}
 Please enter the amount in ${cardDetails.currency} to send. i.e 10, 50 etc`
 
         const buttons = [
-            [{ text: "Select another card", callback_data: "vcc_transfer_sender_card" }],
-            [{ text: "Back", callback_data: "vcc_transfer" }],
-            [{ text: "My Mastercard", callback_data: "vcc_menu" }]
+            [{ text: lang[selectedLanguage].SELECT_ANOTHER_CARD, callback_data: "vcc_transfer_sender_card" }],
+            [{ text: lang[selectedLanguage].BACK, callback_data: "vcc_transfer" }],
+            [{ text: lang[selectedLanguage].MY_MASTERCARD, callback_data: "vcc_menu" }]
         ]
 
         await sendButtons(chatId, message, buttons, "vcc_transfer_amount");
@@ -190,20 +190,20 @@ Please enter the amount in ${cardDetails.currency} to send. i.e 10, 50 etc`
 
         const senderCardDetails = await getCardDetails(chat.vcc.card); // Fetch sender's card details
         if (!senderCardDetails) {
-            await sendMessage(chatId, "⚠️ Error fetching card details. Please try again.");
+            await sendMessage(chatId, lang[selectedLanguage].ERROR_FETCHING_CARDS);
             return;
         }
 
         if (amount > senderCardDetails.balance) {
-            await sendMessage(chatId, "Insufficient balance! Please enter a valid amount.");
+            await sendMessage(chatId, lang[selectedLanguage].INSUFFICIENT_BALANCE_AMOUNT);
             return;
         }
         chat.vcc.amount = amount
         await chat.save()
 
-        const message = "Would you like to add a note? ✏️"
+        const message = lang[selectedLanguage].ADD_NOTE;
         const buttons = [
-            [{ text: "Yes", callback_data: "vcc_transfer_note" }],
+            [{ text: lang[selectedLanguage].YES_, callback_data: "vcc_transfer_note" }],
             [{ text: "No", callback_data: "vcc_transfer_proceed" }],
         ]
 
@@ -211,8 +211,8 @@ Please enter the amount in ${cardDetails.currency} to send. i.e 10, 50 etc`
     }
 
     else if (payload === "vcc_transfer_note" && chat?.last_message === "vcc_transfer_note") {
-        const message = "📝 Please type in a note for the recipient."
-        await sendButtons(chatId, message, [[{ text: "My Mastercard", callback_data: "vcc_menu" }]], "vcc_transfer_note_type");
+        const message = lang[selectedLanguage].NOTE_FOR_RECIPIENT
+        await sendButtons(chatId, message, [[{ text: lang[selectedLanguage].MY_MASTERCARD, callback_data: "vcc_menu" }]], "vcc_transfer_note_type");
     }
 
     // user has typed the note
@@ -248,16 +248,23 @@ Please enter the amount in ${cardDetails.currency} to send. i.e 10, 50 etc`
         const totalAmount = formatDecimalNumbersWithLimit(chat.vcc.amount + feeDetails.fee, 2);
         const recipientAmount = formatDecimalNumbersWithLimit(chat.vcc.amount * exchangeRate, 2);
 
-        const message = `✅ Please confirm the details below:
+//         const message = `✅ Please confirm the details below:
 
-Recipient Name: ${receiverCard.account.first_name} ${receiverCard.account.last_name}
-Recipient Card Number: *****${receiverCard.last4?.slice(-4)}  
-Amount to Send: ${formattedAmount(recipientAmount)} ${receiverCard.currency}
-${sendingCard.currency !== receiverCard.currency ? `Exchange Rate: 1.00 ${sendingCard.currency} = ${formattedAmount(exchangeRate)} ${receiverCard.currency}` : ""}
-Fee: ${formattedAmount(feeDetails.fee)} ${sendingCard.currency}  
-Sender Card Number: *****${sendingCard.last4?.slice(-4)}  
+// Recipient Name: ${receiverCard.account.first_name} ${receiverCard.account.last_name}
+// Recipient Card Number: *****${receiverCard.last4?.slice(-4)}  
+// Amount to Send: ${formattedAmount(recipientAmount)} ${receiverCard.currency}
+// ${sendingCard.currency !== receiverCard.currency ? `Exchange Rate: 1.00 ${sendingCard.currency} = ${formattedAmount(exchangeRate)} ${receiverCard.currency}` : ""}
+// Fee: ${formattedAmount(feeDetails.fee)} ${sendingCard.currency}  
+// Sender Card Number: *****${sendingCard.last4?.slice(-4)}  
 
-💵 Total Amount: ${formattedAmount(totalAmount)} ${sendingCard.currency}`;
+// 💵 Total Amount: ${formattedAmount(totalAmount)} ${sendingCard.currency}`;
+        const message = lang[selectedLanguage].CONFIRM_DETAILS_TELEGRAM.replace("{{recipientName}}", `${receiverCard.account.first_name} ${receiverCard.account.last_name}`)
+            .replace("{{recipientCard}}", `****${receiverCard.last4?.slice(-4)}`)
+            .replace("{{amount}}", `${formattedAmount(recipientAmount)} ${receiverCard.currency}`)
+            .replace("{{exchangeRate}}", sendingCard.currency !== receiverCard.currency ? `1.00 ${sendingCard.currency} = ${formattedAmount(exchangeRate)} ${receiverCard.currency}` : "")
+            .replace("{{fee}}", `${formattedAmount(feeDetails.fee)} ${sendingCard.currency}`)
+            .replace("{{senderCard}}", `****${sendingCard.last4?.slice(-4)}`)
+            .replace("{{totalAmount}}", `${formattedAmount(totalAmount)} ${sendingCard.currency}`)
 
         const tokenPayload = {
             exchangeRate,
@@ -274,8 +281,8 @@ Sender Card Number: *****${sendingCard.last4?.slice(-4)}
         await chat.save();
 
         const buttons = [
-            [{ text: "I Confirm", callback_data: "vcc_transfer_confirm" }],
-            [{ text: "My Mastercard", callback_data: "vcc_menu" }],
+            [{ text: lang[selectedLanguage].I_CONFIRM, callback_data: "vcc_transfer_confirm" }],
+            [{ text: lang[selectedLanguage].MY_MASTERCARD, callback_data: "vcc_menu" }],
             [{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }],
         ]
         await sendButtons(chatId, message, buttons, "vcc_transfer_confirm");
@@ -296,7 +303,7 @@ Sender Card Number: *****${sendingCard.last4?.slice(-4)}
                 const decoded = jwt.verify(chat.vcc.token, process.env.jwtKey);
             } catch (error) {
                 // transaction expiry message
-                return await somethingWentWrongQuickReplyTelegram(chatId, "Your transaction has been expired. Please try again.", selectedLanguage);
+                return await somethingWentWrongQuickReplyTelegram(chatId, lang[selectedLanguage].TRANSACTION_EXPIRED, selectedLanguage);
             }
 
             const transactionResult = await cardToCardTransactionHelper({
@@ -315,17 +322,23 @@ Sender Card Number: *****${sendingCard.last4?.slice(-4)}
 
             if (transactionResult.status) {
                 await sendPhoto(chatId, "https://nodejs-checking-bucket.s3.amazonaws.com/telegram_bot_images/Success.png");
-                const message = `
-                ✅ Transaction Successful! 🎉   
+//                 const message = `
+//                 ✅ Transaction Successful! 🎉   
 
-💵 ${formattedAmount(chat.vcc.amount)} ${senderCard.currency} has been successfully sent to ${receiverCard?.account.first_name} ${receiverCard?.account.last_name} on card ****${receiverCard?.last4?.slice(-4)} from your card ****${senderCard.last4?.slice(-4)}.
+// 💵 ${formattedAmount(chat.vcc.amount)} ${senderCard.currency} has been successfully sent to ${receiverCard?.account.first_name} ${receiverCard?.account.last_name} on card ****${receiverCard?.last4?.slice(-4)} from your card ****${senderCard.last4?.slice(-4)}.
 
-#️⃣ Transaction ID: ${transactionResult.data.transction_id}  
-📅 Date & Time:  ${formatDate(senderCurrentTime)}
+// #️⃣ Transaction ID: ${transactionResult.data.transction_id}  
+// 📅 Date & Time:  ${formatDate(senderCurrentTime)}
 
-Thank you for using InstaPay! 🚀`
+// Thank you for using InstaPay! 🚀`
+                const message = lang[selectedLanguage].TRANSACTION_SUCCESSFUL.replace("{{amount}}", `${formattedAmount(chat.vcc.amount)} ${senderCard.currency}`)
+                    .replace("{{recipientName}}", `${receiverCard?.account.first_name} ${receiverCard?.account.last_name}`)
+                    .replace("{{recipientCard}}", `****${receiverCard?.last4?.slice(-4)}`)
+                    .replace("{{senderCard}}", `****${senderCard.last4?.slice(-4)}`)
+                    .replace("{{transactionId}}", transactionResult.data.transction_id)
+                    .replace("{{dateTime}}", formatDate(senderCurrentTime)) //Hassan
 
-                await sendButtons(chatId, message, [[{ text: "My Mastercard", callback_data: "vcc_menu" }], [{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }]], "4");
+                await sendButtons(chatId, message, [[{ text: lang[selectedLanguage].MY_MASTERCARD, callback_data: "vcc_menu" }], [{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }]], "4");
 
                 // recipient notifications
                 let notificationObj = {
@@ -339,14 +352,17 @@ Thank you for using InstaPay! 🚀`
                 };
                 // system notification
                 await addNotification(notificationObj);
-                const phoneMsg = `You have received ${formattedAmount(chat.vcc.amount)} ${senderCard.currency} from ${senderCard.account.username} on card ****${senderCard.last4?.slice(-4)}`;
+                // const phoneMsg = `You have received ${formattedAmount(chat.vcc.amount)} ${senderCard.currency} from ${senderCard.account.username} on card ****${senderCard.last4?.slice(-4)}`;
+                const phoneMsg = lang[selectedLanguage].TRANSACTION_RECEIVED_.replace("{{amount}}", `${formattedAmount(chat.vcc.amount)} ${senderCard.currency}`)
+                    .replace("{{senderName}}", `${senderCard.account.username}`)
+                    .replace("{{senderCard}}", `****${senderCard.last4?.slice(-4)}`)
                 await sendSMSTemplate(receiverCard.account.phone, phoneMsg);
 
                 // if recipient has active telegram chatbot
                 if (receiverCard.account.telegram_id && receiverCard.account.telegram_bot) {
                     const chatId = receiverCard.account.telegram_id;
                     await sendPhoto(chatId, "https://nodejs-checking-bucket.s3.amazonaws.com/telegram_bot_images/Success.png");
-                    await sendButtons(chatId, phoneMsg, [[{ text: "My Mastercard", callback_data: "vcc_menu" }], [{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }]], "4");
+                    await sendButtons(chatId, phoneMsg, [[{ text: lang[selectedLanguage].MY_MASTERCARD, callback_data: "vcc_menu" }], [{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }]], "4");
                 }
 
                 // if recipient has active instagram chatbot
@@ -376,29 +392,31 @@ Thank you for using InstaPay! 🚀`
                 await sendPhoto(chatId, "https://nodejs-checking-bucket.s3.amazonaws.com/telegram_bot_images/cancelled.png");
                 let message;
                 if (transactionResult.message === "insufficient_funds") {
-                    message = `❌ Transaction Failed
-
-We're sorry, but your transaction could not be completed due to insufficient funds.`
+                    message = lang[selectedLanguage].TRANSACTION_FAILED_;
                 } else if (transactionResult.message?.includes("expired")) {
-                    message = `❌ Transaction Failed\n\nWe're sorry, but your transaction could not be completed due to transaction expiry.`;
+                    message = lang[selectedLanguage].TRANSACTION_FAILED_EXPIRED;
                 }
                 else {
-                    message = `❌ Transaction Failed  
+//                     message = `❌ Transaction Failed  
     
-We're sorry, but your transaction could not be completed.  
+// We're sorry, but your transaction could not be completed.  
     
-Details: 
-🔹 Recipient Name: ${receiverCard?.account.first_name} ${receiverCard?.account.last_name}
-🔹 Recipient Card Number: ****${receiverCard?.last4?.slice(-4)}  
-🔹 Amount: ${formattedAmount(chat.vcc.amount)} ${senderCard.currency}  
-🔹 Date & Time: ${formatDate(senderCurrentTime)}  
+// Details: 
+// 🔹 Recipient Name: ${receiverCard?.account.first_name} ${receiverCard?.account.last_name}
+// 🔹 Recipient Card Number: ****${receiverCard?.last4?.slice(-4)}  
+// 🔹 Amount: ${formattedAmount(chat.vcc.amount)} ${senderCard.currency}  
+// 🔹 Date & Time: ${formatDate(senderCurrentTime)}  
     
-Please check your payment details and try again. If the issue persists, contact our support team for assistance. 📞💬
-                    `
+// Please check your payment details and try again. If the issue persists, contact our support team for assistance. 📞💬
+//                     `
+                    message = lang[selectedLanguage].TRANSACTION_FAILED_DETAILS.replace("{{recipientName}}", `${receiverCard?.account.first_name} ${receiverCard?.account.last_name}`)
+                        .replace("{{recipientCard}}", `****${receiverCard?.last4?.slice(-4)}`)
+                        .replace("{{amount}}", `${formattedAmount(chat.vcc.amount)} ${senderCard.currency}`)
+                        .replace("{{dateTime}}", formatDate(senderCurrentTime)) //Hassan
                 }
                 await sendButtons(chatId, message, [
-                    [{ text: "Try Again", callback_data: "vcc_transfer" }],
-                    [{ text: "My Mastercard", callback_data: "vcc_menu" }],
+                    [{ text: lang[selectedLanguage].TRY_AGAIN, callback_data: "vcc_transfer" }],
+                    [{ text: lang[selectedLanguage].MY_MASTERCARD, callback_data: "vcc_menu" }],
                     [{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }]
                 ], "4");
             }

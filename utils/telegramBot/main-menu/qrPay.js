@@ -561,8 +561,7 @@ ${lang[selectedLanguage].TOTAL_AMOUNT}: ${formattedAmount(rates.totalAmountWithF
 
         if (!expiryValidation.status) {
             const pans = await PanModel.find({ account: chat.account._id });
-            const message = "The card you selected has expired and is now removed from your InstaPay account.\n\n" +
-                "To continue with this transaction, please choose an alternative payment method.";
+            const message = lang[selectedLanguage].SELECTED_CARD_EXPIRED;
 
             if (pans.length !== 0) {
                 const buttons = [
@@ -701,7 +700,7 @@ ${lang[selectedLanguage].TOTAL_AMOUNT}: ${formattedAmount(parseFloat(totalAmount
         const buttons = [
             [{ text: lang[selectedLanguage].MAIN_MENU, callback_data: "main_menu" }]
         ];
-        await sendButtons(chatId, "Updates are going on. Please wait while we process your payment.", buttons, "4");
+        await sendButtons(chatId, lang[selectedLanguage].UPDATE_IN_PROGRESS, buttons, "4");
     }
 }
 
